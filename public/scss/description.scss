@@ -1,10 +1,142 @@
-@import 'variables.scss';
+@import '_variables.scss';
+$comment: 12; 
 
 .container-page-img {
     margin: 0;
 }
 
 .header-img {
+    &>.img-container {
+        max-width: 100vw;
+        display: block;
+        margin: 5px;
+        
+        &>img {
+            width: 100%;
+        }
+    }
+
+    &>.description {
+        display: block;
+        margin: 5px;
+        padding: 5px 10px 5px 10px;
+        background-color: $item-bg-color;
+        border-radius: 15px;
+        box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.50);
+
+        &>h1 {
+            text-align: left;
+            font-size: larger;
+            font-weight: bolder;
+        }
+
+        &>p {
+            margin: 12px 0 24px 0;
+            text-align: justify;
+        }
+
+        &>.keywords {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            flex-basis: 25px;
+
+            &>.text-keyword {
+                color: darken($item-bg-color, $amount: 50%);
+            }
+
+            &>.keyword {
+                text-align: center;
+                padding: 2px;
+                margin-left: 5px;
+                font-size: 12px;
+            }
+
+            @for $i from 1 to $comment {
+                &>.keyword-#{$i} {
+                    $bg-color-keyword: rgb(random(255), random(255), random(255));
+                    background-color: $bg-color-keyword;
+                    border: darken($color: $bg-color-keyword, $amount: 15%) 1px solid;
+                    border-radius: 25px;
+                    @if (lightness($bg-color-keyword) > 50%) {
+                        color: #000;
+                        text-shadow: #fff .1px .1px;
+                    }
+                    @else {
+                        color: #fff; 
+                        text-shadow: #000 .1px .1px;
+                    }
+                }
+            }
+        }
+
+        &>.info {
+            margin: 24px 0 6px auto;
+            width: 200px;
+            text-align: right;
+            color: darken($item-bg-color, $amount: 50%);
+        }
+    }
+}
+  
+.vertical-line {
+    max-width: calc(100vw - 15%);
+    margin: 24px auto 14px auto;
+    border: #000 solid 2px;
+    border-radius: 45px;
+}
+
+.comment {
+    &>.title-comment {
+        text-align: center;
+        font-weight: bolder;
+        font-size: 24px;
+    }
+
+    &>.vertical-line {
+        max-width: calc(100vw - 40%);
+        border: lighten($color: #000000, $amount: 45%) solid 2px;
+    }
+}
+
+.post-comment {
+    display: block;
     margin: 5px;
-    border: 5px solid #888888;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: $item-bg-color;
+
+    &>h3 {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    &>div {
+        margin-right:0;
+        margin-left: auto;
+        text-align: right;
+        width: 75px;
+        
+        &>.publish {
+            margin-right: -2px;
+        }
+    }
+}
+
+.comment-user {
+    display: block;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: $item-bg-color;
+
+    &>.username {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    &>.date-user-comment {
+        text-align: right;
+        color: darken($item-bg-color, $amount: 50%);
+    }
 }

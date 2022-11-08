@@ -8,6 +8,20 @@ body {
   background-color: #FFFFFF;
 }
 
+.btn-s {
+  display: block;
+  padding: 5px;
+  background-color: #bfbfbf;
+  color: black;
+  border-radius: 45px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn-s:hover {
+  background-color: #8c8c8c;
+}
+
 .container-connection {
   background-color: #F0F0F0;
 }
@@ -44,9 +58,182 @@ nav a {
   margin: 0;
 }
 
-.header-img {
+.header-img > .img-container {
+  max-width: 100vw;
+  display: block;
   margin: 5px;
-  border: 5px solid #888888;
+}
+.header-img > .img-container > img {
+  width: 100%;
+}
+.header-img > .description {
+  display: block;
+  margin: 5px;
+  padding: 5px 10px 5px 10px;
+  background-color: #F0F0F0;
+  border-radius: 15px;
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.5);
+}
+.header-img > .description > h1 {
+  text-align: left;
+  font-size: larger;
+  font-weight: bolder;
+}
+.header-img > .description > p {
+  margin: 12px 0 24px 0;
+  text-align: justify;
+}
+.header-img > .description > .keywords {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-basis: 25px;
+}
+.header-img > .description > .keywords > .text-keyword {
+  color: #717171;
+}
+.header-img > .description > .keywords > .keyword {
+  text-align: center;
+  padding: 2px;
+  margin-left: 5px;
+  font-size: 12px;
+}
+.header-img > .description > .keywords > .keyword-1 {
+  background-color: rgb(78, 247, 102);
+  border: #0bee2b 1px solid;
+  border-radius: 25px;
+  color: #000;
+  text-shadow: #fff 0.1px 0.1px;
+}
+.header-img > .description > .keywords > .keyword-2 {
+  background-color: rgb(225, 50, 237);
+  border: #b611c2 1px solid;
+  border-radius: 25px;
+  color: #000;
+  text-shadow: #fff 0.1px 0.1px;
+}
+.header-img > .description > .keywords > .keyword-3 {
+  background-color: rgb(243, 122, 133);
+  border: #ed3445 1px solid;
+  border-radius: 25px;
+  color: #000;
+  text-shadow: #fff 0.1px 0.1px;
+}
+.header-img > .description > .keywords > .keyword-4 {
+  background-color: rgb(98, 96, 247);
+  border: #1a17f3 1px solid;
+  border-radius: 25px;
+  color: #000;
+  text-shadow: #fff 0.1px 0.1px;
+}
+.header-img > .description > .keywords > .keyword-5 {
+  background-color: rgb(205, 139, 75);
+  border: #9f652c 1px solid;
+  border-radius: 25px;
+  color: #000;
+  text-shadow: #fff 0.1px 0.1px;
+}
+.header-img > .description > .keywords > .keyword-6 {
+  background-color: rgb(246, 31, 99);
+  border: #c10842 1px solid;
+  border-radius: 25px;
+  color: #000;
+  text-shadow: #fff 0.1px 0.1px;
+}
+.header-img > .description > .keywords > .keyword-7 {
+  background-color: rgb(45, 55, 6);
+  border: black 1px solid;
+  border-radius: 25px;
+  color: #fff;
+  text-shadow: #000 0.1px 0.1px;
+}
+.header-img > .description > .keywords > .keyword-8 {
+  background-color: rgb(225, 140, 174);
+  border: #d14f83 1px solid;
+  border-radius: 25px;
+  color: #000;
+  text-shadow: #fff 0.1px 0.1px;
+}
+.header-img > .description > .keywords > .keyword-9 {
+  background-color: rgb(150, 192, 215);
+  border: #5f9fc2 1px solid;
+  border-radius: 25px;
+  color: #000;
+  text-shadow: #fff 0.1px 0.1px;
+}
+.header-img > .description > .keywords > .keyword-10 {
+  background-color: rgb(58, 182, 155);
+  border: #287c6a 1px solid;
+  border-radius: 25px;
+  color: #fff;
+  text-shadow: #000 0.1px 0.1px;
+}
+.header-img > .description > .keywords > .keyword-11 {
+  background-color: rgb(172, 110, 155);
+  border: #834b73 1px solid;
+  border-radius: 25px;
+  color: #000;
+  text-shadow: #fff 0.1px 0.1px;
+}
+.header-img > .description > .info {
+  margin: 24px 0 6px auto;
+  width: 200px;
+  text-align: right;
+  color: #717171;
+}
+
+.vertical-line {
+  max-width: calc(100vw - 15%);
+  margin: 24px auto 14px auto;
+  border: #000 solid 2px;
+  border-radius: 45px;
+}
+
+.comment > .title-comment {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 24px;
+}
+.comment > .vertical-line {
+  max-width: calc(100vw - 40%);
+  border: #737373 solid 2px;
+}
+
+.post-comment {
+  display: block;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #F0F0F0;
+}
+.post-comment > h3 {
+  font-size: 16px;
+  font-weight: 600;
+}
+.post-comment > div {
+  margin-right: 0;
+  margin-left: auto;
+  text-align: right;
+  width: 75px;
+}
+.post-comment > div > .publish {
+  margin-right: -2px;
+}
+
+.comment-user {
+  display: block;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #F0F0F0;
+}
+.comment-user > .username {
+  font-size: 16px;
+  font-weight: 600;
+}
+.comment-user > .date-user-comment {
+  text-align: right;
+  color: #717171;
 }
 
 /*# sourceMappingURL=index.css.map */

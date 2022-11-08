@@ -9,26 +9,36 @@
                 <img src="img/meetup.png" alt="img">
             </div>
             <div class="description">
-                <h1>{{img.title}}</h1>
-                <p class="description-img">{{img.description}}</p>
+                <h1>Titre</h1>
+                <p class="description-img">Lorem ipsum dolor, sit amet consectetur adipisicing elit. At sunt natus dolores autem aperiam numquam culpa ad, suscipit, voluptates molestias labore fugit maxime officiis? Saepe suscipit delectus et officiis reprehenderit.</p>
                 <div class="keywords">
-                    <p>Mots clés : </p>
-                    {% for keyword in img.getKeywords() %}
-                        <p>{{keyword}}</p>
-                    {% endfor %}
+                    <p class="text-keyword">Mots clés : </p>
+                    <p class="keyword-1 keyword">lorem</p>
+                    <p class="keyword-2 keyword">lorem</p>
+                    <p class="keyword-3 keyword">lorem</p>
+                    <p class="keyword-4 keyword">lorem</p>
+                    <p class="keyword-5 keyword">lorem</p>
+                    <p class="keyword-5 keyword">lorem</p>
+                    <p class="keyword-5 keyword">lorem</p>
+                    <p class="keyword-5 keyword">lorem</p>
                 </div>
-                <p class="date-img">{{img.date}}</p>
-                <p class="user-img">Par {{img.user}}</p>
+                <div class="info">
+                    <p class="date-img">08/11/2022</p>
+                    <p class="user-img">Par: Moi</p>
+                </div>
             </div>
         </div>
-        <div></div>
+        <div class="vertical-line"></div>
         <div class="comment">
             <p class="title-comment">Commentaires</p>
             <div class="post-comment">
-                <p>Poster un commentaire</p>
-                <p>Votre message ...</p>
-                <p>Publier</p>
+                <h3>Poster un commentaire</h3>
+                <p class="message-img">Votre message ...</p>
+                <div>
+                    <a class="btn-s publish" href="">Publier</a>
+                </div>
             </div>
+            <div class="vertical-line"></div>
             {# {% for comment in img.getComments() %} #}
                 <div class="comment-user">
                     <p class="username">username</p>

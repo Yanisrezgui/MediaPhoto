@@ -5,6 +5,11 @@
 
 body {
   font-family: "Arvo";
+  background-color: #FFFFFF;
+}
+
+.container-connection {
+  background-color: #F0F0F0;
 }
 
 nav {

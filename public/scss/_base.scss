@@ -1,4 +1,4 @@
-$font: 'Arvo';
+@import '_variables.scss';
 
 * {
     margin: 0;
@@ -7,4 +7,5 @@ $font: 'Arvo';
 
 body {
     font-family: $font;
+    background-color: $bg-color;
 }

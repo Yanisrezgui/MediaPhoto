@@ -16,6 +16,6 @@ class HomeController
 
   public function home(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {
-    return $this->view->render($response, 'galerie/galerie.html.twig');
+    return $this->view->render($response, 'gallery/gallery.html.twig');
   }
 }

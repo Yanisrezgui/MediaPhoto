@@ -35,15 +35,14 @@ class UserController
 
   public function inscription(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {
-    //$user = $this->userService->signUp('9@gmail.com','mdp','g');
-    /* $repository=$this->em->getRepository(User::class);
-    $user=$repository->findAll();
-    return $this->view->render($response, 'inscription.twig', [
-      'users' => $user,
-    ]);
-    return $response; */
 
+    $mail = $request -> getParsedBody()['mail'];
+    $password = $request -> getParsedBody()['password'];
     $pseudo = $request -> getParsedBody()['pseudo'];
+    $passwordverif = $request -> getParsedBody()['passwordVerif'];
+    
+    $this->userService->signUp($mail,$password,$pseudo);
+
     return $response
             ->withHeader('Location', '/test')
             ->withStatus(302);

@@ -4,23 +4,20 @@ namespace App;
 
 use Doctrine\ORM\EntityManager;
 use App\Domain\User;
-use Psr\Log\LoggerInterface;
 
 final class UserService
 {
     private EntityManager $em;
 
-    public function __construct(EntityManager $em, LoggerInterface $logger)
+    public function __construct(EntityManager $em)
     {
         $this->em = $em;
-        $this->logger = $logger;
     }
 
     public function signUp(string $email,string $password, string $pseudo): User
     {
         $newUser = new User($email,$password,$pseudo);
 
-        $this->logger->info("User {$email} , {$password}, {$pseudo} signed up");
 
         $this->em->persist($newUser);
         $this->em->flush();

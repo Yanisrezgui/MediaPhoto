@@ -1,0 +1,23 @@
+{% for user in users %}
+        userid: {{user.getId()}}
+        email: {{user.getEmail()}}
+        password: {{user.getPassword()}}
+        pseudo: {{user.getPseudo()}}
+        <br>
+{% endfor %}
+
+<form action="/inscription/createUser" method="POST">
+        <label for="adresseMail">Entrez une adresse mail : </label>
+        <input type="text" name="mail" id="mail-text">
+        <br>
+        <label for="pseudo">Entrez un pseudo : </label>
+        <input type="text" name="pseudo" id="pseudo-text">
+        <br>
+        <label for="password">Entrez un mot de passe : </label>
+        <input type="text" name="password" id="password-text">
+        <br>
+        <label for="passwordVerif">confirmez votre mot de passe : </label>
+        <input type="text" name="passwordVerif" id="password-verif-text">
+        <br>
+        <input type="submit" value="Valider">
+</form>

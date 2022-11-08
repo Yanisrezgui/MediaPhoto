@@ -40,13 +40,28 @@ final class User
         return $this->email;
     }
 
+    public function setEmail(string $email)
+    {
+        $this->email = $email;
+    }
+
     public function getPassword(): string
     {
         return $this->password;
     }
 
+    public function setPassword(string $password)
+    {
+        $this->password = $password;
+    }
+
     public function getPseudo(): string
     {
         return $this->pseudo;
+    }
+
+    public function setPseudo(string $pseudo)
+    {
+        $this->pseudo = $pseudo;
     }
 }

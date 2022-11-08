@@ -19,14 +19,33 @@ class UserController
     $this->em=$em;
   }
 
-  public function test(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
+  public function affichForm(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {
     //$user = $this->userService->signUp('9@gmail.com','mdp','g');
-    $repository=$this->em->getRepository(User::class);
+    /* $repository=$this->em->getRepository(User::class);
     $user=$repository->findAll();
-    return $this->view->render($response, 'hello.twig', [
+    return $this->view->render($response, 'inscription.twig', [
       'users' => $user,
     ]);
-    return $response;
+    return $response; */
+
+    return $this->view->render($response, 'inscription.twig');
+    return $response; 
+  }
+
+  public function inscription(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
+  {
+    //$user = $this->userService->signUp('9@gmail.com','mdp','g');
+    /* $repository=$this->em->getRepository(User::class);
+    $user=$repository->findAll();
+    return $this->view->render($response, 'inscription.twig', [
+      'users' => $user,
+    ]);
+    return $response; */
+
+    $pseudo = $request -> getParsedBody()['pseudo'];
+    return $response
+            ->withHeader('Location', '/test')
+            ->withStatus(302);
   }
 }

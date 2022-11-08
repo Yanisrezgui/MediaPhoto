@@ -24,5 +24,6 @@ $app->get('/', function (Request $request, Response $response, $args) {
 $app->get('/users', \App\UserController::class . ':test');
 $app->get('/inscription', \App\UserController::class . ':affichForm');
 $app->post('/inscription/createUser', \App\UserController::class . ':inscription');
+$app->get('/galerie', \App\GalerieController::class . ':affichForm');
 
 $app->run();

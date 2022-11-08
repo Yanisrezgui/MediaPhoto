@@ -11,6 +11,8 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use UMA\DIC\Container;
 use App\UserService;
 use App\UserController;
+use App\GalerieController;
+use App\GalerieService;
 use Monolog\Level;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
@@ -63,6 +65,17 @@ $container->set(UserService::class, static function (Container $c) {
 $container->set(UserController::class, static function (ContainerInterface $container) {
     $view = $container->get('view');
     return new UserController($view, $container->get(UserService::class),$container->get(EntityManager::class));
+});
+
+
+$container->set(galerieService::class, static function (Container $c) {
+    return new GalerieService($c->get(EntityManager::class), $c->get(LoggerInterface::class));
+});
+
+
+$container->set(GalerieController::class, static function (ContainerInterface $container) {
+    $view = $container->get('view');
+    return new GalerieController($view, $container->get(GalerieService::class),$container->get(EntityManager::class));
 });
 
 return $container;

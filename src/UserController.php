@@ -40,11 +40,27 @@ class UserController
     $password = $request -> getParsedBody()['password'];
     $pseudo = $request -> getParsedBody()['pseudo'];
     $passwordverif = $request -> getParsedBody()['passwordVerif'];
+
+    $mail=trim($mail);
+    $password=trim($password);
+    $pseudo=trim($pseudo);
+    $passwordverif=trim($passwordverif);
+
     
-    $this->userService->signUp($mail,$password,$pseudo);
+    if( ($mail=='')  || ($password=='') || ($pseudo=='') || ($password!=$passwordverif))
+    {
+      return $response
+      ->withHeader('Location', '/testhjzshdugdfgy')
+      ->withStatus(302);
+    }else{
+      $this->userService->signUp($mail,$password,$pseudo);
+    }
+
+
+    
 
     return $response
-            ->withHeader('Location', '/test')
+            ->withHeader('Location', '/')
             ->withStatus(302);
   }
 }

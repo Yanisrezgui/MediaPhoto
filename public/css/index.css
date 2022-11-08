@@ -64,7 +64,10 @@ nav a {
   margin: 5px;
 }
 .header-img > .img-container > img {
-  width: 100%;
+  width: 70%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 .header-img > .description {
   display: block;
@@ -99,81 +102,81 @@ nav a {
   font-size: 12px;
 }
 .header-img > .description > .keywords > .keyword-1 {
-  background-color: rgb(78, 247, 102);
-  border: #0bee2b 1px solid;
+  background-color: rgb(51, 146, 235);
+  border: #136cbf 1px solid;
   border-radius: 25px;
   color: #000;
   text-shadow: #fff 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-2 {
-  background-color: rgb(225, 50, 237);
-  border: #b611c2 1px solid;
+  background-color: rgb(35, 116, 158);
+  border: #15465f 1px solid;
   border-radius: 25px;
-  color: #000;
-  text-shadow: #fff 0.1px 0.1px;
+  color: #fff;
+  text-shadow: #000 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-3 {
-  background-color: rgb(243, 122, 133);
-  border: #ed3445 1px solid;
+  background-color: rgb(162, 23, 178);
+  border: #640e6e 1px solid;
   border-radius: 25px;
-  color: #000;
-  text-shadow: #fff 0.1px 0.1px;
+  color: #fff;
+  text-shadow: #000 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-4 {
-  background-color: rgb(98, 96, 247);
-  border: #1a17f3 1px solid;
+  background-color: rgb(130, 231, 186);
+  border: #42db97 1px solid;
   border-radius: 25px;
   color: #000;
   text-shadow: #fff 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-5 {
-  background-color: rgb(205, 139, 75);
-  border: #9f652c 1px solid;
+  background-color: rgb(21, 126, 111);
+  border: #0a3c35 1px solid;
   border-radius: 25px;
-  color: #000;
-  text-shadow: #fff 0.1px 0.1px;
+  color: #fff;
+  text-shadow: #000 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-6 {
-  background-color: rgb(246, 31, 99);
-  border: #c10842 1px solid;
+  background-color: rgb(48, 201, 72);
+  border: #218b32 1px solid;
   border-radius: 25px;
-  color: #000;
-  text-shadow: #fff 0.1px 0.1px;
+  color: #fff;
+  text-shadow: #000 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-7 {
-  background-color: rgb(45, 55, 6);
-  border: black 1px solid;
+  background-color: rgb(64, 95, 4);
+  border: #0f1601 1px solid;
   border-radius: 25px;
   color: #fff;
   text-shadow: #000 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-8 {
-  background-color: rgb(225, 140, 174);
-  border: #d14f83 1px solid;
+  background-color: rgb(137, 44, 74);
+  border: #4f192b 1px solid;
   border-radius: 25px;
-  color: #000;
-  text-shadow: #fff 0.1px 0.1px;
+  color: #fff;
+  text-shadow: #000 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-9 {
-  background-color: rgb(150, 192, 215);
-  border: #5f9fc2 1px solid;
+  background-color: rgb(6, 83, 98);
+  border: #02161a 1px solid;
   border-radius: 25px;
-  color: #000;
-  text-shadow: #fff 0.1px 0.1px;
+  color: #fff;
+  text-shadow: #000 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-10 {
-  background-color: rgb(58, 182, 155);
-  border: #287c6a 1px solid;
+  background-color: rgb(170, 73, 87);
+  border: #74323c 1px solid;
   border-radius: 25px;
   color: #fff;
   text-shadow: #000 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-11 {
-  background-color: rgb(172, 110, 155);
-  border: #834b73 1px solid;
+  background-color: rgb(44, 147, 47);
+  border: #1a581c 1px solid;
   border-radius: 25px;
-  color: #000;
-  text-shadow: #fff 0.1px 0.1px;
+  color: #fff;
+  text-shadow: #000 0.1px 0.1px;
 }
 .header-img > .description > .info {
   margin: 24px 0 6px auto;
@@ -223,6 +226,7 @@ nav a {
 .comment-user {
   display: block;
   margin: 5px;
+  margin-bottom: 16px;
   padding: 10px;
   border-radius: 15px;
   background-color: #F0F0F0;
@@ -234,6 +238,38 @@ nav a {
 .comment-user > .date-user-comment {
   text-align: right;
   color: #717171;
+}
+
+@media screen and (min-width: 481px) {
+  .header-img > .img-container > img {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .header-img {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+  }
+  .header-img > .img-container {
+    flex-basis: calc(100vw - 50%);
+  }
+  .header-img > .img-container > img {
+    width: 80%;
+  }
+  .header-img > .description {
+    position: relative;
+    margin-right: 24px;
+  }
+  .header-img > .description > .info {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 12px;
+  }
+  .comment-user {
+    max-width: 60%;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */

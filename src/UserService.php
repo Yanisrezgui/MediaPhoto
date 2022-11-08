@@ -16,11 +16,11 @@ final class UserService
         $this->logger = $logger;
     }
 
-    public function signUp(string $email): User
+    public function signUp(string $email,string $password, string $pseudo): User
     {
-        $newUser = new User($email);
+        $newUser = new User($email,$password,$pseudo);
 
-        $this->logger->info("User {$email} signed up");
+        $this->logger->info("User {$email} , {$password}, {$pseudo} signed up");
 
         $this->em->persist($newUser);
         $this->em->flush();

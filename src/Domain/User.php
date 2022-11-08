@@ -2,29 +2,32 @@
 
 namespace App\Domain;
 
-use DateTimeImmutable;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Table;
 
-#[Entity, Table(name: 'users')]
+#[Entity, Table(name: 'Utilisateur')]
 final class User
 {
-    #[Id, Column(type: 'integer'), GeneratedValue(strategy: 'AUTO')]
+    #[Id, Column(name:'id_util',type: 'integer'), GeneratedValue(strategy: 'AUTO')]
     private int $id;
 
-    #[Column(type: 'string', unique: true, nullable: false)]
+    #[Column(name:'email',type: 'string', unique: true, nullable: false)]
     private string $email;
 
-    #[Column(name: 'registered_at', type: 'datetimetz_immutable', nullable: false)]
-    private DateTimeImmutable $registeredAt;
+    #[Column(name: 'password', type: 'string', nullable: false)]
+    private string $password;
 
-    public function __construct(string $email)
+    #[Column(name: 'pseudo', type: 'string',unique:true, nullable: false)]
+    private string $pseudo;
+
+    public function __construct(string $email,string $password, string $pseudo)
     {
         $this->email = $email;
-        $this->registeredAt = new DateTimeImmutable('now');
+        $this->password= $password;
+        $this->pseudo= $pseudo;
     }
 
     public function getId(): int
@@ -37,8 +40,13 @@ final class User
         return $this->email;
     }
 
-    public function getRegisteredAt(): DateTimeImmutable
+    public function getPassword(): string
     {
-        return $this->registeredAt;
+        return $this->password;
+    }
+
+    public function getPseudo(): string
+    {
+        return $this->pseudo;
     }
 }

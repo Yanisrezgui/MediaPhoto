@@ -51,10 +51,9 @@ $container->set(EntityManager::class, static function (Container $c): EntityMana
 });
 
 $container->set('view', function () {
-    return Twig::create(
-        __DIR__ . '/templates',
-        ['cache' => __DIR__ . '/cache']
-    );
+    $twig = Twig::create('../templates', ['debug' => true]);
+    $twig->addExtension(new \Twig\Extension\DebugExtension());
+    return $twig;
 });
 
 $container->set(UserService::class, static function (Container $c) {
@@ -63,7 +62,7 @@ $container->set(UserService::class, static function (Container $c) {
 
 $container->set(UserController::class, static function (ContainerInterface $container) {
     $view = $container->get('view');
-    return new UserController($view, $container->get(UserService::class));
+    return new UserController($view, $container->get(UserService::class),$container->get(EntityManager::class));
 });
 
 return $container;

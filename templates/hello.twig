@@ -1,4 +1,8 @@
-Hello {{ name }}
-userid: {{user.getId()}}
-email: {{user.getEmail()}}
-registeredAt: {{user.getRegisteredAt()}}
+{% for user in users %}
+        userid: {{user.getId()}}
+        email: {{user.getEmail()}}
+        password: {{user.getPassword()}}
+        pseudo: {{user.getPseudo()}}
+        <br>
+{% endfor %}
+

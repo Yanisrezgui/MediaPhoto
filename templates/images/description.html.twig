@@ -3,5 +3,44 @@
 {% block title %}MediaPhoto - Home{% endblock %}
 
 {% block body %}
-    <p>description</p>
+    <div class="container-page-img">
+        <div class="header-img">
+            <div class="img-container">
+                <img src="img/meetup.png" alt="img">
+            </div>
+            <div class="description">
+                <h1>{{img.title}}</h1>
+                <p class="description-img">{{img.description}}</p>
+                <div class="keywords">
+                    <p>Mots clés : </p>
+                    {% for keyword in img.getKeywords() %}
+                        <p>{{keyword}}</p>
+                    {% endfor %}
+                </div>
+                <p class="date-img">{{img.date}}</p>
+                <p class="user-img">Par {{img.user}}</p>
+            </div>
+        </div>
+        <div></div>
+        <div class="comment">
+            <p class="title-comment">Commentaires</p>
+            <div class="post-comment">
+                <p>Poster un commentaire</p>
+                <p>Votre message ...</p>
+                <p>Publier</p>
+            </div>
+            {# {% for comment in img.getComments() %} #}
+                <div class="comment-user">
+                    <p class="username">username</p>
+                    <p class="text-user-comment">Magnifique !</p>
+                    <p class="date-user-comment">07/11/2022</p>
+                </div>
+                <div class="comment-user">
+                    <p class="username">username 2</p>
+                    <p class="text-user-comment">Impressionnant</p>
+                    <p class="date-user-comment">07/11/2022</p>
+                </div>
+            {# {% endfor %} #}
+        </div>
+    </div>
 {% endblock %}

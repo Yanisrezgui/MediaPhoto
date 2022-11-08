@@ -18,9 +18,9 @@ install-psr:
 	@docker exec -d unlock-php composer require slim/psr7
 
 container-php:
-	@docker exec -it unlock-php bash
+	@docker exec -it media-photo-php bash
 
 container-mariadb:
-	@docker exec -it unlock-mariadb bash
+	@docker exec -it media-photo-mariadb bash
 
 

@@ -15,12 +15,7 @@ $app = AppFactory::create();
 
 $app->add(TwigMiddleware::createFromContainer($app));
 
-
-$app->get('/', function (Request $request, Response $response, $args) {
-    $response->getBody()->write("Hello world!");
-    return $response;
-});
-
+$app->get('/', \App\Controller\HomeController::class . ':home');
 $app->get('/users', \App\UserController::class . ':test');
 
 $app->run();

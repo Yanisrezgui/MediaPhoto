@@ -16,6 +16,7 @@ use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use Psr\Log\LoggerInterface;
 use Slim\Views\Twig;
+use App\Controller\HomeController;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -64,6 +65,11 @@ $container->set(UserService::class, static function (Container $c) {
 $container->set(UserController::class, static function (ContainerInterface $container) {
     $view = $container->get('view');
     return new UserController($view, $container->get(UserService::class));
+});
+
+$container->set(HomeController::class, static function (ContainerInterface $container) {
+    $view = $container->get('view');
+    return new HomeController($view);
 });
 
 return $container;

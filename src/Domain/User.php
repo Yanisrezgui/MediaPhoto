@@ -7,6 +7,8 @@ use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Table;
+use Doctrine\ORM\Mapping\OneToMany;
+
 
 #[Entity, Table(name: 'Utilisateur')]
 final class User
@@ -22,6 +24,8 @@ final class User
 
     #[Column(name: 'pseudo', type: 'string',unique:true, nullable: false)]
     private string $pseudo;
+
+    #[OneToMany(targetEntity: Galerie::class, mappedBy:'user')]
 
     public function __construct(string $email,string $password, string $pseudo)
     {

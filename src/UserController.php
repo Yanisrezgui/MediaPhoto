@@ -19,16 +19,8 @@ class UserController
     $this->em=$em;
   }
 
-  public function affichForm(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
+  public function afficheInscription(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {
-    //$user = $this->userService->signUp('9@gmail.com','mdp','g');
-    /* $repository=$this->em->getRepository(User::class);
-    $user=$repository->findAll();
-    return $this->view->render($response, 'inscription.twig', [
-      'users' => $user,
-    ]);
-    return $response; */
-
     return $this->view->render($response, 'inscription.twig');
     return $response; 
   }
@@ -46,7 +38,6 @@ class UserController
     $pseudo=trim($pseudo);
     $passwordverif=trim($passwordverif);
 
-    
     if( ($mail=='')  || ($password=='') || ($pseudo=='') || ($password!=$passwordverif))
     {
       return $response
@@ -55,10 +46,7 @@ class UserController
     }else{
       $this->userService->signUp($mail,$password,$pseudo);
     }
-
-
     
-
     return $response
             ->withHeader('Location', '/')
             ->withStatus(302);

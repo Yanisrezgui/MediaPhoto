@@ -16,4 +16,3 @@ final class galerieService
         $this->logger = $logger;
     }
 }   
-?>

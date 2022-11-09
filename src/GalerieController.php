@@ -8,10 +8,7 @@ use Doctrine\ORM\EntityManager;
 use Slim\Views\Twig;
 use App\Domain\Galerie;
 
-
-
 class GalerieController{
-
     private $view;
     private $em;
 
@@ -22,13 +19,8 @@ class GalerieController{
     $this->em=$em;
   }
 
-
   public function affichForm(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {   
     return $this->view->render($response, 'Galerie.twig');
   }
-
 }
-
-
-?>

@@ -48,38 +48,47 @@ final class User
         $this->galerie_acces= new ArrayCollection();
 
     }
+
     public function getId(): int
     {
         return $this->id;
     }
+
     public function getEmail(): string
     {
         return $this->email;
     }
+
     public function setEmail(string $email)
     {
         $this->email = $email;
     }
+
     public function getPassword(): string
     {
         return $this->password;
     }
+
     public function setPassword(string $password)
     {
         $this->password = $password;
     }
+
     public function getPseudo(): string
     {
         return $this->pseudo;
     }
+
     public function setPseudo(string $pseudo)
     {
         $this->pseudo = $pseudo;
     }
+
     public function getGaleries(): Collection
     {
         return $this->galeries;
     }
+
     public function getGalerieAcces(): Collection
     {
         return $this->galerie_acces;

@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\Table;
 
-
 #[Entity, Table(name: 'Commentaires')]
 final class Commentaire
 {
@@ -46,5 +45,4 @@ final class Commentaire
         $this->image = $image;
         return $this;
     }
-    
 }

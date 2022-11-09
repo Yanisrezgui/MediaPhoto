@@ -14,7 +14,6 @@ use Doctrine\ORM\Mapping\InverseJoinColumn;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\JoinTable;
 use Doctrine\ORM\Mapping\ManyToMany;
-use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\Table;
 
 #[Entity, Table(name: 'Image')]
@@ -44,13 +43,11 @@ final class Image
     #[Column(name: 'img_type', type: 'string', unique: false, nullable: false)]
     private string $imgtype;
 
-    
     #[JoinTable(name: 'Galerie')]
     #[JoinColumn(name: 'id_galerie', referencedColumnName: 'id_galerie')]
     #[InverseJoinColumn(name: 'id_photo', referencedColumnName: 'id_photo')]
     #[ManyToMany(targetEntity: Image::class)]
     private Collection $galeryImage;
-
 
     public function __construct(string $motcle, string $titre, string $imgdesc,string $imgtaille,string $imgblop, string $imgtype)
     {
@@ -61,37 +58,43 @@ final class Image
         $this->imgblop = $imgblop;
         $this->imgtype = $imgtype;
         $this->date = new DateTimeImmutable('now');
-
-
     }
+
     public function getId_img(): int
     {
         return $this->id_img;
     }
+
     public function getmotcle(): string
     {
         return $this->motcle;
     }
+
     public function getTitre(): string
     {
         return $this->titre;
     }
+
     public function getImg_desc(): string
     {
         return $this->imgdesc;
     }
+
     public function getImg_taille(): string
     {
         return $this->imgtaille;
     }
+
     public function getImg_blop(): BlobType
     {
         return $this->imgblop;
     }
+
     public function getImg_type(): string
     {
         return $this->imgtype;
     }
+
     public function getDate(): DateTimeImmutable
     {
         return $this->date_crea;
@@ -107,5 +110,4 @@ final class Image
     {
         return $this->galeryImage;
     }
-    
 }

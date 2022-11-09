@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\JoinTable;
 use Doctrine\ORM\Mapping\ManyToMany;
 use Doctrine\ORM\Mapping\InverseJoinColumn;
-
+use Doctrine\ORM\Mapping\OneToMany;
 
 #[Entity, Table(name: 'Galerie')]
 final class Galerie
@@ -36,19 +36,17 @@ final class Galerie
     #[Column(name: 'mot_clé', type: 'string', nullable: false)]
     private string $motcle;
 
-    #[ManyToOne(targetEntity: User::class, inversedBy: 'galery')]
+    #[ManyToOne(targetEntity: User::class, inversedBy: 'galeries')]
+    private $user;
     
-    #[JoinColumn(name: 'user_creator', referencedColumnName: 'id_util')]
-    private string $user_creator;
 
-    public function __construct(bool $acces, string $titre, string $description, string $motcle,string $user_creator)
+    public function __construct(bool $acces, string $titre, string $description, string $motcle)
     {
         $this->acces = $acces;
         $this->titre = $titre;
         $this->description = $description;
         $this->date = new DateTimeImmutable('now');
         $this->motcle=$motcle;
-        $this->user_creator=$user_creator;
 
     }
     
@@ -82,8 +80,14 @@ final class Galerie
         return $this->motcle;
     }
 
-    public function getUser_Creator(): string
+    public function getuser(): ?User
     {
-        return $this->user_creator;
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+        return $this;
     }
 }

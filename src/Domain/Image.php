@@ -3,11 +3,14 @@
 namespace App\Domain;
 
 use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\BlobType;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
+use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\Table;
 
 #[Entity, Table(name: 'Image')]
@@ -31,12 +34,14 @@ final class Image
     #[Column(name: 'img_taille', type: 'string', unique: false, nullable: false)]
     private string $imgtaille;
 
-    #[Column(name: 'img_blop', type: 'blop', unique: false, nullable: false)]
+    #[Column(name: 'img_blop', type: 'blob', unique: false, nullable: false)]
     private BlobType $imgblop;
 
     #[Column(name: 'img_type', type: 'string', unique: false, nullable: false)]
     private string $imgtype;
 
+    #[OneToMany(targetEntity: Commentaire::class, mappedBy:'Image')]
+    private $commentaires;
    
 
 
@@ -49,6 +54,8 @@ final class Image
         $this->imgblop = $imgblop;
         $this->imgtype = $imgtype;
         $this->date = new DateTimeImmutable('now');
+        $this->commentaires=new ArrayCollection();
+
 
     }
     public function getId_img(): int
@@ -82,6 +89,11 @@ final class Image
     public function getDate(): DateTimeImmutable
     {
         return $this->date_crea;
+    }
+
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
     }
     
 }

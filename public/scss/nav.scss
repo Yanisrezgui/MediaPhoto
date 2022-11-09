@@ -1,0 +1,41 @@
+@import "_variables.scss";
+
+nav {
+    background-color: #E9E3E6;
+    font-size: 1.5em;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    
+    ul {
+        display: flex;
+        list-style:none;
+        align-items: center;
+    }
+
+    img {
+        height: 90px;
+        margin:15% 0 15% 25%;
+    }
+
+    a {
+        text-decoration: none;
+        color: #000000;
+    }
+
+}
+
+#mediaphoto {
+    flex:5;
+    margin-left: 45px;
+}
+
+#connection {
+    flex:1;
+    width:300px;
+}
+
+@media screen and (min-width: 1025px) {
+    nav {
+        font-size: 2.2em;
+    }
+    
+}

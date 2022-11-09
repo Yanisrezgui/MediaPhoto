@@ -37,15 +37,23 @@
 
 .login-btn {
     text-align: center;
-    margin: 40px 75px 40px 75px;
-    background-color: #EB2540;
-    border-radius: 20px;
-    height: 25px;
-    padding-top:10px;
-    color: white;
+    margin-top: 60px;
+    padding-bottom:40px;
+
+    a {
+        background-color: #EB2540;
+        border-radius: 20px;
+        color: white;
+        text-decoration: none;
+        padding:7px 40px 7px 40px;
+    }
 }
 
 .or-signup {
+    font-size:0.9em;
     text-align: center;
-    padding-bottom: 80px;
+    padding-bottom: 70px;
+    a {
+        font-size: 0.8em;
+    }
 }

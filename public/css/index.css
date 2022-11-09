@@ -53,17 +53,24 @@ body {
 
 .login-btn {
   text-align: center;
-  margin: 40px 75px 40px 75px;
+  margin-top: 60px;
+  padding-bottom: 40px;
+}
+.login-btn a {
   background-color: #EB2540;
   border-radius: 20px;
-  height: 25px;
-  padding-top: 10px;
   color: white;
+  text-decoration: none;
+  padding: 7px 40px 7px 40px;
 }
 
 .or-signup {
+  font-size: 0.9em;
   text-align: center;
-  padding-bottom: 80px;
+  padding-bottom: 70px;
+}
+.or-signup a {
+  font-size: 0.8em;
 }
 
 nav {
@@ -143,81 +150,81 @@ nav a {
   font-size: 12px;
 }
 .header-img > .description > .keywords > .keyword-1 {
-  background-color: rgb(201, 48, 235);
-  border: #9d12bc 1px solid;
+  background-color: rgb(182, 30, 138);
+  border: #741358 1px solid;
   border-radius: 25px;
-  color: #000;
-  text-shadow: #fff 0.1px 0.1px;
+  color: #fff;
+  text-shadow: #000 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-2 {
-  background-color: rgb(26, 143, 82);
-  border: #0e4e2d 1px solid;
+  background-color: rgb(100, 125, 227);
+  border: #2649d4 1px solid;
   border-radius: 25px;
-  color: #fff;
-  text-shadow: #000 0.1px 0.1px;
+  color: #000;
+  text-shadow: #fff 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-3 {
-  background-color: rgb(191, 61, 129);
-  border: #852a5a 1px solid;
+  background-color: rgb(230, 78, 59);
+  border: #bc2a18 1px solid;
+  border-radius: 25px;
+  color: #000;
+  text-shadow: #fff 0.1px 0.1px;
+}
+.header-img > .description > .keywords > .keyword-4 {
+  background-color: rgb(38, 65, 140);
+  border: #162550 1px solid;
   border-radius: 25px;
   color: #fff;
   text-shadow: #000 0.1px 0.1px;
 }
-.header-img > .description > .keywords > .keyword-4 {
-  background-color: rgb(93, 178, 158);
-  border: #3f8474 1px solid;
-  border-radius: 25px;
-  color: #000;
-  text-shadow: #fff 0.1px 0.1px;
-}
 .header-img > .description > .keywords > .keyword-5 {
-  background-color: rgb(11, 253, 15);
-  border: #02ba05 1px solid;
+  background-color: rgb(159, 8, 107);
+  border: #56043a 1px solid;
   border-radius: 25px;
-  color: #000;
-  text-shadow: #fff 0.1px 0.1px;
+  color: #fff;
+  text-shadow: #000 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-6 {
-  background-color: rgb(214, 60, 131);
-  border: #a3225e 1px solid;
+  background-color: rgb(112, 123, 231);
+  border: #2e3fdc 1px solid;
   border-radius: 25px;
   color: #000;
   text-shadow: #fff 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-7 {
-  background-color: rgb(205, 211, 218);
-  border: #a1acb9 1px solid;
+  background-color: rgb(187, 193, 145);
+  border: #9da560 1px solid;
   border-radius: 25px;
   color: #000;
   text-shadow: #fff 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-8 {
-  background-color: rgb(161, 208, 2);
-  border: #668401 1px solid;
+  background-color: rgb(135, 62, 249);
+  border: #5d07e3 1px solid;
   border-radius: 25px;
-  color: #fff;
-  text-shadow: #000 0.1px 0.1px;
+  color: #000;
+  text-shadow: #fff 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-9 {
-  background-color: rgb(96, 17, 114);
-  border: #28072f 1px solid;
+  background-color: rgb(19, 250, 98);
+  border: #04bd43 1px solid;
   border-radius: 25px;
-  color: #fff;
-  text-shadow: #000 0.1px 0.1px;
+  color: #000;
+  text-shadow: #fff 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-10 {
-  background-color: rgb(14, 91, 8);
-  border: #031502 1px solid;
+  background-color: rgb(63, 208, 43);
+  border: #2c911e 1px solid;
   border-radius: 25px;
   color: #fff;
   text-shadow: #000 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-11 {
-  background-color: rgb(131, 25, 71);
-  border: #430d24 1px solid;
+  background-color: rgb(125, 176, 106);
+  border: #588647 1px solid;
   border-radius: 25px;
-  color: #fff;
-  text-shadow: #000 0.1px 0.1px;
+  color: #000;
+  text-shadow: #fff 0.1px 0.1px;
 }
 .header-img > .description > .info {
   margin: 24px 0 6px auto;

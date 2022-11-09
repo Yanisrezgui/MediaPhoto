@@ -1,0 +1,39 @@
+
+<form action="/inscription/createUser" method="POST">
+        <label for="adresseMail">Entrez une adresse mail : </label>          
+        <input type="text" name="mail" id="mail-text">
+
+        {% if erreurMail != "" %}
+        <span class="erreurMail">{{erreurMail}}</span>
+        {% endif %}
+
+        <br>
+        <label for="pseudo">Entrez un pseudo : </label> <span class="erreurPseudo"></span>
+        <input type="text" name="pseudo" id="pseudo-text">
+
+        {% if erreurPseudo != "" %}
+        <span class="erreurPseudo">{{erreurPseudo}}</span>
+        {% endif %}
+
+        <br>
+        <label for="password">Entrez un mot de passe : </label> <span class="erreurPassword"></span>
+        <input type="password" name="password" id="password-text">
+        
+        {% if erreurMdp != "" %}
+        <span class="erreurMdp">{{erreurMdp}}</span>
+        {% endif %}
+        <br>
+        <label for="passwordVerif">Confirmez votre mot de passe : </label> <span class="erreurPasswordVerif"></span>
+        <input type="password" name="passwordVerif" id="password-verif-text">
+
+        {% if erreurVerifMdp != "" %}
+        <span class="erreurVerifMdp">{{erreurVerifMdp}}</span>
+        {% endif %}
+        <br>
+
+        <input type="submit" value="Valider">
+
+        {% for product in products %}
+                <p>{{product}}</p>
+        {% endfor %}
+</form>

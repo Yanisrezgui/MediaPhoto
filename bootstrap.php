@@ -2,6 +2,13 @@
 
 // bootstrap.php
 
+use App\Controller\GalleryController;
+use App\Controller\HomeController;
+use App\Controller\ImagesController;
+use App\Controller\ProfileController;
+use App\Controller\UserController;
+use App\Service\GalleryService;
+use App\Service\UserService;
 use Doctrine\Common\Cache\Psr6\DoctrineProvider;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
@@ -9,17 +16,11 @@ use Psr\Container\ContainerInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use UMA\DIC\Container;
-use App\UserService;
-use App\UserController;
 use Monolog\Level;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use Psr\Log\LoggerInterface;
 use Slim\Views\Twig;
-use App\Controller\HomeController;
-use App\Controller\GalleryController;
-use App\Controller\ImagesController;
-use App\Controller\ProfileController;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -66,17 +67,12 @@ $container->set(UserService::class, static function (Container $c) {
 
 $container->set(UserController::class, static function (ContainerInterface $container) {
     $view = $container->get('view');
-    return new UserController($view, $container->get(UserService::class));
+    return new UserController($view, $container->get(UserService::class), $container->get(EntityManager::class));
 });
 
 $container->set(HomeController::class, static function (ContainerInterface $container) {
     $view = $container->get('view');
     return new HomeController($view);
-});
-
-$container->set(GalleryController::class, static function (ContainerInterface $container) {
-    $view = $container->get('view');
-    return new GalleryController($view);
 });
 
 $container->set(ImagesController::class, static function (ContainerInterface $container) {
@@ -87,6 +83,15 @@ $container->set(ImagesController::class, static function (ContainerInterface $co
 $container->set(ProfileController::class, static function (ContainerInterface $container) {
     $view = $container->get('view');
     return new ProfileController($view);
+});
+
+$container->set(GalleryService::class, static function (Container $c) {
+    return new GalleryService($c->get(EntityManager::class), $c->get(LoggerInterface::class));
+});
+
+$container->set(GalleryController::class, static function (ContainerInterface $container) {
+    $view = $container->get('view');
+    return new GalleryController($view, $container->get(GalleryController::class),$container->get(EntityManager::class));
 });
 
 return $container;

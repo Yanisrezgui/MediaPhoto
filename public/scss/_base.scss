@@ -1,0 +1,25 @@
+@import '_variables.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: $font;
+    background-color: $bg-color;
+}
+
+.btn-s {
+    display: block;
+    padding: 5px;
+    background-color: darken($color: $bg-color, $amount: 25%);
+    color: black;
+    border-radius: 45px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-s:hover {
+    background-color: darken($color: $bg-color, $amount: 45%);
+}

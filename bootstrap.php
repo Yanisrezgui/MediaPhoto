@@ -16,6 +16,10 @@ use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use Psr\Log\LoggerInterface;
 use Slim\Views\Twig;
+use App\Controller\HomeController;
+use App\Controller\GalleryController;
+use App\Controller\ImagesController;
+use App\Controller\ProfileController;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -51,10 +55,9 @@ $container->set(EntityManager::class, static function (Container $c): EntityMana
 });
 
 $container->set('view', function () {
-    return Twig::create(
-        __DIR__ . '/templates',
-        ['cache' => __DIR__ . '/cache']
-    );
+    $twig = Twig::create('../templates', ['debug' => true]);
+    $twig->addExtension(new \Twig\Extension\DebugExtension());
+    return $twig;
 });
 
 $container->set(UserService::class, static function (Container $c) {
@@ -64,6 +67,26 @@ $container->set(UserService::class, static function (Container $c) {
 $container->set(UserController::class, static function (ContainerInterface $container) {
     $view = $container->get('view');
     return new UserController($view, $container->get(UserService::class));
+});
+
+$container->set(HomeController::class, static function (ContainerInterface $container) {
+    $view = $container->get('view');
+    return new HomeController($view);
+});
+
+$container->set(GalleryController::class, static function (ContainerInterface $container) {
+    $view = $container->get('view');
+    return new GalleryController($view);
+});
+
+$container->set(ImagesController::class, static function (ContainerInterface $container) {
+    $view = $container->get('view');
+    return new ImagesController($view);
+});
+
+$container->set(ProfileController::class, static function (ContainerInterface $container) {
+    $view = $container->get('view');
+    return new ProfileController($view);
 });
 
 return $container;

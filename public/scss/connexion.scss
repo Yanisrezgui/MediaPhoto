@@ -1,0 +1,60 @@
+@import 'variables.scss';
+
+.container-connection {
+    background-color: $item-bg-color;
+    width: 400px;
+    margin: auto;
+    margin-top:80px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+    h1 {
+        padding:30px 0 40px 0;
+        text-align: center;
+
+    }
+
+    .email {
+        margin-left: 30px;
+        margin-bottom: 15px;
+    }
+
+    .password {
+        margin-left: 30px;
+    }
+
+    input {
+        display:block;
+        margin-top:10px;
+        height:20px;
+        border-top: 0px;
+        border-right: 0px;
+        border-left: 0px;
+        border-bottom: 1px solid rgb(63, 63, 63);
+        outline: none;
+    }
+
+}
+
+.login-btn {
+    text-align: center;
+    margin-top: 60px;
+    padding-bottom:40px;
+
+    a {
+        background-color: #EB2540;
+        border-radius: 20px;
+        color: white;
+        text-decoration: none;
+        padding:7px 40px 7px 40px;
+    }
+}
+
+.or-signup {
+    font-size:0.9em;
+    text-align: center;
+    padding-bottom: 70px;
+    a {
+        font-size: 0.8em;
+    }
+}

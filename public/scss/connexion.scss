@@ -2,4 +2,46 @@
 
 .container-connection {
     background-color: $item-bg-color;
+    width: 400px;
+    margin: auto;
+    margin-top:80px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+    h1 {
+        padding:30px 0 40px 0;
+        text-align: center;
+
+    }
+
+    .email {
+        margin-left: 30px;
+        margin-bottom: 15px;
+    }
+
+    .password {
+        margin-left: 30px;
+    }
+
+    input {
+        display:block;
+        margin-top:10px;
+        height:20px;
+    }
+
+}
+
+.login-btn {
+    text-align: center;
+    margin: 40px 75px 40px 75px;
+    background-color: #EB2540;
+    border-radius: 20px;
+    height: 25px;
+    padding-top:10px;
+    color: white;
+}
+
+.or-signup {
+    text-align: center;
+    padding-bottom: 80px;
 }

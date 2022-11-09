@@ -36,6 +36,7 @@ final class Galerie
         $this->titre = $titre;
         $this->description = $description;
         $this->date = new DateTimeImmutable('now');
+        $this->motcle = $motcle;
     }
     
     public function getId(): int

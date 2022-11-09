@@ -10,6 +10,10 @@ use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
+use Doctrine\ORM\Mapping\InverseJoinColumn;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\JoinTable;
+use Doctrine\ORM\Mapping\ManyToMany;
 use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\Table;
 
@@ -40,9 +44,12 @@ final class Image
     #[Column(name: 'img_type', type: 'string', unique: false, nullable: false)]
     private string $imgtype;
 
-    #[OneToMany(targetEntity: Commentaire::class, mappedBy:'Image')]
-    private $commentaires;
-   
+    
+    #[JoinTable(name: 'Galerie')]
+    #[JoinColumn(name: 'id_galerie', referencedColumnName: 'id_galerie')]
+    #[InverseJoinColumn(name: 'id_photo', referencedColumnName: 'id_photo')]
+    #[ManyToMany(targetEntity: Image::class)]
+    private Collection $galeryImage;
 
 
     public function __construct(string $motcle, string $titre, string $imgdesc,string $imgtaille,string $imgblop, string $imgtype)
@@ -54,7 +61,6 @@ final class Image
         $this->imgblop = $imgblop;
         $this->imgtype = $imgtype;
         $this->date = new DateTimeImmutable('now');
-        $this->commentaires=new ArrayCollection();
 
 
     }
@@ -91,9 +97,15 @@ final class Image
         return $this->date_crea;
     }
 
-    public function getCommentaires(): Collection
+    public function setGaleryImage(?Galerie $galeryImage): self
     {
-        return $this->commentaires;
+        $this->user = $galeryImage;
+        return $this;
+    }
+
+    public function getGaleryImage(): Collection
+    {
+        return $this->galeryImage;
     }
     
 }

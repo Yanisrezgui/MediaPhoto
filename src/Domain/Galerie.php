@@ -46,6 +46,13 @@ final class Galerie
     #[InverseJoinColumn(name: 'id_util', referencedColumnName: 'id_util')]
     #[ManyToMany(targetEntity: Galerie::class)]
     private Collection $user_acces;
+
+
+    #[JoinTable(name: 'Image')]
+    #[JoinColumn(name: 'id_photo', referencedColumnName: 'id_photo')]
+    #[InverseJoinColumn(name: 'id_galerie', referencedColumnName: 'id_galerie')]
+    #[ManyToMany(targetEntity: Galerie::class)]
+    private Collection $imageGalery;
     
 
     public function __construct(bool $acces, string $titre, string $description, string $motcle)
@@ -101,5 +108,16 @@ final class Galerie
     public function getUserAcces(): Collection
     {
         return $this->user_acces;
+    }
+
+    public function setImageGalerie(?Image $imageGalery): self
+    {
+        $this->user = $imageGalery;
+        return $this;
+    }
+
+    public function getImageGalerie(): Collection
+    {
+        return $this->imageGalery;
     }
 }

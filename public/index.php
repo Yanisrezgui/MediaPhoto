@@ -21,8 +21,7 @@ $app->get('/', function (Request $request, Response $response, $args) {
     return $response;
 });
 
-$app->get('/users', \App\UserController::class . ':test');
-$app->get('/inscription', \App\UserController::class . ':affichForm');
+$app->get('/inscription', \App\UserController::class . ':afficheInscription');
 $app->post('/inscription/createUser', \App\UserController::class . ':inscription');
 $app->get('/galerie', \App\GalerieController::class . ':affichForm');
 

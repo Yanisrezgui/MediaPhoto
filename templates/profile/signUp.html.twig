@@ -1,24 +1,43 @@
 {% extends "base.html.twig" %}
 
-{% block title %}MediaPhoto - Connection{% endblock %}
+{% block title %}MediaPhoto - Inscription{% endblock %}
 
 {% block body %}
     <div class="container-connection">
-        <h1>Connexion</h1>
-        <div class="email">
-            <label for="email">Email</label>
-            <input type="text" id="email" name="email" placeholder="Saississez votre e-mail" size="40">
-        </div>
-        <div class="password">
-            <label for="password">Mot de passe</label>
-            <input type="password" id="password" name="password" placeholder="Saississez votre mot de passe" size="40">
-        </div>
-        <div class="login-btn">
-            <a href="/signUp"> Se connecter</a>
-        </div>
-        <div class="or-signup">
-            <h3>Pas de compte ?</h3>
-            <a href="/signIn">Créer un compte</a>
-        </div>
+        <h1>Inscription</h1>
+        <form action="/signUp/createUser" method="POST">
+            <div class="email">
+                <label for="pseudo">Pseudo</label> <span class="erreurPseudo"></span>
+                <input type="text" id="email" name="pseudo" placeholder="Saississez votre pseudo" size="40">
+                {% if erreurPseudo != "" %}
+                    <span class="erreurPseudo">{{erreurPseudo}}</span>
+                {% endif %}
+            </div>
+            <div class="email">
+                <label for="adresseMail">Email</label>
+                <input type="text" id="email" name="mail" placeholder="Saississez votre e-mail" size="40">
+                {% if erreurMail != "" %}
+                    <span class="erreurMail">{{erreurMail}}</span>
+                {% endif %}
+            </div>
+            <div class="password">
+                <label for="password">Mot de passe</label><span class="erreurPassword"></span>
+                <input type="password" id="password" name="password" placeholder="Saississez votre mot de passe" size="40">
+                {% if erreurMdp != "" %}
+                    <span class="erreurMdp">{{erreurMdp}}</span>
+                {% endif %}
+            </div>
+            <div class="password">
+                <label for="passwordVerif">Confirmez votre mot de passe : </label> <span class="erreurPasswordVerif"></span>
+                <input type="password" id="password" name="passwordVerif" placeholder="Confirmez votre mot de passe" size="40">
+                {% if erreurVerifMdp != "" %}
+                    <span class="erreurVerifMdp">{{erreurVerifMdp}}</span>
+                {% endif %}
+            </div>
+            <div class="login-btn">
+
+                <input type="submit" id="submit-button" value="S'inscrire">
+            </div>
+        </form>
     </div>
 {% endblock %}

@@ -58,15 +58,26 @@ body {
   margin-top: 60px;
   padding-bottom: 40px;
 }
-.login-btn a, .login-btn #submit-button {
+.login-btn #submit-button {
   font-size: 1.1em;
   background-color: #EB2540;
   border-radius: 20px;
   color: white;
   text-decoration: none;
-  padding: 15px 40px 15px 40px;
+  padding: 19px 40px 19px 40px;
   margin: 0 auto;
   line-height: 2px;
+  cursor: pointer;
+}
+.login-btn a {
+  font-size: 1.05em;
+  background-color: #EB2540;
+  border-radius: 20px;
+  color: white;
+  text-decoration: none;
+  padding: 10px 40px 10px 40px;
+  margin: 0 auto;
+  line-height: 1px;
   cursor: pointer;
 }
 
@@ -161,81 +172,81 @@ nav a {
   font-size: 12px;
 }
 .header-img > .description > .keywords > .keyword-1 {
-  background-color: rgb(239, 83, 43);
-  border: #bf320e 1px solid;
+  background-color: rgb(219, 173, 15);
+  border: #93740a 1px solid;
   border-radius: 25px;
-  color: #000;
-  text-shadow: #fff 0.1px 0.1px;
+  color: #fff;
+  text-shadow: #000 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-2 {
-  background-color: rgb(166, 187, 108);
-  border: #809545 1px solid;
+  background-color: rgb(125, 185, 170);
+  border: #529886 1px solid;
   border-radius: 25px;
   color: #000;
   text-shadow: #fff 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-3 {
-  background-color: rgb(209, 23, 103);
-  border: #8c0f45 1px solid;
+  background-color: rgb(18, 173, 90);
+  border: #0b6836 1px solid;
   border-radius: 25px;
   color: #fff;
   text-shadow: #000 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-4 {
-  background-color: rgb(14, 175, 79);
-  border: #08682f 1px solid;
-  border-radius: 25px;
-  color: #fff;
-  text-shadow: #000 0.1px 0.1px;
-}
-.header-img > .description > .keywords > .keyword-5 {
-  background-color: rgb(140, 224, 169);
-  border: #50d07c 1px solid;
+  background-color: rgb(237, 193, 157);
+  border: #e1985c 1px solid;
   border-radius: 25px;
   color: #000;
   text-shadow: #fff 0.1px 0.1px;
 }
+.header-img > .description > .keywords > .keyword-5 {
+  background-color: rgb(6, 81, 33);
+  border: #010a04 1px solid;
+  border-radius: 25px;
+  color: #fff;
+  text-shadow: #000 0.1px 0.1px;
+}
 .header-img > .description > .keywords > .keyword-6 {
-  background-color: rgb(63, 255, 100);
-  border: #00f22f 1px solid;
+  background-color: rgb(235, 95, 48);
+  border: #bc3d12 1px solid;
   border-radius: 25px;
   color: #000;
   text-shadow: #fff 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-7 {
-  background-color: rgb(205, 89, 25);
-  border: #893b11 1px solid;
+  background-color: rgb(89, 203, 181);
+  border: #33a48e 1px solid;
   border-radius: 25px;
-  color: #fff;
-  text-shadow: #000 0.1px 0.1px;
+  color: #000;
+  text-shadow: #fff 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-8 {
-  background-color: rgb(115, 190, 195);
-  border: #469ea3 1px solid;
+  background-color: rgb(240, 145, 143);
+  border: #e74f4c 1px solid;
   border-radius: 25px;
   color: #000;
   text-shadow: #fff 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-9 {
-  background-color: rgb(189, 7, 178);
-  border: #73046d 1px solid;
-  border-radius: 25px;
-  color: #fff;
-  text-shadow: #000 0.1px 0.1px;
-}
-.header-img > .description > .keywords > .keyword-10 {
-  background-color: rgb(81, 101, 217);
-  border: #283db6 1px solid;
+  background-color: rgb(198, 252, 139);
+  border: #a1fa40 1px solid;
   border-radius: 25px;
   color: #000;
   text-shadow: #fff 0.1px 0.1px;
 }
-.header-img > .description > .keywords > .keyword-11 {
-  background-color: rgb(48, 144, 31);
-  border: #1b5111 1px solid;
+.header-img > .description > .keywords > .keyword-10 {
+  background-color: rgb(19, 125, 189);
+  border: #0c4f77 1px solid;
   border-radius: 25px;
   color: #fff;
   text-shadow: #000 0.1px 0.1px;
+}
+.header-img > .description > .keywords > .keyword-11 {
+  background-color: rgb(246, 236, 158);
+  border: #f0de58 1px solid;
+  border-radius: 25px;
+  color: #000;
+  text-shadow: #fff 0.1px 0.1px;
 }
 .header-img > .description > .info {
   margin: 24px 0 6px auto;

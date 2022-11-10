@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Domain\Galerie;
 use App\Service\GalleryService;
 use Doctrine\ORM\EntityManager;
 use Psr\Http\Message\ResponseInterface;
@@ -26,6 +27,22 @@ class HomeController
   public function createGalleryPage(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {
     return $this->view->render($response, 'gallery/createGallery.html.twig');
+  }
+
+  public function createGalleryFunction(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
+  {
+
+    $args = $request->getParsedBody();
+
+    if (isset($args["titre"]) && isset($args["keywords"])) {
+      $galerie = new Galerie(true,$args["titre"],"Description",$args["keywords"]);
+      $this->em->persist($galerie);
+      $this->em->flush();
+    }
+    
+    return $response
+      ->withHeader('Location', '/')
+      ->withStatus(302);
   }
 
 }

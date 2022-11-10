@@ -3,22 +3,41 @@
 {% block title %}MediaPhoto - Connection{% endblock %}
 
 {% block body %}
+{% if conn == false %}
     <div class="container-connection">
         <h1>Connexion</h1>
+        <form action="/signIn/signUser" method="POST">
         <div class="email">
-            <label for="email">Email</label>
-            <input type="text" id="email" name="email" placeholder="Saississez votre e-mail" size="40">
+            <label for="email">Email</label><span class="erreurMailConnexion"></span>
+            <input type="text" id="email" name="pseudo" placeholder="Saississez votre pseudo" size="40">
+
+            {% if erreurMailConnexion != "" %}
+                    <span class="erreurMailConnexion">{{erreurMailConnexion}}</span>
+            {% endif %}
         </div>
         <div class="password">
-            <label for="password">Mot de passe</label>
+            <label for="password">Mot de passe</label><span class="erreurPasswordConnexion"></span>
             <input type="password" id="password" name="password" placeholder="Saississez votre mot de passe" size="40">
+
+            {% if erreurPasswordConnexion != "" %}
+                    <span class="erreurPasswordConnexion">{{erreurPasswordConnexion}}</span>
+            {% endif %}
         </div>
         <div class="login-btn">
-            <a href="/signUp"> Se connecter</a>
+            <input type="submit" id="submit-button" value="Se connecter">
         </div>
         <div class="or-signup">
             <h3>Pas de compte ?</h3>
             <a href="/signUp">Créer un compte</a>
         </div>
+    </form>
     </div>
+    {% else %}
+
+    <div class="connected">
+        <p>Bonjour {{ pseudo }} !</p>
+        <a href="/">Se déconnecter</a>
+    </div>
+
+{% endif %}
 {% endblock %}

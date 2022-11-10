@@ -90,4 +90,29 @@ class UserController
       ->withHeader('Location', '/')
       ->withStatus(302);
   }
+
+
+  public function signIn(ServerRequestInterface $request, ResponseInterface $response) : ResponseInterface
+  {
+      $args = $request->getParsedBody();
+      $errorLogin = "";
+      if (isset($args["pseudo"]) && isset($args["password"])) {
+
+
+          $login = $this->userService->signIn($args["pseudo"], $args["password"]);
+          if ($login === false) {
+              $errorLogin = "Wrong pseudo or password";
+
+          } else {
+              $_SESSION["id_util"] = $login;
+              $_SESSION["pseudo"] = $args["pseudo"];
+          }
+      }
+
+      return $this->view->render($response, 'profile/signIn.html.twig', [
+          'conn' => isset($_SESSION['id_util']),
+          'pseudo' => $_SESSION["pseudo"] ?? "",
+          'errorLogin' => $errorLogin
+      ]);
+  }
 }

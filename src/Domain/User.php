@@ -38,7 +38,7 @@ final class User
     public function __construct(string $email,string $password, string $pseudo)
     {
         $this->email = $email;
-        $this->password= $password;
+        $this->password = password_hash($password, PASSWORD_DEFAULT);
         $this->pseudo= $pseudo;
         $this->galeries= new ArrayCollection();
         $this->galerie_acces= new ArrayCollection();
@@ -83,6 +83,10 @@ final class User
     public function getGaleries(): Collection
     {
         return $this->galeries;
+    }
+
+    public function checkPassword($pass) : bool {
+        return password_verify($pass, $this->password);
     }
 
     

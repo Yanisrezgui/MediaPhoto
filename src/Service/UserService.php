@@ -5,7 +5,8 @@ namespace App\Service;
 use Doctrine\ORM\EntityManager;
 use App\Domain\User;
 use Psr\Log\LoggerInterface;
-
+use Doctrine\ORM\Exception\ORMException;
+use Doctrine\ORM\OptimisticLockException;
 
 final class UserService
 {
@@ -25,4 +26,26 @@ final class UserService
 
         return $newUser;
     }
+
+
+    public Function signIn(string $pseudo, string $password): bool
+    {
+        $req = $this->em->getRepository(\App\Domain\User::class)->findBy(['pseudo' => $pseudo]);
+        $this->logger->info("UserService::get($pseudo)");
+        if ($req == null) {
+            $this->logger->info("UserService::get($pseudo) : user not found");
+            return false;
+        } else {
+            if ($req[0]->checkPassword($password)) {
+                $this->logger->info("UserService::get($pseudo) : user found");
+                return $req[0]->getId();
+
+            } else {
+                $this->logger->info("UserService::get($password) : wrong password");
+                return false;
+            }
+        }
+    }
+
+    
 }

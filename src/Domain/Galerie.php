@@ -3,6 +3,7 @@
 namespace App\Domain;
 
 use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
@@ -37,18 +38,19 @@ final class Galerie
     private string $motcle;
 
     #[ManyToOne(targetEntity: User::class, inversedBy: 'galeries')]
+    #[JoinColumn(name: 'id_util', referencedColumnName: 'id_util')]
     private $user;
 
     #[JoinTable(name: 'Acces_Galerie')]
     #[JoinColumn(name: 'id_galerie', referencedColumnName: 'id_galerie')]
     #[InverseJoinColumn(name: 'id_util', referencedColumnName: 'id_util')]
-    #[ManyToMany(targetEntity: Galerie::class)]
+    #[ManyToMany(targetEntity: User::class)]
     private Collection $user_acces;
 
-    #[JoinTable(name: 'Image')]
-    #[JoinColumn(name: 'id_photo', referencedColumnName: 'id_photo')]
-    #[InverseJoinColumn(name: 'id_galerie', referencedColumnName: 'id_galerie')]
-    #[ManyToMany(targetEntity: Galerie::class)]
+    #[JoinTable(name: 'PhotoGalerie')]
+    #[JoinColumn(name: 'id_galerie', referencedColumnName: 'id_galerie')]
+    #[InverseJoinColumn(name: 'id_img', referencedColumnName: 'id_img')]
+    #[ManyToMany(targetEntity: Image::class)]
     private Collection $imageGalery;
 
     public function __construct(bool $acces, string $titre, string $description, string $motcle)
@@ -58,6 +60,10 @@ final class Galerie
         $this->description = $description;
         $this->date = new DateTimeImmutable('now');
         $this->motcle = $motcle;
+        $this->user_acces = new ArrayCollection();
+        $this->imageGalery = new ArrayCollection();
+
+
     }
     
     public function getId(): int

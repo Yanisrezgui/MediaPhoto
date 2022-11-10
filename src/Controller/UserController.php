@@ -40,44 +40,44 @@ class UserController
     if (isset($args["mail"]) && isset($args["password"]) && isset($args["pseudo"])) {
       if ($args["password"] != $args["passwordVerif"]) {
         $erreurVerifMdp = "Les mots de passe ne correspondent pas";
-        return $this->view->render($response, '/profile/signIn.html.twig', [
+        return $this->view->render($response, '/profile/signUp.html.twig', [
           'erreurVerifMdp' => $erreurVerifMdp,
           'products' => $productMail
         ]);
       }
       else if ($args["pseudo"] == "") {
         $erreurPseudo = "Veuillez rentrer un pseudo";
-        return $this->view->render($response, '/profile/signIn.html.twig', [
+        return $this->view->render($response, '/profile/signUp.html.twig', [
           'erreurPseudo' => $erreurPseudo,
         ]);
       }
       else if ($args["password"] == "" ) {
         $erreurMdp = "Veuillez rentrer un mot de passe";
-        return $this->view->render($response, '/profile/signIn.html.twig', [
+        return $this->view->render($response, '/profile/signUp.html.twig', [
           'erreurMdp' => $erreurMdp,
         ]);
       }
       else if ($args["passwordVerif"] == "") {
         $erreurVerifMdp = "Veuillez confirmez votre mot de passe";
-        return $this->view->render($response, '/profile/signIn.html.twig', [
+        return $this->view->render($response, '/profile/signUp.html.twig', [
           'erreurVerifMdp' => $erreurVerifMdp
         ]);
       }
       else if ($args["mail"] == "") {
         $erreurMail = "Veuillez rentrer une adresse mail";
-        return $this->view->render($response, '/profile/signIn.html.twig', [
+        return $this->view->render($response, '/profile/signUp.html.twig', [
           'erreurMail' => $erreurMail,
         ]);
       }
       else if ($args["mail"] = $productMail) {
       $erreurMail = "L'adresse mail existe deja veuillez changer";
-      return $this->view->render($response, '/profile/signIn.html.twigg', [
+      return $this->view->render($response, '/profile/signUp.html.twig', [
         'erreurMail' => $erreurMail,
       ]);
       }
       else if ($args["pseudo"] = $productPseudo) {
         $erreurPseudo = "Le pseudo existe deja veuillez changer";
-        return $this->view->render($response, '/profile/signIn.html.twigg', [
+        return $this->view->render($response, '/profile/signUp.html.twig', [
           'erreurPseudo' => $erreurPseudo
         ]);
       }
@@ -87,7 +87,7 @@ class UserController
     }
 
     return $response
-      ->withHeader('Location', '/test')
+      ->withHeader('Location', '/')
       ->withStatus(302);
   }
 }

@@ -81,13 +81,13 @@ class UserController
           'erreurPseudo' => $erreurPseudo
         ]);
       }
-      else if ($erreurPseudo = "" && $erreurMdp = "" && $erreurMail = "" && $erreurVerifMdp = "") {
+      else  {
         $this->userService->signup($args["mail"], $args["password"], $args["pseudo"]); 
       }
     }
 
     return $response
-      ->withHeader('Location', '/')
+      ->withHeader('Location', '/test')
       ->withStatus(302);
   }
 }

@@ -96,23 +96,31 @@ class UserController
   {
       $args = $request->getParsedBody();
       $errorLogin = "";
-      if (isset($args["pseudo"]) && isset($args["password"])) {
+      if (isset($args["email"]) && isset($args["password"])) {
 
 
-          $login = $this->userService->signIn($args["pseudo"], $args["password"]);
+          $login = $this->userService->signIn($args["email"], $args["password"]);
           if ($login === false) {
-              $errorLogin = "Wrong pseudo or password";
-
+            $errorLogin = "Wrong email or password";
+            return $this->view->render($response, 'profile/signIn.html.twig', [
+              'errorLogin' => $errorLogin
+          ]);
           } else {
-              $_SESSION["id_util"] = $login;
-              $_SESSION["pseudo"] = $args["pseudo"];
-          }
+              $_SESSION["conn"] = $login;
+              $_SESSION["email"] = $args["email"];
+              $util=$this->em->getRepository(\App\Domain\User::class)->findOneBy(['email' => $args["email"]]);
+              //var_dump($util);
+              $_SESSION['id_util']= $util->{'id'};
+              $_SESSION['pseudo']= $util->{'pseudo'};
+
+            }
       }
 
-      return $this->view->render($response, 'profile/signIn.html.twig', [
-          'conn' => isset($_SESSION['id_util']),
+      return $this->view->render($response, 'gallery/gallery.html.twig', [
+          'conn' => isset($_SESSION['conn']),
+          'email' => $_SESSION["email"] ?? "",
+          'id_util' => $_SESSION["id_util"] ?? "",
           'pseudo' => $_SESSION["pseudo"] ?? "",
-          'errorLogin' => $errorLogin
       ]);
   }
 }

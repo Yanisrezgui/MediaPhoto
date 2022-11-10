@@ -19,7 +19,7 @@ use Doctrine\ORM\Mapping\ManyToMany;
 final class User
 {
     #[Id, Column(name:'id_util',type: 'integer'), GeneratedValue(strategy: 'AUTO')]
-    private int $id;
+    public int $id;
 
     #[Column(name:'email',type: 'string', unique: true, nullable: false)]
     private string $email;
@@ -28,7 +28,7 @@ final class User
     private string $password;
 
     #[Column(name: 'pseudo', type: 'string',unique:true, nullable: false)]
-    private string $pseudo;
+    public string $pseudo;
 
     #[OneToMany(targetEntity: Galerie::class, mappedBy:'user')]
     private $galeries;

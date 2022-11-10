@@ -28,16 +28,16 @@ final class UserService
     }
 
 
-    public Function signIn(string $pseudo, string $password): bool
+    public Function signIn(string $email, string $password): bool
     {
-        $req = $this->em->getRepository(\App\Domain\User::class)->findBy(['pseudo' => $pseudo]);
-        $this->logger->info("UserService::get($pseudo)");
+        $req = $this->em->getRepository(\App\Domain\User::class)->findBy(['email' => $email]);
+        $this->logger->info("UserService::get($email)");
         if ($req == null) {
-            $this->logger->info("UserService::get($pseudo) : user not found");
+            $this->logger->info("UserService::get($email) : user not found");
             return false;
         } else {
             if ($req[0]->checkPassword($password)) {
-                $this->logger->info("UserService::get($pseudo) : user found");
+                $this->logger->info("UserService::get($email) : user found");
                 return $req[0]->getId();
 
             } else {

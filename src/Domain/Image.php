@@ -43,11 +43,7 @@ final class Image
     #[Column(name: 'img_type', type: 'string', unique: false, nullable: false)]
     private string $imgtype;
 
-    #[JoinTable(name: 'Galerie')]
-    #[JoinColumn(name: 'id_galerie', referencedColumnName: 'id_galerie')]
-    #[InverseJoinColumn(name: 'id_photo', referencedColumnName: 'id_photo')]
-    #[ManyToMany(targetEntity: Image::class)]
-    private Collection $galeryImage;
+    
 
     public function __construct(string $motcle, string $titre, string $imgdesc,string $imgtaille,string $imgblop, string $imgtype)
     {
@@ -100,14 +96,5 @@ final class Image
         return $this->date_crea;
     }
 
-    public function setGaleryImage(?Galerie $galeryImage): self
-    {
-        $this->user = $galeryImage;
-        return $this;
-    }
-
-    public function getGaleryImage(): Collection
-    {
-        return $this->galeryImage;
-    }
+   
 }

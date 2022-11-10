@@ -33,11 +33,7 @@ final class User
     #[OneToMany(targetEntity: Galerie::class, mappedBy:'user')]
     private $galeries;
 
-    #[JoinTable(name: 'Acces_Galerie')]
-    #[JoinColumn(name: 'id_util', referencedColumnName: 'id_util')]
-    #[InverseJoinColumn(name: 'id_galerie', referencedColumnName: 'id_galerie')]
-    #[ManyToMany(targetEntity: Galerie::class)]
-    private Collection $galerie_acces;
+    
     
     public function __construct(string $email,string $password, string $pseudo)
     {
@@ -89,8 +85,5 @@ final class User
         return $this->galeries;
     }
 
-    public function getGalerieAcces(): Collection
-    {
-        return $this->galerie_acces;
-    }
+    
 }

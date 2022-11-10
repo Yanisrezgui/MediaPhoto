@@ -26,7 +26,7 @@ class UserController
     return $response; 
   }
 
-  public function signIn(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
+  public function signUp(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {
     $args = $request->getParsedBody();
     $repository = $this->em->getRepository(User::class);
@@ -82,7 +82,7 @@ class UserController
         ]);
       }
       else  {
-        $this->userService->signup($args["mail"], $args["password"], $args["pseudo"]); 
+        $this->userService->signUp($args["mail"], $args["password"], $args["pseudo"]); 
       }
     }
 

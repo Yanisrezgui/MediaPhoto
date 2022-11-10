@@ -69,13 +69,13 @@ class UserController
           'erreurMail' => $erreurMail,
         ]);
       }
-      else if ($args["mail"] = $productMail) {
+      else if ($args["mail"] == $productMail) {
       $erreurMail = "L'adresse mail existe deja veuillez changer";
       return $this->view->render($response, '/profile/signUp.html.twig', [
         'erreurMail' => $erreurMail,
       ]);
       }
-      else if ($args["pseudo"] = $productPseudo) {
+      else if ($args["pseudo"] == $productPseudo) {
         $erreurPseudo = "Le pseudo existe deja veuillez changer";
         return $this->view->render($response, '/profile/signUp.html.twig', [
           'erreurPseudo' => $erreurPseudo

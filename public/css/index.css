@@ -156,81 +156,81 @@ nav a {
   font-size: 12px;
 }
 .header-img > .description > .keywords > .keyword-1 {
-  background-color: rgb(112, 195, 13);
-  border: #477b08 1px solid;
+  background-color: rgb(105, 113, 250);
+  border: #1f2bf8 1px solid;
   border-radius: 25px;
-  color: #fff;
-  text-shadow: #000 0.1px 0.1px;
+  color: #000;
+  text-shadow: #fff 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-2 {
-  background-color: rgb(232, 29, 20);
-  border: #a2140e 1px solid;
+  background-color: rgb(211, 227, 56);
+  border: #a6b519 1px solid;
   border-radius: 25px;
-  color: #fff;
-  text-shadow: #000 0.1px 0.1px;
+  color: #000;
+  text-shadow: #fff 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-3 {
-  background-color: rgb(73, 246, 49);
-  border: #22d109 1px solid;
+  background-color: rgb(116, 156, 192);
+  border: #48769f 1px solid;
   border-radius: 25px;
   color: #000;
   text-shadow: #fff 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-4 {
-  background-color: rgb(205, 37, 18);
-  border: #87180c 1px solid;
+  background-color: rgb(103, 145, 140);
+  border: #476461 1px solid;
   border-radius: 25px;
   color: #fff;
   text-shadow: #000 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-5 {
-  background-color: rgb(8, 239, 92);
-  border: #06a540 1px solid;
+  background-color: rgb(20, 165, 26);
+  border: #0c610f 1px solid;
   border-radius: 25px;
   color: #fff;
   text-shadow: #000 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-6 {
-  background-color: rgb(3, 226, 173);
-  border: #029773 1px solid;
+  background-color: rgb(181, 12, 219);
+  border: #790892 1px solid;
   border-radius: 25px;
   color: #fff;
   text-shadow: #000 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-7 {
-  background-color: rgb(248, 203, 208);
-  border: #ef8893 1px solid;
-  border-radius: 25px;
-  color: #000;
-  text-shadow: #fff 0.1px 0.1px;
-}
-.header-img > .description > .keywords > .keyword-8 {
-  background-color: rgb(18, 50, 75);
-  border: #03090d 1px solid;
+  background-color: rgb(181, 11, 215);
+  border: #78078e 1px solid;
   border-radius: 25px;
   color: #fff;
   text-shadow: #000 0.1px 0.1px;
 }
+.header-img > .description > .keywords > .keyword-8 {
+  background-color: rgb(250, 81, 148);
+  border: #f70766 1px solid;
+  border-radius: 25px;
+  color: #000;
+  text-shadow: #fff 0.1px 0.1px;
+}
 .header-img > .description > .keywords > .keyword-9 {
-  background-color: rgb(20, 181, 101);
-  border: #0c703f 1px solid;
+  background-color: rgb(12, 16, 130);
+  border: #06073c 1px solid;
   border-radius: 25px;
   color: #fff;
   text-shadow: #000 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-10 {
-  background-color: rgb(68, 70, 200);
-  border: #2c2d94 1px solid;
-  border-radius: 25px;
-  color: #000;
-  text-shadow: #fff 0.1px 0.1px;
-}
-.header-img > .description > .keywords > .keyword-11 {
-  background-color: rgb(14, 150, 85);
-  border: #07502d 1px solid;
+  background-color: rgb(49, 157, 98);
+  border: #1f633e 1px solid;
   border-radius: 25px;
   color: #fff;
   text-shadow: #000 0.1px 0.1px;
+}
+.header-img > .description > .keywords > .keyword-11 {
+  background-color: rgb(120, 136, 222);
+  border: #3b52cf 1px solid;
+  border-radius: 25px;
+  color: #000;
+  text-shadow: #fff 0.1px 0.1px;
 }
 .header-img > .description > .info {
   margin: 24px 0 6px auto;
@@ -333,8 +333,8 @@ nav a {
 }
 .gallery-container > .img-gallery-grid {
   max-width: calc((100vw - 10%) / 2);
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .gallery-container > .img-gallery-grid > img {
   display: block;

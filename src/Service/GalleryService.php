@@ -3,15 +3,17 @@
 namespace App\Service;
 
 use Doctrine\ORM\EntityManager;
-use Psr\Log\LoggerInterface;
 
 final class GalleryService
 {
     private EntityManager $em;
 
-    public function __construct(EntityManager $em, LoggerInterface $logger)
+    public function __construct(EntityManager $em)
     {
         $this->em = $em;
-        $this->logger = $logger;
+    }
+
+    public function newGallery() {
+        return true;
     }
 }   

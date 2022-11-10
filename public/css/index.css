@@ -172,81 +172,81 @@ nav a {
   font-size: 12px;
 }
 .header-img > .description > .keywords > .keyword-1 {
-  background-color: rgb(219, 173, 15);
-  border: #93740a 1px solid;
-  border-radius: 25px;
-  color: #fff;
-  text-shadow: #000 0.1px 0.1px;
-}
-.header-img > .description > .keywords > .keyword-2 {
-  background-color: rgb(125, 185, 170);
-  border: #529886 1px solid;
+  background-color: rgb(137, 122, 190);
+  border: #5f4d9e 1px solid;
   border-radius: 25px;
   color: #000;
   text-shadow: #fff 0.1px 0.1px;
 }
+.header-img > .description > .keywords > .keyword-2 {
+  background-color: rgb(148, 2, 251);
+  border: #6701af 1px solid;
+  border-radius: 25px;
+  color: #fff;
+  text-shadow: #000 0.1px 0.1px;
+}
 .header-img > .description > .keywords > .keyword-3 {
-  background-color: rgb(18, 173, 90);
-  border: #0b6836 1px solid;
+  background-color: rgb(202, 203, 5);
+  border: #808003 1px solid;
   border-radius: 25px;
   color: #fff;
   text-shadow: #000 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-4 {
-  background-color: rgb(237, 193, 157);
-  border: #e1985c 1px solid;
+  background-color: rgb(231, 52, 118);
+  border: #b91652 1px solid;
   border-radius: 25px;
   color: #000;
   text-shadow: #fff 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-5 {
-  background-color: rgb(6, 81, 33);
-  border: #010a04 1px solid;
+  background-color: rgb(215, 95, 201);
+  border: #bb2faa 1px solid;
   border-radius: 25px;
-  color: #fff;
-  text-shadow: #000 0.1px 0.1px;
+  color: #000;
+  text-shadow: #fff 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-6 {
-  background-color: rgb(235, 95, 48);
-  border: #bc3d12 1px solid;
+  background-color: rgb(244, 20, 196);
+  border: #b3088f 1px solid;
   border-radius: 25px;
   color: #000;
   text-shadow: #fff 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-7 {
-  background-color: rgb(89, 203, 181);
-  border: #33a48e 1px solid;
+  background-color: rgb(89, 208, 221);
+  border: #28b3c2 1px solid;
   border-radius: 25px;
   color: #000;
   text-shadow: #fff 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-8 {
-  background-color: rgb(240, 145, 143);
-  border: #e74f4c 1px solid;
+  background-color: rgb(250, 137, 48);
+  border: #d86205 1px solid;
   border-radius: 25px;
   color: #000;
   text-shadow: #fff 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-9 {
-  background-color: rgb(198, 252, 139);
-  border: #a1fa40 1px solid;
+  background-color: rgb(110, 237, 158);
+  border: #2ae570 1px solid;
   border-radius: 25px;
   color: #000;
   text-shadow: #fff 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-10 {
-  background-color: rgb(19, 125, 189);
-  border: #0c4f77 1px solid;
+  background-color: rgb(204, 156, 41);
+  border: #8c6b1c 1px solid;
   border-radius: 25px;
   color: #fff;
   text-shadow: #000 0.1px 0.1px;
 }
 .header-img > .description > .keywords > .keyword-11 {
-  background-color: rgb(246, 236, 158);
-  border: #f0de58 1px solid;
+  background-color: rgb(227, 87, 11);
+  border: #9a3b07 1px solid;
   border-radius: 25px;
-  color: #000;
-  text-shadow: #fff 0.1px 0.1px;
+  color: #fff;
+  text-shadow: #000 0.1px 0.1px;
 }
 .header-img > .description > .info {
   margin: 24px 0 6px auto;
@@ -421,6 +421,74 @@ nav a {
   padding-bottom: 80px;
 }
 .container-create-gallery .creer-gallery-btn a {
+  background-color: #EB2540;
+  border-radius: 20px;
+  color: white;
+  text-decoration: none;
+  padding: 7px 40px 7px 40px;
+}
+
+.container-create-image {
+  background-color: #FFFFFF;
+  width: 500px;
+  margin: auto;
+  margin-top: 80px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.container-create-image h1 {
+  padding: 30px 0 40px 0;
+  text-align: center;
+}
+.container-create-image .gallery-create-image {
+  margin-left: 30px;
+  margin-bottom: 15px;
+}
+.container-create-image .titre-create-image {
+  margin-left: 30px;
+  margin-bottom: 15px;
+}
+.container-create-image .desc-create-image {
+  margin-left: 30px;
+  margin-bottom: 15px;
+}
+.container-create-image .upload-create-image {
+  margin-left: 30px;
+  margin-bottom: 15px;
+}
+.container-create-image .keywords-create-image {
+  margin-left: 30px;
+  margin-bottom: 15px;
+}
+.container-create-image .keywords-create-image .keywords-list {
+  display: flex;
+}
+.container-create-image .keywords-create-image .keywords-list .one-keyword {
+  font-size: 0.8em;
+  margin-top: 10px;
+  margin-right: 15px;
+  background-color: #b3b3b3;
+  border-radius: 20px;
+  padding: 2px 10px 2px 10px;
+}
+.container-create-image .keywords-create-image .keywords-list .one-keyword img {
+  height: 12px;
+}
+.container-create-image input {
+  display: block;
+  margin-top: 10px;
+  height: 20px;
+  border-top: 0px;
+  border-right: 0px;
+  border-left: 0px;
+  border-bottom: 1px solid rgb(63, 63, 63);
+}
+.container-create-image .creer-gallery-btn {
+  text-align: center;
+  margin-top: 80px;
+  padding-bottom: 80px;
+}
+.container-create-image .creer-gallery-btn a {
   background-color: #EB2540;
   border-radius: 20px;
   color: white;

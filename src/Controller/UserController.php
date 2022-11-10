@@ -22,7 +22,7 @@ class UserController
 
   public function promptInscription(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {
-    return $this->view->render($response, '/profile/signIn.html.twig');
+    return $this->view->render($response, '/profile/signUp.html.twig');
     return $response; 
   }
 

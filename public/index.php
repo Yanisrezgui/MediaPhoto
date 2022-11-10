@@ -21,7 +21,7 @@ $app->get('/gallery', \App\Controller\GalleryController::class . ':gallery');
 $app->get('/images', \App\Controller\ImagesController::class . ':images');
 $app->get('/description', \App\Controller\ImagesController::class . ':description');
 $app->get('/uploadImage', \App\Controller\ImagesController::class . ':uploadImage');
-$app->get('/signIn', \App\Controller\UserController::class . ':promptInscription');
+$app->get('/signUp', \App\Controller\UserController::class . ':promptInscription');
 $app->post('/signUp/createUser', \App\Controller\UserController::class . ':signUp');
 $app->get('/signIn', \App\Controller\ProfileController::class . ':signIn');
 $app->get('/logout', \App\Controller\ProfileController::class . ':logout');

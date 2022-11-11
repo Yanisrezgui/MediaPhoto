@@ -39,4 +39,9 @@
             <p class="description-img">img</p>
         </div>
     </div>
+
+    {% for image in images %}
+        {# <img src="data:image/png;base64,{{image.getImg_blob()}}" alt=""> #}
+        <p></p>
+    {% endfor %}
 {% endblock %}

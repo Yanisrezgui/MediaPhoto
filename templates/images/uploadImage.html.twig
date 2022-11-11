@@ -3,5 +3,10 @@
 {% block title %}MediaPhoto - uploadImages{% endblock %}
 
 {% block body %}
-    <p>uploadImages</p>
+    <div class="container-upload">
+        <form action="/uploadImage/post" method="POST" enctype="multipart/form-data">
+            <input type="file" name="myfile"/>
+            <input type="submit" value="Publier" class="btn">
+        </form>
+    </div>
 {% endblock %}

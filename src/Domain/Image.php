@@ -3,17 +3,11 @@
 namespace App\Domain;
 
 use DateTimeImmutable;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\BlobType;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
-use Doctrine\ORM\Mapping\InverseJoinColumn;
-use Doctrine\ORM\Mapping\JoinColumn;
-use Doctrine\ORM\Mapping\JoinTable;
-use Doctrine\ORM\Mapping\ManyToMany;
 use Doctrine\ORM\Mapping\Table;
 
 #[Entity, Table(name: 'Image')]
@@ -34,25 +28,24 @@ final class Image
     #[Column(name: 'date_crea', type: 'datetimetz_immutable', unique: false, nullable: false)]
     private DateTimeImmutable $date_crea;
 
-    #[Column(name: 'img_taille', type: 'string', unique: false, nullable: false)]
-    private string $imgtaille;
+    #[Column(name: 'img_name', type: 'string', unique: false, nullable: false)]
+    private string $imgname;
 
-    #[Column(name: 'img_blop', type: 'blob', unique: false, nullable: false)]
-    private BlobType $imgblop;
+    #[Column(name: 'img_mime', type: 'string', unique: false, nullable: false)]
+    private string $imgmime;
 
-    #[Column(name: 'img_type', type: 'string', unique: false, nullable: false)]
-    private string $imgtype;
+    #[Column(name: 'img_blob', type: 'blob', unique: false, nullable: false)]
+    private BlobType $imgblob;
 
-    
 
-    public function __construct(string $motcle, string $titre, string $imgdesc,string $imgtaille,string $imgblop, string $imgtype)
+    public function __construct(string $motcle, string $titre, string $imgdesc, string $imgname, string $imgmime, BlobType $imgblob)
     {
         $this->motcle = $motcle;
         $this->titre = $titre;
         $this->imgdesc = $imgdesc;
-        $this->imgtaille= $imgtaille;
-        $this->imgblop = $imgblop;
-        $this->imgtype = $imgtype;
+        $this->imgname= $imgname;
+        $this->imgmime = $imgmime;
+        $this->imgblob = $imgblob;
         $this->date = new DateTimeImmutable('now');
     }
 
@@ -76,19 +69,19 @@ final class Image
         return $this->imgdesc;
     }
 
-    public function getImg_taille(): string
+    public function getimgname(): string
     {
-        return $this->imgtaille;
+        return $this->imgname;
     }
 
-    public function getImg_blop(): BlobType
+    public function getimgmime(): string
     {
-        return $this->imgblop;
+        return $this->imgmime;
     }
 
-    public function getImg_type(): string
+    public function getImg_blob(): BlobType
     {
-        return $this->imgtype;
+        return $this->imgblob;
     }
 
     public function getDate(): DateTimeImmutable

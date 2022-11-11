@@ -30,13 +30,13 @@ final class Image
     #[Column(name: 'img_name', type: 'string', unique: false, nullable: false)]
     private string $imgname;
 
-    public function __construct(string $motcle, string $titre, string $imgdesc, string $imgname, DateTimeImmutable $date_crea)
+    public function __construct(string $motcle, string $titre, string $imgdesc, string $imgname)
     {
         $this->motcle = $motcle;
         $this->titre = $titre;
         $this->imgdesc = $imgdesc;
-        $this->imgtaille= $imgname;
-        $this->date = $date_crea;
+        $this->imgname= $imgname;
+        $this->date_crea = new DateTimeImmutable('now');
     }
 
     public function getId_img(): int

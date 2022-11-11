@@ -19,7 +19,7 @@ use Doctrine\ORM\Mapping\ManyToMany;
 final class User
 {
     #[Id, Column(name:'id_util',type: 'integer'), GeneratedValue(strategy: 'AUTO')]
-    private int $id;
+    public int $id;
 
     #[Column(name:'email',type: 'string', unique: true, nullable: false)]
     private string $email;
@@ -28,7 +28,7 @@ final class User
     private string $password;
 
     #[Column(name: 'pseudo', type: 'string',unique:true, nullable: false)]
-    private string $pseudo;
+    public string $pseudo;
 
     #[OneToMany(targetEntity: Galerie::class, mappedBy:'user')]
     private $galeries;
@@ -38,7 +38,7 @@ final class User
     public function __construct(string $email,string $password, string $pseudo)
     {
         $this->email = $email;
-        $this->password= $password;
+        $this->password = password_hash($password, PASSWORD_DEFAULT);
         $this->pseudo= $pseudo;
         $this->galeries= new ArrayCollection();
         $this->galerie_acces= new ArrayCollection();
@@ -83,6 +83,10 @@ final class User
     public function getGaleries(): Collection
     {
         return $this->galeries;
+    }
+
+    public function checkPassword($pass) : bool {
+        return password_verify($pass, $this->password);
     }
 
     

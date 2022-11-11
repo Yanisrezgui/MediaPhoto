@@ -26,6 +26,7 @@ $app->get('/uploadImage', \App\Controller\ImagesController::class . ':uploadImag
 $app->get('/signUp', \App\Controller\UserController::class . ':promptInscription');
 $app->post('/signUp/createUser', \App\Controller\UserController::class . ':signUp');
 $app->get('/signIn', \App\Controller\ProfileController::class . ':signIn');
+$app->post('/signIn/signUser', \App\Controller\UserController::class . ':signIn');
 $app->get('/logout', \App\Controller\ProfileController::class . ':logout');
 
 $app->get('/users', \App\UserController::class . ':test');

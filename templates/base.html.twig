@@ -9,6 +9,7 @@
     <link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet'>
 </head>
 <body>
+{% if connecter == false %}
     <nav>
         <ul>
             <li> <a href="/"> <img src="/img/meetup.png" alt="MediaPhoto Logo"></a></li>
@@ -16,6 +17,15 @@
             <li id="connection"> <a href="/signIn"> Connexion  </a></li>
         </ul>
     </nav>
+    {% else %}
+    <nav>
+        <ul>
+            <li> <a href="/"> <img src="/img/meetup.png" alt="MediaPhoto Logo"></a></li>
+            <li id="mediaphoto"> <a href="/"> MediaPhoto </a></li>
+            <li id="createGallery"> <a href="/new-gallery"> Créer une Galerie  </a></li>
+        </ul>
+    </nav>
+{% endif %}
     {% block body %}
     {% endblock %}
 </body>

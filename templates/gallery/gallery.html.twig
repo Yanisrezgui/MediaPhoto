@@ -3,7 +3,7 @@
 {% block title %}MediaPhoto{% endblock %}
 
 {% block body %}
-{% if conn == false %}
+{% if connecter == false %}
     <div class="search-bar">
     </div>
     <div class="gallery-container"> 
@@ -44,7 +44,7 @@
 
     <div class="connected">
         <p>Bonjour {{ id_util }} {{pseudo}} !</p>
-        <a href="/">Se déconnecter</a>
+        <a href="/logout">Se déconnecter</a>
     </div>
 
 {% endif %}

@@ -5,6 +5,7 @@
 {% block body %}
     <div class="container-create-gallery">
         <h1>Créer une galerie</h1>
+        <form action="/new-gallery/create" method="POST">
         <div class="titre-create-gallery">
             <label for="titre">Titre</label>
             <input type="text" id="titre" name="titre" placeholder="Saississez un titre" size="25">
@@ -12,18 +13,17 @@
         <div class="keywords-create-gallery">
             <label for="keywords">Mots clés</label>
             <input type="text" id="keywords" name="keywords" placeholder="Saississez vos mots clés" size="25">
-            <div class="keywords-list">
+            {# <div class="keywords-list">
                 <div class="one-keyword">
                     animal <a href="#"><img src="./img/croix.png" alt="croix"></a>
                 </div>
                 <div class="one-keyword">
                     chien <a href="#"><img src="./img/croix.png" alt="croix"></a>
                 </div>
-
-            </div>
+            </div> #}
         </div>
         <div class="creer-gallery-btn">
-            <a href="/createGallery"> Créer </a>
+            <input type="submit" id="submit-button" value="Créer">
         </div>
     </div>
 {% endblock %}

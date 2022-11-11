@@ -106,12 +106,16 @@ class UserController
               'errorLogin' => $errorLogin
           ]);
           } else {
+              $repository = $this->em->getRepository(\App\Domain\User::class); 
+            
               $_SESSION["conn"] = $login;
               $_SESSION["email"] = $args["email"];
-              $util=$this->em->getRepository(\App\Domain\User::class)->findOneBy(['email' => $args["email"]]);
-              //var_dump($util);
-              $_SESSION['id_util']= $util->{'id'};
-              $_SESSION['pseudo']= $util->{'pseudo'};
+              $user = $repository->findOneBy([
+                'email' => $args["email"]
+              ]);
+            
+              $_SESSION['id_util']= $user->{'id'};
+              $_SESSION['pseudo']= $user->{'pseudo'};
 
             }
       }

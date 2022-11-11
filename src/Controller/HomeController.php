@@ -35,7 +35,12 @@ class HomeController
     $args = $request->getParsedBody();
 
     if (isset($args["titre"]) && isset($args["keywords"])) {
-      $galerie = new Galerie(true,$args["titre"],"Description",$args["keywords"]);
+      if ($args['radio-accessibility'] == 'public') {
+        $accessibility = true;
+      } else {
+        $accessibility = false;
+      }
+      $galerie = new Galerie($accessibility,$args["titre"],$args["description"],$args["keywords"]);
       $this->em->persist($galerie);
       $this->em->flush();
     }

@@ -2,19 +2,21 @@
 namespace App\Controller;
 
 use App\Domain\Image;
-use Doctrine\DBAL\Types\BlobType;
+use DateTimeImmutable;
+use Doctrine\ORM\EntityManager;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\UploadedFileInterface;
 use Slim\Views\Twig;
 
 class ImagesController
 {
     private $view;
+    private $blob;
 
-    public function __construct(Twig $view)
+    public function __construct(Twig $view, EntityManager $em)
     {
         $this->view = $view;
+        $this->em = $em;
     }
 
     public function images(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
@@ -34,35 +36,20 @@ class ImagesController
 
     public function uploadImage(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
     {
-        $directory = '/uploads';
-        $uploadedFiles = $request->getUploadedFiles();
+        $name = $request->getParsedBody();
+        $img = basename($_FILES['myfile']['name']);
 
-        $uploadedFile = $uploadedFiles["myfile"];
-        if ($uploadedFile->getError() === UPLOAD_ERR_OK) {
-            $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
-            $basename = bin2hex(random_bytes(8));
-            $filename = sprintf('%s.%0.8s', $basename, $extension);
+        move_uploaded_file($_FILES['myfile']['tmp_name'], APP_ROOT . '/public/img/upload/'.$img);
 
-            $blob = file_get_contents($filename);
-
-            $this->em->persist(new Image("chat", "titre", "description", $filename, $extension, $blob));
-            $this->em->flush();
-
-            $response->getBody()->write('Uploaded: ' . $filename . '<br/>');
-        }
-        // $myfile = $request->getUploadedFiles();
-
-        // $name = $_FILES[$myfile]['name'];
-        // $type = $_FILES[$myfile]['type'];
-        // $data = $_FILES[$myfile]['tmp_name'];
-
-        // var_dump($data);
-
-        // $this->em->persist(new Image("chat", "titre", "description", $name, $type, $data));
-        // $this->em->flush();
+        $currentDate = date('Y-m-d');
+        $date = new DateTimeImmutable($currentDate);
+        
+        $this->em->persist(new Image("landscape", "art", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam bibendum lorem tincidunt vestibulum eleifend. Vestibulum vehicula interdum risus, ut accumsan risus tristique vel. Interdum et malesuada fames ac ante ipsum primis in faucibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque vitae odio in quam finibus suscipit nec feugiat mi. Etiam egestas cursus nibh, tristique consequat turpis imperdiet in. Vivamus vulputate mattis dui a congue. Aenean at quam a nibh egestas semper sit amet ut lacus. Vivamus faucibus quam sed nibh egestas, a gravida arcu molestie. Sed pharetra gravida massa id molestie. Vestibulum justo orci, convallis sed massa non, laoreet ultrices nulla. Aliquam vitae magna sed urna aliquam aliquet. ", $img, $date));
+        $this->em->flush();
 
         return $response
             ->withHeader('Location', '/uploadImage')
             ->withStatus(302);
+
     }
 }

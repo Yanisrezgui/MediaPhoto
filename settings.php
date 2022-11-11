@@ -53,6 +53,10 @@ return [
                 'password' => 'root',
                 // 'charset' => 'UTF-8'
             ]
+        ],
+
+        'image' => [
+            
         ]
     ]
 ];

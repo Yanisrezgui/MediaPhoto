@@ -3,7 +3,6 @@
 namespace App\Domain;
 
 use DateTimeImmutable;
-use Doctrine\DBAL\Types\BlobType;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
@@ -22,7 +21,7 @@ final class Image
     #[Column(name: 'titre', type: 'string', unique: false, nullable: false)]
     private string $titre;
 
-    #[Column(name: 'img_desc', type: 'string', unique: false, nullable: false)]
+    #[Column(name: 'img_desc', type: 'text', unique: false, nullable: false)]
     private string $imgdesc;
 
     #[Column(name: 'date_crea', type: 'datetimetz_immutable', unique: false, nullable: false)]
@@ -31,22 +30,13 @@ final class Image
     #[Column(name: 'img_name', type: 'string', unique: false, nullable: false)]
     private string $imgname;
 
-    #[Column(name: 'img_mime', type: 'string', unique: false, nullable: false)]
-    private string $imgmime;
-
-    #[Column(name: 'img_blob', type: 'blob', unique: false, nullable: false)]
-    private BlobType $imgblob;
-
-
-    public function __construct(string $motcle, string $titre, string $imgdesc, string $imgname, string $imgmime, BlobType $imgblob)
+    public function __construct(string $motcle, string $titre, string $imgdesc, string $imgname, DateTimeImmutable $date_crea)
     {
         $this->motcle = $motcle;
         $this->titre = $titre;
         $this->imgdesc = $imgdesc;
-        $this->imgname= $imgname;
-        $this->imgmime = $imgmime;
-        $this->imgblob = $imgblob;
-        $this->date = new DateTimeImmutable('now');
+        $this->imgtaille= $imgname;
+        $this->date = $date_crea;
     }
 
     public function getId_img(): int
@@ -54,7 +44,7 @@ final class Image
         return $this->id_img;
     }
 
-    public function getmotcle(): string
+    public function getMotCle(): string
     {
         return $this->motcle;
     }
@@ -69,25 +59,13 @@ final class Image
         return $this->imgdesc;
     }
 
-    public function getimgname(): string
+    public function getImgName(): string
     {
         return $this->imgname;
-    }
-
-    public function getimgmime(): string
-    {
-        return $this->imgmime;
-    }
-
-    public function getImg_blob(): BlobType
-    {
-        return $this->imgblob;
     }
 
     public function getDate(): DateTimeImmutable
     {
         return $this->date_crea;
     }
-
-   
 }

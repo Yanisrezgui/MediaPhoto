@@ -45,6 +45,7 @@ class HomeController
     $user1 = $repository->findOneBy([
       'id' => 2
     ]);
+    
     // $login = $this->userService->signIn($args["email"], $args["password"]);
     // if($login) {
     //   $_SESSION["email"] = $args["email"];
@@ -57,9 +58,10 @@ class HomeController
         } else {
           $accessibility = false;
         }
+
         $galerie = new Galerie($accessibility,$args["titre"],$args["description"],$args["keywords"]);
         // $galerie->setUser($user);
-        $galerie->addUserAcces($user1);
+        // $galerie->addUserAcces($user1);
         $this->em->persist($galerie);
         $this->em->flush();
       }

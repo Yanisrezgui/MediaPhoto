@@ -24,6 +24,7 @@ class HomeController
 
   public function home(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {
+    
     $galleries = $this->galleryService->getAllGalleries();
     return $this->view->render($response, 'gallery/gallery.html.twig', [
       'galleries' => $galleries,
@@ -67,6 +68,21 @@ class HomeController
     return $response
       ->withHeader('Location', '/')
       ->withStatus(302);
+  }
+
+  public function sortGallery(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
+  {
+    $args = $request->getParsedBody();
+
+    $repository = $this->em->getRepository(Galerie::class); 
+    $galleries = $repository->findBy([
+      'motcle' => $args['search-bar'],
+    ]);
+
+    return $this->view->render($response, 'gallery/gallery.html.twig', [
+      'galleries' => $galleries,
+      'motCle' => $args['search-bar'],
+    ]);
   }
 
 }

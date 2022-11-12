@@ -3,7 +3,11 @@
 .search-bar {
     text-align: center;
     margin-top: 38px;
-    margin-bottom: 35px;
+    margin-bottom: 35px;   
+}
+
+.cancelSort {
+    font-style: italic;
 }
 
 .galery-info-container {
@@ -29,6 +33,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 1em;
     margin: 5px;
+    margin-top:15px;
 
     &>.img-gallery-grid,a {
         max-width: calc((100vw - 10%) / 2);

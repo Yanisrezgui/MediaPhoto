@@ -4,15 +4,18 @@
 
 {% block body %}
     <div class="galery-info-container">
-        <h1>{{gallery.titre}}</h1>
+        <h1>
+            {{gallery.titre}}
+            ({{gallery.getAccesString(gallery.getAcces)}})
+        </h1>
         <span>par Utilisateur</span>
-        <span>11/12/2022</span>
+        <span>{{gallery.getDateString(gallery.getDate())}}</span>
         <p>{{gallery.description}}</p>
     </div>
     <div class="search-bar-container">
         <div class="search-bar">
             <input type="text" id="search-bar" name="search-bar" placeholder="Entrez un mot clé" size="40">
-            <a href="/">Rechercher</a>
+            <input type="submit" id="submit-button" value="Rechercher">
         </div>
     </div>
     <div class="gallery-container"> 

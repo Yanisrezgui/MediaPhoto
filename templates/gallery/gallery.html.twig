@@ -9,10 +9,17 @@
         <p>Explorez les photos publiés par des utilisateurs, ou postez-en !</p>
     </div>
     <div class="search-bar-container">
+        <form action="/sort-gallery" method="POST">
         <div class="search-bar">
             <input type="text" id="search-bar" name="search-bar" placeholder="Entrez un mot clé" size="40">
-            <a href="/">Rechercher</a>
+            <input type="submit" id="submit-button" value="Rechercher">
         </div>
+        <div class="cancelSort">
+        {% if motCle is not empty %}
+            Trie appliqué pour les galeries contenant le mot clé : {{motCle}}
+        {% endif %}
+        </div>
+        </form>
     </div>
     <div class="gallery-container"> 
         {% for gallery in galleries %}

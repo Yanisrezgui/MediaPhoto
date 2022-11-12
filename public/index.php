@@ -19,6 +19,7 @@ $app->get('/', \App\Controller\HomeController::class . ':home');
 $app->get('/new-gallery', \App\Controller\HomeController::class . ':createGalleryPage');
 $app->post('/new-gallery/create', \App\Controller\HomeController::class . ':createGalleryFunction');
 $app->get('/gallery/{idGallery}', \App\Controller\ImagesController::class . ':images');
+$app->post('/sort-gallery', \App\Controller\HomeController::class . ':sortGallery');
 
 
 

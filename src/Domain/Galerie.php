@@ -2,6 +2,7 @@
 
 namespace App\Domain;
 
+use DateTime;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -31,8 +32,8 @@ final class Galerie
     #[Column(name: 'descr', type: 'string', nullable: true)]
     private string $description;
 
-    #[Column(name: 'date_crea', type: 'datetimetz_immutable', nullable: false)]
-    private DateTimeImmutable $date;
+    #[Column(name: 'date_crea', type: 'datetime', nullable: false)]
+    private DateTime $date;
 
     #[Column(name: 'mot_clé', type: 'string', nullable: false)]
     private string $motcle;
@@ -58,7 +59,7 @@ final class Galerie
         $this->acces = $acces;
         $this->titre = $titre;
         $this->description = $description;
-        $this->date = new DateTimeImmutable('now');
+        $this->date = new DateTime();
         $this->motcle = $motcle;
         $this->user_acces = new ArrayCollection();
         $this->imageGalery = new ArrayCollection();
@@ -76,6 +77,15 @@ final class Galerie
         return $this->acces;
     }
 
+    public function getAccesString(bool $acces): string
+    {
+        if($acces) {
+            return 'Public';
+        } else {
+            return 'Privé';
+        }
+    }
+
     public function getTitre(): string
     {
         return $this->titre;
@@ -86,9 +96,16 @@ final class Galerie
         return $this->description;
     }
 
-    public function getDate(): DateTimeImmutable
+    public function getDate(): DateTime
     {
         return $this->date;
+    }
+
+    public function getDateString(DateTime $date): string
+    {
+        $newDate = $date->format('d/m/Y');
+        return $newDate;
+
     }
 
     public function getMotCle(): string

@@ -32,10 +32,33 @@
 
         {% endfor %}
     {% else %}
-    <div class="connected">
-        <p>Bonjour {{ id_util }} {{pseudo}} !</p>
-        <a href="/">Se déconnecter</a>
+    <div class="galery-info-container">
+        <h1>Bienvenue sur MediaPhoto </h1>
+        <p>Explorez les photos publiés par des utilisateurs, ou postez-en !</p>
     </div>
+    <div class="search-bar-container">
+        <form action="/sort-gallery" method="POST">
+        <div class="search-bar">
+            <input type="text" id="search-bar" name="search-bar" placeholder="Entrez un mot clé" size="40">
+            <input type="submit" id="submit-button" value="Rechercher">
+        </div>
+        <div class="cancelSort">
+        {% if motCle is not empty %}
+            Trie appliqué pour les galeries contenant le mot clé : {{motCle}}
+        {% endif %}
+        </div>
+        </form>
+    </div>
+    <div class="gallery-container"> 
+        {% for gallery in galleries %}
+
+            <div class="img-gallery-grid">
+                    <a href="/gallery/{{gallery.id}}">
+                <img class="img-id" src="/img/meetup.png">        </a>
+                <p class="description-img">{{gallery.titre}}</p>
+            </div>
+        {% endfor %}
+        <p>{{pseudo}}</p>
 
 {% endif %}
 {% endblock %}

@@ -28,17 +28,25 @@ class HomeController
     $galleries = $this->galleryService->getAllGalleries();
     return $this->view->render($response, 'gallery/gallery.html.twig', [
       'galleries' => $galleries,
+      'connecter' => isset($_SESSION['connecter']),
+      'email' => $_SESSION["email"] ?? "",
+      'id_util' => $_SESSION["id_util"] ?? "",
+      'pseudo' => $_SESSION["pseudo"] ?? "",
     ]);
   }
 
   public function createGalleryPage(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {
-    return $this->view->render($response, 'gallery/createGallery.html.twig');
+    return $this->view->render($response, 'gallery/createGallery.html.twig',[
+      'connecter' => isset($_SESSION['connecter']),
+      'email' => $_SESSION["email"] ?? "",
+      'id_util' => $_SESSION["id_util"] ?? "",
+      'pseudo' => $_SESSION["pseudo"] ?? "",
+  ]);
   }
 
   public function createGalleryFunction(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {
-
     $args = $request->getParsedBody();
     $repository = $this->em->getRepository(\App\Domain\User::class); 
 

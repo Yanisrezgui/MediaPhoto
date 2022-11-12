@@ -33,6 +33,15 @@ nav {
     width:300px;
 }
 
+#createGallery {
+    flex : 2;
+
+}
+
+#my-account {
+    flex : 1.1;
+}
+
 @media screen and (min-width: 1025px) {
     nav {
         font-size: 2.2em;

@@ -47,23 +47,16 @@ class HomeController
 
   public function createGalleryFunction(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {
-<<<<<<< HEAD
-
-    $args = $request->getParsedBody();
-
-    if (isset($args["titre"]) && isset($args["keywords"])) {
-      $galerie = new Galerie(true,$args["titre"],"Description",$args["keywords"]);
-      $this->em->persist($galerie);
-      $this->em->flush();
-    }
-    
-=======
     $args = $request->getParsedBody();
     $repository = $this->em->getRepository(\App\Domain\User::class); 
 
     $user1 = $repository->findOneBy([
       'id' => 2
     ]);
+
+    // $currentUser = $repository->findOneBy([
+    //   'id' => $_SESSION["id_util"]
+    // ]);
     
     // $login = $this->userService->signIn($args["email"], $args["password"]);
     // if($login) {
@@ -79,22 +72,18 @@ class HomeController
         }
 
         $galerie = new Galerie($accessibility,$args["titre"],$args["description"],$args["keywords"]);
-        // $galerie->setUser($user);
+        //$galerie->setUser($currentUser);
         // $galerie->addUserAcces($user1);
         $this->em->persist($galerie);
         $this->em->flush();
       }
     // }
 
->>>>>>> 50ebe13d332dc97e553d90e4d85dd0feba08ac5c
     return $response
       ->withHeader('Location', '/')
       ->withStatus(302);
   }
 
-<<<<<<< HEAD
-}
-=======
   public function sortGallery(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {
     $args = $request->getParsedBody();
@@ -111,4 +100,3 @@ class HomeController
   }
 
 }
->>>>>>> 50ebe13d332dc97e553d90e4d85dd0feba08ac5c

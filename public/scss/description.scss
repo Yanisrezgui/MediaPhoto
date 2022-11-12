@@ -57,7 +57,7 @@ $comment: 12;
 
             @for $i from 1 to $comment {
                 &>.keyword-#{$i} {
-                    $bg-color-keyword: rgb(random(255), random(255), random(255));
+                    $bg-color-keyword: #746b6b;
                     background-color: $bg-color-keyword;
                     border: darken($color: $bg-color-keyword, $amount: 15%) 1px solid;
                     border-radius: 25px;

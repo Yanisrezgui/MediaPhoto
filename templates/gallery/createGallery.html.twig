@@ -3,6 +3,9 @@
 {% block title %}MediaPhoto - CreateGallery{% endblock %}
 
 {% block body %}
+
+{% if connecter == false %}
+
     <div class="container-create-gallery">
         <h1>Créer une galerie</h1>
         <form action="/new-gallery/create" method="POST">
@@ -10,9 +13,18 @@
             <label for="titre">Titre</label>
             <input type="text" id="titre" name="titre" placeholder="Saississez un titre" size="25">
         </div>
+        <div class="description-create-gallery">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="5" cols="25"> </textarea>
+        </div>
         <div class="keywords-create-gallery">
+<<<<<<< HEAD
             <label for="keywords">Mots clés</label>
             <input type="text" id="keywords" name="keywords" placeholder="Saississez vos mots clés" size="25">
+=======
+            <label for="keywords">Mot clé</label>
+            <input type="text" id="keywords" name="keywords" placeholder="Saississez un mot clé" size="25">
+>>>>>>> 50ebe13d332dc97e553d90e4d85dd0feba08ac5c
             {# <div class="keywords-list">
                 <div class="one-keyword">
                     animal <a href="#"><img src="./img/croix.png" alt="croix"></a>
@@ -21,9 +33,23 @@
                     chien <a href="#"><img src="./img/croix.png" alt="croix"></a>
                 </div>
             </div> #}
+<<<<<<< HEAD
+=======
+        </div>
+        <div class="radio-create-gallery">
+            <input type="radio" id="radio-public" name="radio-accessibility" value="public" checked>
+            <label for="public">Public</label>
+            <input type="radio" id="radio-prive" name="radio-accessibility" value="prive">
+            <label for="prive">Privé</label>
+>>>>>>> 50ebe13d332dc97e553d90e4d85dd0feba08ac5c
         </div>
         <div class="creer-gallery-btn">
             <input type="submit" id="submit-button" value="Créer">
         </div>
     </div>
+
+{% else %}
+    <p>{{pseudo}}</p>
+{% endif %}
+   
 {% endblock %}

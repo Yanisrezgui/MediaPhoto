@@ -4,6 +4,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 use Slim\Views\TwigMiddleware;
+session_start();
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -18,6 +19,10 @@ $app->add(TwigMiddleware::createFromContainer($app));
 $app->get('/', \App\Controller\HomeController::class . ':home');
 $app->get('/new-gallery', \App\Controller\HomeController::class . ':createGalleryPage');
 $app->post('/new-gallery/create', \App\Controller\HomeController::class . ':createGalleryFunction');
+$app->get('/gallery/{idGallery}', \App\Controller\ImagesController::class . ':images');
+$app->post('/sort-gallery', \App\Controller\HomeController::class . ':sortGallery');
+
+
 
 $app->get('/images', \App\Controller\ImagesController::class . ':images');
 $app->get('/description', \App\Controller\ImagesController::class . ':description');

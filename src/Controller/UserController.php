@@ -101,14 +101,14 @@ class UserController
 
           $login = $this->userService->signIn($args["email"], $args["password"]);
           if ($login === false) {
-            $errorLogin = "Wrong email or password";
+            $errorLogin = "Mauvais email ou mot de passe";
             return $this->view->render($response, 'profile/signIn.html.twig', [
               'errorLogin' => $errorLogin
           ]);
           } else {
               $repository = $this->em->getRepository(\App\Domain\User::class); 
             
-              $_SESSION["conn"] = $login;
+              $_SESSION["connecter"] = $login;
               $_SESSION["email"] = $args["email"];
               $user = $repository->findOneBy([
                 'email' => $args["email"]
@@ -120,8 +120,9 @@ class UserController
             }
       }
 
+
       return $this->view->render($response, 'gallery/gallery.html.twig', [
-          'conn' => isset($_SESSION['conn']),
+          'connecter' => isset($_SESSION['connecter']),
           'email' => $_SESSION["email"] ?? "",
           'id_util' => $_SESSION["id_util"] ?? "",
           'pseudo' => $_SESSION["pseudo"] ?? "",

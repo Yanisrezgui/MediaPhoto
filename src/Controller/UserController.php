@@ -101,7 +101,7 @@ class UserController
 
           $login = $this->userService->signIn($args["email"], $args["password"]);
           if ($login === false) {
-            $errorLogin = "Wrong email or password";
+            $errorLogin = "Mauvais email ou mot de passe";
             return $this->view->render($response, 'profile/signIn.html.twig', [
               'errorLogin' => $errorLogin
           ]);
@@ -119,6 +119,7 @@ class UserController
 
             }
       }
+
 
       return $this->view->render($response, 'gallery/gallery.html.twig', [
           'connecter' => isset($_SESSION['connecter']),

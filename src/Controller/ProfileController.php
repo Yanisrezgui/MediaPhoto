@@ -26,6 +26,8 @@ class ProfileController
 
     public function logout(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
     {
-        return $this->view->render($response, 'profile/logout.html.twig');
+        session_start();
+        session_destroy();
+        return $this->view->render($response, 'gallery/gallery.html.twig');
     }
 }

@@ -24,18 +24,26 @@ final class Image
     #[Column(name: 'img_desc', type: 'text', unique: false, nullable: false)]
     private string $imgdesc;
 
-    #[Column(name: 'date_crea', type: 'datetimetz_immutable', unique: false, nullable: false)]
-    private DateTimeImmutable $date_crea;
-
     #[Column(name: 'img_name', type: 'string', unique: false, nullable: false)]
     private string $imgname;
 
-    public function __construct(string $motcle, string $titre, string $imgdesc, string $imgname)
+    #[Column(name: 'img_mime', type: 'string', unique: false, nullable: false)]
+    private string $imgmime;
+
+    #[Column(name: 'img_data', type: 'blob', unique: false, nullable: false)]
+    private mixed $imgdata;
+
+    #[Column(name: 'date_crea', type: 'datetimetz_immutable', unique: false, nullable: false)]
+    private DateTimeImmutable $date_crea;
+
+    public function __construct(string $motcle, string $titre, string $imgdesc, string $imgname, string $imgmime, mixed $imgdata)
     {
         $this->motcle = $motcle;
         $this->titre = $titre;
         $this->imgdesc = $imgdesc;
-        $this->imgname= $imgname;
+        $this->imgname = $imgname;
+        $this->imgmime = $imgmime;
+        $this->imgdata = $imgdata;
         $this->date_crea = new DateTimeImmutable('now');
     }
 
@@ -64,8 +72,23 @@ final class Image
         return $this->imgname;
     }
 
+    public function getImgMime(): string
+    {
+        return $this->imgmime;
+    }
+
+    public function getImgData(): mixed
+    {
+        return $this->imgdata;
+    }
+
     public function getDate(): DateTimeImmutable
     {
         return $this->date_crea;
+    }
+
+    public function getBlobToString(): string
+    {
+        return base64_encode(stream_get_contents($this->getImgData()));
     }
 }

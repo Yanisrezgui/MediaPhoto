@@ -2,7 +2,6 @@
 namespace App\Controller;
 
 use App\Domain\Image;
-use DateTimeImmutable;
 use Doctrine\ORM\EntityManager;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -11,7 +10,6 @@ use Slim\Views\Twig;
 class ImagesController
 {
     private $view;
-    private $blob;
 
     public function __construct(Twig $view, EntityManager $em)
     {
@@ -21,7 +19,17 @@ class ImagesController
 
     public function images(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
     {
-        return $this->view->render($response, 'images/images.html.twig');
+        $repository = $this->em->getRepository(Image::class);
+        $images = $repository->findAll();
+
+        // foreach ($images as &$value) {
+        //     $mime = $value->getImgMime();
+        //     $data = base64_encode(stream_get_contents($value->getImgData()));
+        // }
+
+        return $this->view->render($response, 'images/images.html.twig', [
+            "images" => $images
+        ]);
     }
 
     public function description(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
@@ -36,16 +44,15 @@ class ImagesController
 
     public function uploadImage(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
     {
-        $name = $request->getParsedBody();
-        $img = basename($_FILES['myfile']['name']);
-        move_uploaded_file($_FILES['myfile']['tmp_name'], APP_ROOT . '/public/img/upload/'.$img);
+        $name = $_FILES['myfile']['name'];
+        $type = $_FILES['myfile']['type'];
+        $data = file_get_contents($_FILES['myfile']['tmp_name']);
    
-        $this->em->persist(new Image("motcle", "titre", "desc", $img));
+        $this->em->persist(new Image("motcle", "titre", "desc", $name, $type, $data));
         $this->em->flush();
 
         return $response
             ->withHeader('Location', '/uploadImage')
             ->withStatus(302);
-
     }
 }

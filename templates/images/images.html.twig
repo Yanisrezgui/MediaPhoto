@@ -5,7 +5,10 @@
 {% block body %}
     <div class="search-bar">
     </div>
-    <div class="gallery-container"> 
+    <div class="gallery-container">
+        {% for image in images %}
+            <img src="data:{{image.getImgMime()}};base64,{{image.getBlobToString()}}"/>
+        {% endfor %}
         <div class="img-gallery-grid">
             <img class="img-id" src="/img/meetup.png">
             <p class="description-img">img</p>

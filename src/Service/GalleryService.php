@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Domain\Galerie;
 use Doctrine\ORM\EntityManager;
 
 final class GalleryService
@@ -13,7 +14,10 @@ final class GalleryService
         $this->em = $em;
     }
 
-    public function newGallery() {
-        return true;
+    public function getAllGalleries() {
+        $repository = $this->em->getRepository(Galerie::class); 
+        $galleries = $repository->findAll();
+
+        return $galleries;
     }
 }   

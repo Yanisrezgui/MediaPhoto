@@ -22,11 +22,6 @@ class ImagesController
         $repository = $this->em->getRepository(Image::class);
         $images = $repository->findAll();
 
-        // foreach ($images as &$value) {
-        //     $mime = $value->getImgMime();
-        //     $data = base64_encode(stream_get_contents($value->getImgData()));
-        // }
-
         return $this->view->render($response, 'images/images.html.twig', [
             "images" => $images
         ]);

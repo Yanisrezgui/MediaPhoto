@@ -3,6 +3,8 @@
 {% block title %}MediaPhoto - CreateGallery{% endblock %}
 
 {% block body %}
+
+{% if connecter == false %}
     <div class="container-create-gallery">
         <h1>Créer une galerie</h1>
         <form action="/new-gallery/create" method="POST">
@@ -36,4 +38,8 @@
             <input type="submit" id="submit-button" value="Créer">
         </div>
     </div>
+    {% else %}
+   <p>{{pseudo}}
+{% endif %}
+   
 {% endblock %}

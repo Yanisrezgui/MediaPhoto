@@ -96,7 +96,7 @@ final class Galerie
         return $this->motcle;
     }
 
-    public function getuser(): ?User
+    public function getUser(): ?User
     {
         return $this->user;
     }
@@ -109,6 +109,14 @@ final class Galerie
 
     public function getUserAcces(): Collection
     {
+        return $this->user_acces;
+    }
+
+    public function addUserAcces(?User $user): Collection
+    {
+        if(!$this->user_acces->contains($user)) {
+            $this->user_acces[] = $user;
+        }
         return $this->user_acces;
     }
 

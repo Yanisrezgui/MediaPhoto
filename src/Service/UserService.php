@@ -28,7 +28,7 @@ final class UserService
     }
 
 
-    public Function signIn(string $email, string $password): bool
+    public function signIn(string $email, string $password): bool
     {
         $req = $this->em->getRepository(\App\Domain\User::class)->findBy(['email' => $email]);
         $this->logger->info("UserService::get($email)");
@@ -46,6 +46,7 @@ final class UserService
             }
         }
     }
+
 
     
 }

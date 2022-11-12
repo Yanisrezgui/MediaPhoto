@@ -3,7 +3,17 @@
 {% block title %}MediaPhoto - Images{% endblock %}
 
 {% block body %}
-    <div class="search-bar">
+    <div class="galery-info-container">
+        <h1>{{gallery.titre}}</h1>
+        <span>par Utilisateur</span>
+        <span>11/12/2022</span>
+        <p>{{gallery.description}}</p>
+    </div>
+    <div class="search-bar-container">
+        <div class="search-bar">
+            <input type="text" id="search-bar" name="search-bar" placeholder="Entrez un mot clé" size="40">
+            <a href="/">Rechercher</a>
+        </div>
     </div>
     <div class="gallery-container"> 
         <div class="img-gallery-grid">

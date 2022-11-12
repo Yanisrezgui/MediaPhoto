@@ -4,44 +4,27 @@
 
 {% block body %}
 {% if conn == false %}
-    <div class="search-bar">
+    <div class="galery-info-container">
+        <h1>Bienvenue sur MediaPhoto </h1>
+        <p>Explorez les photos publiés par des utilisateurs, ou postez-en !</p>
+    </div>
+    <div class="search-bar-container">
+        <div class="search-bar">
+            <input type="text" id="search-bar" name="search-bar" placeholder="Entrez un mot clé" size="40">
+            <a href="/">Rechercher</a>
+        </div>
     </div>
     <div class="gallery-container"> 
-        <div class="img-gallery-grid">
-            <img class="img-id" src="/img/meetup.png">
-            <p class="description-img">img</p>
-        </div>
-        <div class="img-gallery-grid">
-            <img class="img-id" src="/img/meetup.png">
-            <p class="description-img">img</p>
-        </div>
-        <div class="img-gallery-grid">
-            <img class="img-id" src="/img/meetup.png">
-            <p class="description-img">img</p>
-        </div>
-        <div class="img-gallery-grid">
-            <img class="img-id" src="/img/meetup.png">
-            <p class="description-img">img</p>
-        </div>
-        <div class="img-gallery-grid">
-            <img class="img-id" src="/img/meetup.png">
-            <p class="description-img">img</p>
-        </div>
-        <div class="img-gallery-grid">
-            <img class="img-id" src="/img/meetup.png">
-            <p class="description-img">img</p>
-        </div>
-        <div class="img-gallery-grid">
-            <img class="img-id" src="/img/meetup.png">
-            <p class="description-img">img</p>
-        </div>
-        <div class="img-gallery-grid">
-            <img class="img-id" src="/img/meetup.png">
-            <p class="description-img">img</p>
-        </div>
-    </div>
-    {% else %}
+        {% for gallery in galleries %}
 
+            <div class="img-gallery-grid">
+                    <a href="/gallery/{{gallery.id}}">
+                <img class="img-id" src="/img/meetup.png">        </a>
+                <p class="description-img">{{gallery.titre}}</p>
+            </div>
+
+        {% endfor %}
+    {% else %}
     <div class="connected">
         <p>Bonjour {{ id_util }} {{pseudo}} !</p>
         <a href="/">Se déconnecter</a>

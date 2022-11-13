@@ -53,6 +53,10 @@ class HomeController
     $currentUser = $repository->findOneBy([
       'id' => $_SESSION["id_util"]
     ]);
+
+    $user1 = $repository->findOneBy([
+      'id' => 2
+    ]);
     
     // $login = $this->userService->signIn($args["email"], $args["password"]);
     // if($login) {
@@ -69,7 +73,7 @@ class HomeController
 
         $galerie = new Galerie($accessibility,$args["titre"],$args["description"],$args["keywords"]);
         $galerie->setUser($currentUser);
-        // $galerie->addUserAcces($user1);
+        $galerie->addUserAcces($user1);
         $this->em->persist($galerie);
         $this->em->flush();
       }

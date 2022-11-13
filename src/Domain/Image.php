@@ -2,12 +2,15 @@
 
 namespace App\Domain;
 
+use DateTime;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Table;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 #[Entity, Table(name: 'Image')]
 final class Image
@@ -33,8 +36,12 @@ final class Image
     #[Column(name: 'img_data', type: 'blob', unique: false, nullable: false)]
     private mixed $imgdata;
 
-    #[Column(name: 'date_crea', type: 'datetimetz_immutable', unique: false, nullable: false)]
-    private DateTimeImmutable $date_crea;
+    #[Column(name: 'date_crea', type: 'datetime', unique: false, nullable: false)]
+    private DateTime $date_crea;
+
+    #[ManyToOne(targetEntity: Galerie::class, inversedBy: 'galerie')]
+    #[JoinColumn(name: 'id_galerie', referencedColumnName: 'id_galerie')]
+    private $galerie;
 
     public function __construct(string $motcle, string $titre, string $imgdesc, string $imgname, string $imgmime, mixed $imgdata)
     {
@@ -44,7 +51,7 @@ final class Image
         $this->imgname = $imgname;
         $this->imgmime = $imgmime;
         $this->imgdata = $imgdata;
-        $this->date_crea = new DateTimeImmutable('now');
+        $this->date_crea = new DateTime();
     }
 
     public function getId_img(): int
@@ -82,13 +89,31 @@ final class Image
         return $this->imgdata;
     }
 
-    public function getDate(): DateTimeImmutable
+    public function getDate(): DateTime
     {
         return $this->date_crea;
+    }
+
+    public function getDateString(DateTime $date): string
+    {
+        $newDate = $date->format('d/m/Y');
+        return $newDate;
+
     }
 
     public function getBlobToString(): string
     {
         return base64_encode(stream_get_contents($this->getImgData()));
+    }
+
+    public function getGalerie(): ?Galerie
+    {
+        return $this->galerie;
+    }
+
+    public function setGalerie(?Galerie $galerie): self
+    {
+        $this->galerie = $galerie;
+        return $this;
     }
 }

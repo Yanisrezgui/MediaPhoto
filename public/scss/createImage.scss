@@ -14,6 +14,11 @@
     .gallery-create-image {
         margin-left: 30px;
         margin-bottom: 15px;
+        display:flex;
+        flex-direction: column;
+        select {
+            width:200px;
+        }
     }
 
     .titre-create-image {
@@ -24,6 +29,15 @@
     .desc-create-image {
         margin-left: 30px;
         margin-bottom: 15px;
+        margin-right: 30px;
+        display: flex;
+        flex-direction: column;
+        textarea {
+            resize: vertical;
+        }
+        label {
+            margin-bottom:5px;
+        }
     }
 
     .upload-create-image {

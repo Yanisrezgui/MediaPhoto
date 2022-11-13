@@ -26,6 +26,9 @@
         textarea {
             resize: vertical;
         }
+        label {
+            margin-bottom:5px;
+        }
     }
 
     .keywords-create-gallery {
@@ -59,27 +62,6 @@
         border-bottom: 1px solid rgb(63, 63, 63);
     }
 
-    .creer-gallery-btn {
-        text-align: center;
-        margin-top: 80px;
-        padding-bottom:80px;
-
-
-
-        input {
-            font-size: 1.1em;
-            font-family: $font;
-            background-color: #EB2540;
-            border-radius: 20px;
-            color: white;
-            text-decoration: none;
-            padding:15px 40px 15px 40px;
-            margin: 0 auto;
-            line-height: 2px;
-            cursor: pointer;
-            border: none;
-        }
-    }
     
     .radio-create-gallery {
         margin-left: 30px;
@@ -92,4 +74,26 @@
         }
     }
 
+}
+
+.creer-gallery-btn {
+    text-align: center;
+    margin-top: 80px;
+    padding-bottom:80px;
+
+
+
+    input {
+        font-size: 1.1em;
+        font-family: $font;
+        background-color: #EB2540;
+        border-radius: 20px;
+        color: white;
+        text-decoration: none;
+        padding:15px 40px 15px 40px;
+        margin: 0 auto;
+        line-height: 2px;
+        cursor: pointer;
+        border: none;
+    }
 }

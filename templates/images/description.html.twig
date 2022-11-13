@@ -6,24 +6,17 @@
     <div class="container-page-img">
         <div class="header-img">
             <div class="img-container">
-                <img src="img/meetup.png" alt="img">
+                <img src="data:{{image.getImgMime()}};base64,{{image.getBlobToString()}}"/>
             </div>
             <div class="description">
-                <h1>Titre</h1>
-                <p class="description-img">Lorem ipsum dolor, sit amet consectetur adipisicing elit. At sunt natus dolores autem aperiam numquam culpa ad, suscipit, voluptates molestias labore fugit maxime officiis? Saepe suscipit delectus et officiis reprehenderit.</p>
+                <h1>{{image.titre}}</h1>
+                <p class="description-img">{{image.getImg_desc}}</p>
                 <div class="keywords">
                     <p class="text-keyword">Mots clés : </p>
-                    <p class="keyword-1 keyword">lorem</p>
-                    <p class="keyword-2 keyword">lorem</p>
-                    <p class="keyword-3 keyword">lorem</p>
-                    <p class="keyword-4 keyword">lorem</p>
-                    <p class="keyword-5 keyword">lorem</p>
-                    <p class="keyword-5 keyword">lorem</p>
-                    <p class="keyword-5 keyword">lorem</p>
-                    <p class="keyword-5 keyword">lorem</p>
+                    <p class="keyword-1 keyword">{{image.getMotCle}}</p>
                 </div>
                 <div class="info">
-                    <p class="date-img">08/11/2022</p>
+                    <p class="date-img">{{image.getDateString(image.getDate())}}</p>
                     <p class="user-img">Par: Moi</p>
                 </div>
             </div>

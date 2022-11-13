@@ -18,7 +18,7 @@ use Doctrine\ORM\Mapping\ManyToMany;
 use Doctrine\ORM\Mapping\InverseJoinColumn;
 
 #[Entity, Table(name: 'Galerie')]
-final class Galerie
+class Galerie
 {
     #[Id, Column(name: 'id_galerie', type: 'integer'), GeneratedValue(strategy: 'AUTO')]
     private int $id;
@@ -63,8 +63,6 @@ final class Galerie
         $this->motcle = $motcle;
         $this->user_acces = new ArrayCollection();
         $this->imageGalery = new ArrayCollection();
-
-
     }
     
     public function getId(): int

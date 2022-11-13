@@ -25,9 +25,7 @@ class HomeController
 
   public function home(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {
-    $repository = $this->em->getRepository(Image::class);
-    $images = $repository->findAll();
-    
+
     $galleries = $this->galleryService->getAllGalleries();
     return $this->view->render($response, 'gallery/gallery.html.twig', [
       'galleries' => $galleries,
@@ -53,10 +51,6 @@ class HomeController
     $args = $request->getParsedBody();
     $repository = $this->em->getRepository(\App\Domain\User::class); 
 
-    $user1 = $repository->findOneBy([
-      'id' => 2
-    ]);
-
     // $currentUser = $repository->findOneBy([
     //   'id' => $_SESSION["id_util"]
     // ]);
@@ -75,7 +69,7 @@ class HomeController
         }
 
         $galerie = new Galerie($accessibility,$args["titre"],$args["description"],$args["keywords"]);
-        //$galerie->setUser($currentUser);
+        // $galerie->setUser($currentUser);
         // $galerie->addUserAcces($user1);
         $this->em->persist($galerie);
         $this->em->flush();

@@ -3,7 +3,6 @@
 namespace App\Domain;
 
 use DateTime;
-use DateTimeImmutable;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
@@ -98,7 +97,6 @@ final class Image
     {
         $newDate = $date->format('d/m/Y');
         return $newDate;
-
     }
 
     public function getBlobToString(): string

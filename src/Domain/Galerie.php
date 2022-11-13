@@ -3,7 +3,6 @@
 namespace App\Domain;
 
 use DateTime;
-use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping\Column;
@@ -23,7 +22,7 @@ class Galerie
     #[Id, Column(name: 'id_galerie', type: 'integer'), GeneratedValue(strategy: 'AUTO')]
     private int $id;
 
-    #[Column(name: 'accesibilité', type: 'boolean', nullable: false)]
+    #[Column(name: 'access', type: 'boolean', nullable: false)]
     private bool $acces;
 
     #[Column(name: 'Titre', type: 'string', nullable: false)]
@@ -35,7 +34,7 @@ class Galerie
     #[Column(name: 'date_crea', type: 'datetime', nullable: false)]
     private DateTime $date;
 
-    #[Column(name: 'mot_clé', type: 'string', nullable: false)]
+    #[Column(name: 'keyword', type: 'string', nullable: false)]
     private string $motcle;
 
     #[ManyToOne(targetEntity: User::class, inversedBy: 'galeries')]

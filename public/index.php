@@ -30,9 +30,9 @@ $app->post('/sort-image', \App\Controller\ImagesController::class . ':sortImage'
 
 $app->get('/signUp', \App\Controller\UserController::class . ':promptInscription');
 $app->post('/signUp/createUser', \App\Controller\UserController::class . ':signUp');
-$app->get('/signIn', \App\Controller\ProfileController::class . ':signIn');
+$app->get('/signIn', \App\Controller\UserController::class . ':signInView');
 $app->post('/signIn/signUser', \App\Controller\UserController::class . ':signIn');
-$app->get('/logout', \App\Controller\ProfileController::class . ':logout');
+$app->get('/logout', \App\Controller\UserController::class . ':logout');
 
 $app->get('/users', \App\UserController::class . ':test');
 

@@ -116,11 +116,21 @@ class UserController
           }
       }
 
-      return $this->view->render($response, 'gallery/gallery.html.twig', [
-          'connecter' => isset($_SESSION['connecter']),
-          'email' => $_SESSION["email"] ?? "",
-          'id_util' => $_SESSION["id_util"] ?? "",
-          'pseudo' => $_SESSION["pseudo"] ?? "",
-      ]);
+      return $response
+        ->withHeader('Location', '/')
+        ->withStatus(302);
+  }
+
+  public function logout(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
+  {
+      session_destroy();
+      return $response
+        ->withHeader('Location', '/')
+        ->withStatus(302);
+  }
+
+  public function signInView(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
+  {
+      return $this->view->render($response, 'profile/signIn.html.twig');
   }
 }

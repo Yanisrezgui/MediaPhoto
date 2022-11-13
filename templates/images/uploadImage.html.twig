@@ -8,5 +8,38 @@
             <input type="file" name="myfile"/>
             <input type="submit" value="Publier" class="btn">
         </form>
+    <div class="container-create-image">
+        <h1>Ajouter une image</h1>
+        <div class="gallery-create-image">
+            <label for="galerie">Galerie</label>
+            <input type="text" id="galerie" name="galerie" placeholder="Saississez une galerie" size="25">
+        </div>
+        <div class="titre-create-image">
+            <label for="titre">Titre</label>
+            <input type="text" id="titre" name="titre" placeholder="Saississez un titre" size="25">
+        </div>
+        <div class="desc-create-image">
+            <label for="desc">Description</label>
+            <textarea id="desc" name="desc" placeholder="Saississez une description" rows="5" cols="33"> </textarea>
+        </div>
+        <div class="keywords-create-image">
+            <label for="keywords">Mots clés</label>
+            <input type="text" id="keywords" name="keywords" placeholder="Saississez vos mots clés" size="25">
+            <div class="keywords-list">
+                <div class="one-keyword">
+                    animal <a href="#"><img src="./img/croix.png" alt="croix"></a>
+                </div>
+                <div class="one-keyword">
+                    chien <a href="#"><img src="./img/croix.png" alt="croix"></a>
+                </div>
+            </div>
+        </div>
+        <div class="upload-create-image">
+            <label for="upload">Upload</label>
+            <input type="text" id="upload" name="upload" placeholder="" size="25">
+        </div>
+        <div class="creer-gallery-btn">
+            <a href="/createGallery"> Créer </a>
+        </div>
     </div>
 {% endblock %}

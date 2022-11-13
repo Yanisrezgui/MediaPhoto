@@ -42,15 +42,27 @@
     margin-top: 60px;
     padding-bottom:40px;
 
-    a, #submit-button {
+    #submit-button {
         font-size: 1.1em;
         background-color: #EB2540;
         border-radius: 20px;
         color: white;
         text-decoration: none;
-        padding:15px 40px 15px 40px;
+        padding:19px 40px 19px 40px;
         margin: 0 auto;
         line-height: 2px;
+        cursor: pointer;
+    }
+
+    a {
+        font-size: 1.05em;
+        background-color: #EB2540;
+        border-radius: 20px;
+        color: white;
+        text-decoration: none;
+        padding:10px 40px 10px 40px;
+        margin: 0 auto;
+        line-height: 1px;
         cursor: pointer;
     }
 }

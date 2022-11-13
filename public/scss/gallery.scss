@@ -1,12 +1,41 @@
 @import '_variables';
 
+.search-bar {
+    text-align: center;
+    margin-top: 38px;
+    margin-bottom: 35px;   
+}
+
+.cancelSort {
+    font-style: italic;
+}
+
+.galery-info-container {
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    margin-top: 50px;
+
+    span {
+        font-size: 0.8em;
+        font-style: italic;
+        opacity: 65%;
+    }
+
+    p {
+        margin-top:20px;
+    }
+
+}
+
 .gallery-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1em;
     margin: 5px;
+    margin-top:15px;
 
-    &>.img-gallery-grid {
+    &>.img-gallery-grid,a {
         max-width: calc((100vw - 10%) / 2);
         margin-left: auto;
         margin-right: auto;

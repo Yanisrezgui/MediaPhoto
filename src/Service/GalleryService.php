@@ -2,16 +2,22 @@
 
 namespace App\Service;
 
+use App\Domain\Galerie;
 use Doctrine\ORM\EntityManager;
-use Psr\Log\LoggerInterface;
 
 final class GalleryService
 {
     private EntityManager $em;
 
-    public function __construct(EntityManager $em, LoggerInterface $logger)
+    public function __construct(EntityManager $em)
     {
         $this->em = $em;
-        $this->logger = $logger;
+    }
+
+    public function getAllGalleries() {
+        $repository = $this->em->getRepository(Galerie::class); 
+        $galleries = $repository->findAll();
+
+        return $galleries;
     }
 }   

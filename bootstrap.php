@@ -67,23 +67,23 @@ $container->set(UserController::class, static function (ContainerInterface $cont
     return new UserController($view, $container->get(UserService::class), $container->get(EntityManager::class));
 });
 
+$container->set(GalleryService::class, static function (Container $c) {
+    return new GalleryService($c->get(EntityManager::class), $c->get(LoggerInterface::class));
+});
+
 $container->set(HomeController::class, static function (ContainerInterface $container) {
     $view = $container->get('view');
-    return new HomeController($view, $container->get(EntityManager::class));
+    return new HomeController($view, $container->get(UserService::class), $container->get(GalleryService::class),$container->get(EntityManager::class));
 });
 
 $container->set(ImagesController::class, static function (ContainerInterface $container) {
     $view = $container->get('view');
-    return new ImagesController($view, $container->get(EntityManager::class));
+    return new ImagesController($view,$container->get(EntityManager::class));
 });
 
 $container->set(ProfileController::class, static function (ContainerInterface $container) {
     $view = $container->get('view');
     return new ProfileController($view);
-});
-
-$container->set(GalleryService::class, static function (Container $c) {
-    return new GalleryService($c->get(EntityManager::class), $c->get(LoggerInterface::class));
 });
 
 return $container;

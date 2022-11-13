@@ -3,7 +3,20 @@
 {% block title %}MediaPhoto - Images{% endblock %}
 
 {% block body %}
-    <div class="search-bar">
+    <div class="galery-info-container">
+        <h1>
+            {{gallery.titre}}
+            ({{gallery.getAccesString(gallery.getAcces)}})
+        </h1>
+        <span>par Utilisateur</span>
+        <span>{{gallery.getDateString(gallery.getDate())}}</span>
+        <p>{{gallery.description}}</p>
+    </div>
+    <div class="search-bar-container">
+        <div class="search-bar">
+            <input type="text" id="search-bar" name="search-bar" placeholder="Entrez un mot clé" size="40">
+            <input type="submit" id="submit-button" value="Rechercher">
+        </div>
     </div>
     <div class="gallery-container">
         {% for image in images %}

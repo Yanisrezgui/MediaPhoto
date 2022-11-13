@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Domain\Image;
+use App\Domain\Galerie;
 use Doctrine\ORM\EntityManager;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -19,11 +20,14 @@ class ImagesController
 
     public function images(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
     {
-        $repository = $this->em->getRepository(Image::class);
-        $images = $repository->findAll();
+        $idGallery = $args['idGallery'];
+        $repository = $this->em->getRepository(Galerie::class);
+        $gallery = $repository->findOneBy([
+            'id' => $idGallery
+        ]);
 
         return $this->view->render($response, 'images/images.html.twig', [
-            "images" => $images
+            "gallery" => $gallery,
         ]);
     }
 

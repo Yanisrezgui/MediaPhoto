@@ -1,9 +1,8 @@
-.container-create-gallery{
+.container-create-image{
     background-color: $item-bg-color;
     width: 500px;
     margin: auto;
     margin-top:80px;
-    margin-bottom: 50px;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 
@@ -12,23 +11,27 @@
         text-align: center;
     }
 
-    .titre-create-gallery {
+    .gallery-create-image {
         margin-left: 30px;
         margin-bottom: 15px;
     }
 
-    .description-create-gallery {
+    .titre-create-image {
         margin-left: 30px;
         margin-bottom: 15px;
-        margin-right: 30px;
-        display: flex;
-        flex-direction: column;
-        textarea {
-            resize: vertical;
-        }
     }
 
-    .keywords-create-gallery {
+    .desc-create-image {
+        margin-left: 30px;
+        margin-bottom: 15px;
+    }
+
+    .upload-create-image {
+        margin-left: 30px;
+        margin-bottom: 15px;
+    }
+
+    .keywords-create-image {
         margin-left: 30px;
         margin-bottom: 15px;
         .keywords-list {
@@ -64,31 +67,12 @@
         margin-top: 80px;
         padding-bottom:80px;
 
-
-
-        input {
-            font-size: 1.1em;
-            font-family: $font;
+        a {
             background-color: #EB2540;
             border-radius: 20px;
             color: white;
             text-decoration: none;
-            padding:15px 40px 15px 40px;
-            margin: 0 auto;
-            line-height: 2px;
-            cursor: pointer;
-            border: none;
-        }
-    }
-    
-    .radio-create-gallery {
-        margin-left: 30px;
-        display: flex;
-
-        label {
-            padding-top:11px;
-            font-size: 0.9em;
-            margin-right: 10px;
+            padding:7px 40px 7px 40px;
         }
     }
 

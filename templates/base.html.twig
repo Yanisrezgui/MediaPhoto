@@ -4,32 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock %}</title>
     <link href="/css/index.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet'>
 </head>
 <body>
-{% if connecter == false %}
-    <nav>
-        <ul>
-            <li> <a href="/"> <img src="/img/meetup.png" alt="MediaPhoto Logo"></a></li>
-            <li id="mediaphoto"> <a href="/"> MediaPhoto </a></li>
-            <li id="connection"> <a href="/signIn"> Connexion  </a></li>
-        </ul>
-    </nav>
-    {% else %}
-    <nav>
-        <ul>
-            <li> <a href="/"> <img src="/img/meetup.png" alt="MediaPhoto Logo"></a></li>
-            <li id="mediaphoto"> <a href="/"> MediaPhoto </a></li>
-            <li id="createGallery"> <a href="/uploadImage"> Publier une Photo  </a></li>
-            <li id="createGallery"> <a href="/new-gallery"> Nouvelle Galerie  </a></li>
-            <li id="my-account"> <a href="/"> {{pseudo}}  </a></li>
-        </ul>
-    </nav>
-    {% endif %}
-    
     {% block body %}
+        {% if connecter == false %}
+            <nav>
+                <ul>
+                    <li> <a href="/"> <img src="/img/meetup.png" alt="MediaPhoto Logo"></a></li>
+                    <li id="mediaphoto"> <a href="/"> MediaPhoto </a></li>
+                    <li id="connection"> <a href="/signIn"> Connexion  </a></li>
+                </ul>
+            </nav>
+        {% else %}
+            <nav>
+                <ul>
+                    <li> <a href="/"> <img src="/img/meetup.png" alt="MediaPhoto Logo"></a></li>
+                    <li id="mediaphoto"> <a href="/"> MediaPhoto </a></li>
+                    <li id="createGallery"> <a href="/uploadImage"> Publier une Photo  </a></li>
+                    <li id="createGallery"> <a href="/new-gallery"> Nouvelle Galerie  </a></li>
+                    <li id="my-account"> <a href="/"> {{pseudo}}  </a></li>
+                </ul>
+            </nav>
+        {% endif %}
     {% endblock %}
 </body>
 </html>

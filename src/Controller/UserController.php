@@ -87,24 +87,21 @@ class UserController
     }
 
     return $response
-      ->withHeader('Location', '/')
+      ->withHeader('Location', '/signIn')
       ->withStatus(302);
   }
-
 
   public function signIn(ServerRequestInterface $request, ResponseInterface $response) : ResponseInterface
   {
       $args = $request->getParsedBody();
       $errorLogin = "";
       if (isset($args["email"]) && isset($args["password"])) {
-
-
           $login = $this->userService->signIn($args["email"], $args["password"]);
           if ($login === false) {
             $errorLogin = "Mauvais email ou mot de passe";
             return $this->view->render($response, 'profile/signIn.html.twig', [
               'errorLogin' => $errorLogin
-          ]);
+            ]);
           } else {
               $repository = $this->em->getRepository(\App\Domain\User::class); 
             
@@ -116,10 +113,8 @@ class UserController
             
               $_SESSION['id_util']= $user->{'id'};
               $_SESSION['pseudo']= $user->{'pseudo'};
-
-            }
+          }
       }
-
 
       return $this->view->render($response, 'gallery/gallery.html.twig', [
           'connecter' => isset($_SESSION['connecter']),

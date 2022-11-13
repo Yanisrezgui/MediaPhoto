@@ -65,7 +65,11 @@ class ImagesController
         $repository = $this->em->getRepository(Galerie::class); 
         $galleries = $repository->findAll();
         return $this->view->render($response, 'images/uploadImage.html.twig', [
-            'galleries' => $galleries
+            'galleries' => $galleries,
+            'connecter' => isset($_SESSION['connecter']),
+            'email' => $_SESSION["email"] ?? "",
+            'id_util' => $_SESSION["id_util"] ?? "",
+            'pseudo' => $_SESSION["pseudo"] ?? "",
         ]);
     }
 

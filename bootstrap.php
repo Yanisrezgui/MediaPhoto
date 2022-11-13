@@ -21,6 +21,8 @@ use Monolog\Handler\StreamHandler;
 use Psr\Log\LoggerInterface;
 use Slim\Views\Twig;
 
+if(empty(session_id())) session_start();
+
 require_once __DIR__ . '/vendor/autoload.php';
 
 $container = new Container(require __DIR__ . '/settings.php');

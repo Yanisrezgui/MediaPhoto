@@ -51,9 +51,9 @@ class HomeController
     $args = $request->getParsedBody();
     $repository = $this->em->getRepository(\App\Domain\User::class); 
 
-    // $currentUser = $repository->findOneBy([
-    //   'id' => $_SESSION["id_util"]
-    // ]);
+    $currentUser = $repository->findOneBy([
+      'id' => $_SESSION["id_util"]
+    ]);
     
     // $login = $this->userService->signIn($args["email"], $args["password"]);
     // if($login) {
@@ -69,7 +69,7 @@ class HomeController
         }
 
         $galerie = new Galerie($accessibility,$args["titre"],$args["description"],$args["keywords"]);
-        // $galerie->setUser($currentUser);
+        $galerie->setUser($currentUser);
         // $galerie->addUserAcces($user1);
         $this->em->persist($galerie);
         $this->em->flush();

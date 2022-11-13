@@ -16,7 +16,7 @@ use Doctrine\ORM\Mapping\JoinTable;
 use Doctrine\ORM\Mapping\ManyToMany;
 
 #[Entity, Table(name: 'Utilisateur')]
-final class User
+class User
 {
     #[Id, Column(name:'id_util',type: 'integer'), GeneratedValue(strategy: 'AUTO')]
     public int $id;

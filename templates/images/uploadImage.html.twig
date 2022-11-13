@@ -3,6 +3,11 @@
 {% block title %}MediaPhoto - uploadImages{% endblock %}
 
 {% block body %}
+    <div class="container-upload">
+        <form action="/uploadImage/post" method="POST" enctype="multipart/form-data">
+            <input type="file" name="myfile"/>
+            <input type="submit" value="Publier" class="btn">
+        </form>
     <div class="container-create-image">
         <h1>Ajouter une image</h1>
         <div class="gallery-create-image">

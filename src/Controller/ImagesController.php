@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Domain\Image;
 use App\Domain\Galerie;
 use Doctrine\ORM\EntityManager;
 use Psr\Http\Message\ResponseInterface;
@@ -35,8 +36,22 @@ class ImagesController
         return $this->view->render($response, 'images/description.html.twig');
     }
 
-    public function uploadImage(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
+    public function view(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
     {
         return $this->view->render($response, 'images/uploadImage.html.twig');
+    }
+
+    public function uploadImage(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
+    {
+        $name = $_FILES['myfile']['name'];
+        $type = $_FILES['myfile']['type'];
+        $data = file_get_contents($_FILES['myfile']['tmp_name']);
+   
+        $this->em->persist(new Image("motcle", "titre", "desc", $name, $type, $data));
+        $this->em->flush();
+
+        return $response
+            ->withHeader('Location', '/uploadImage')
+            ->withStatus(302);
     }
 }

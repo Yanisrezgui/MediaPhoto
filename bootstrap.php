@@ -23,9 +23,7 @@ use Slim\Views\Twig;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-
 $container = new Container(require __DIR__ . '/settings.php');
-
 
 $container->set(LoggerInterface::class, function (ContainerInterface $c) {
     $settings = $c->get('settings')['logger'];

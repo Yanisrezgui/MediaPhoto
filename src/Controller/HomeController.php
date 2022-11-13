@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Domain\Image;
 use App\Domain\Galerie;
 use App\Service\GalleryService;
 use Doctrine\ORM\EntityManager;
@@ -24,6 +25,8 @@ class HomeController
 
   public function home(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {
+    $repository = $this->em->getRepository(Image::class);
+    $images = $repository->findAll();
     
     $galleries = $this->galleryService->getAllGalleries();
     return $this->view->render($response, 'gallery/gallery.html.twig', [

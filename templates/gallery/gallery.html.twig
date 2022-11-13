@@ -36,6 +36,12 @@
         <h1>Bienvenue sur MediaPhoto </h1>
         <p>Explorez les photos publiés par des utilisateurs, ou postez-en !</p>
     </div>
+    
+    {% for image in images %}
+        {# <img src="data:image/png;base64,{{image.getImg_blob()}}" alt=""> #}
+        <p></p>
+    {% endfor %}
+    
     <div class="search-bar-container">
         <form action="/sort-gallery" method="POST">
         <div class="search-bar">

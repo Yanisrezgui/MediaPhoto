@@ -25,7 +25,6 @@ class HomeController
 
   public function home(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {
-
     $galleries = $this->galleryService->getAllGalleries();
     return $this->view->render($response, 'gallery/gallery.html.twig', [
       'galleries' => $galleries,

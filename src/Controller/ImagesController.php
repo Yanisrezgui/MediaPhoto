@@ -65,7 +65,11 @@ class ImagesController
         $repository = $this->em->getRepository(Galerie::class); 
         $galleries = $repository->findAll();
         return $this->view->render($response, 'images/uploadImage.html.twig', [
-            'galleries' => $galleries
+            'galleries' => $galleries,
+            'connecter' => isset($_SESSION['connecter']),
+            'email' => $_SESSION["email"] ?? "",
+            'id_util' => $_SESSION["id_util"] ?? "",
+            'pseudo' => $_SESSION["pseudo"] ?? "",
         ]);
     }
 
@@ -74,7 +78,7 @@ class ImagesController
         $args = $request->getParsedBody();
         $repository = $this->em->getRepository(Galerie::class); 
         $gallerie = $repository->findOneBy([
-        'id' => $args['galerie'],
+            'id' => $args['galerie'],
         ]);
 
         $name = $_FILES['myfile']['name'];
@@ -86,8 +90,16 @@ class ImagesController
         $this->em->persist($image);
         $this->em->flush();
 
+        $imgRepository = $this->em->getRepository(Image::class); 
+        $imageReq = $imgRepository->findOneBy(
+            array(),
+            array('id_img' => 'DESC')
+        );
+
+        $idImg = $imageReq->getId_img();
+        
         return $response
-            ->withHeader('Location', '/uploadImage')
+            ->withHeader('Location', '/image/' . $idImg)
             ->withStatus(302);
     }
 

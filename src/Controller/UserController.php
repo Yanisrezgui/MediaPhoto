@@ -148,6 +148,7 @@ class UserController
   public function changePassword(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {
     $args = $request->getParsedBody();
+    $modif = $request->getParsedBody();
     $errorChange = "";
     $errorChangeVerif = "";
     if (isset($args["last-pass"]) && isset($args["new-pass"]) && isset($args["new-new-pass"])) {
@@ -164,7 +165,7 @@ class UserController
             ]);
       }
       else  {
-        $password = $this->password = password_hash($args["new-pass"], PASSWORD_DEFAULT);
+        $password = $this->password = password_hash($modif["new-pass"], PASSWORD_DEFAULT);
         $idUser = $_SESSION['id_util'];
         $repository = $this->em->getRepository((User::class));
         $updateUser = $repository->findOneBy([

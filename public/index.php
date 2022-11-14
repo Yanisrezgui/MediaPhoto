@@ -17,14 +17,11 @@ $app = AppFactory::create();
 $app->add(TwigMiddleware::createFromContainer($app));
 
 $app->get('/', \App\Controller\HomeController::class . ':home');
-$app->get('/gallery/{idGallery}', \App\Controller\ImagesController::class . ':images');
 $app->get('/new-gallery', \App\Controller\HomeController::class . ':createGalleryPage');
 $app->post('/new-gallery/create', \App\Controller\HomeController::class . ':createGalleryFunction');
+$app->get('/gallery/{idGallery}', \App\Controller\ImagesController::class . ':images');
 $app->post('/sort-gallery', \App\Controller\HomeController::class . ':sortGallery');
-$app->post('/addUserGallery/{idGallery}', \App\Controller\HomeController::class . ':addUserGallery');
 
-$app->get('/edit-gallery/{idGallery}', \App\Controller\HomeController::class . ':editGalleryPage');
-$app->post('/edit-gallery/edit/{idGallery}', \App\Controller\HomeController::class . ':editGalleryFunction');
 
 $app->get('/image/{idImage}', \App\Controller\ImagesController::class . ':description');
 $app->get('/uploadImage/{idGallery}', \App\Controller\ImagesController::class . ':view');
@@ -36,8 +33,6 @@ $app->post('/signUp/createUser', \App\Controller\UserController::class . ':signU
 $app->get('/signIn', \App\Controller\UserController::class . ':signInView');
 $app->post('/signIn/signUser', \App\Controller\UserController::class . ':signIn');
 $app->get('/logout', \App\Controller\UserController::class . ':logout');
-$app->get('/mon-compte', \App\Controller\UserController::class . ':monCompte');
-$app->get('/mon-compte/mes-galeries', \App\Controller\UserController::class . ':mesGaleries');
 
 $app->get('/users', \App\UserController::class . ':test');
 

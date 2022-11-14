@@ -6,7 +6,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Doctrine\ORM\EntityManager;
 use Slim\Views\Twig;
 use App\Domain\User;
-use App\Domain\Galerie;
 use App\Service\UserService;
 
 class UserController
@@ -134,39 +133,4 @@ class UserController
   {
       return $this->view->render($response, 'profile/signIn.html.twig');
   }
-
-  public function monCompte(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
-  {
-    return $this->view->render($response, '/profile/moncompte.html.twig', [
-      'connecter' => isset($_SESSION['connecter']),
-      'email' => $_SESSION["email"] ?? "",
-      'id_util' => $_SESSION["id_util"] ?? "",
-      'pseudo' => $_SESSION["pseudo"] ?? "",
-    ]);
-  }
-
-  public function mesGaleries(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
-  {
-
-    $repositoryUser = $this->em->getRepository(User::class); 
-    $repositoryGalerie = $this->em->getRepository(Galerie::class);
-
-    $currentUser = $repositoryUser->findOneBy([
-      'id' => $_SESSION["id_util"]
-    ]);
-
-    $galleries = $repositoryGalerie->findBy([
-      'user' => $currentUser
-    ]);
-
-
-    return $this->view->render($response, '/profile/mesgaleries.html.twig', [
-      'connecter' => isset($_SESSION['connecter']),
-      'email' => $_SESSION["email"] ?? "",
-      'id_util' => $_SESSION["id_util"] ?? "",
-      'pseudo' => $_SESSION["pseudo"] ?? "",
-      'galleries' => $galleries
-    ]);
-  }
-
 }

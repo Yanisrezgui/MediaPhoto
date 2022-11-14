@@ -47,17 +47,6 @@ final class UserService
         }
     }
 
-    public function getCurrentUser(): User
-    {
-        $repository = $this->em->getRepository(\App\Domain\User::class); 
-
-        $currentUser = $repository->findOneBy([
-        'id' => $_SESSION["id_util"]
-        ]);
-
-        return $currentUser;
-    }
-
 
     
 }

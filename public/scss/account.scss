@@ -74,3 +74,39 @@ body {
         margin-bottom: 15px;
     }
 }
+
+.container-my-galleries {
+    width:800px;
+    margin:auto;
+    background-color: $item-bg-color;
+    margin-top:80px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+    h1 {
+        padding:30px 0 40px 0;
+        text-align: center;
+    }
+    .my-gallerie {
+        border: 1px solid black;
+        margin:15px;
+        display: flex;
+        color:#111111;
+        .info-galerie {
+            flex-direction: column;
+            h2 {
+                padding:20px;
+            }
+            p {
+                padding : 0 10px 0 10px
+            }
+        }
+    }
+    img {
+        height: 200px;
+        padding-left: 15px;
+        padding-right: 15px;
+        border-right: 1px solid black;
+    }
+
+}

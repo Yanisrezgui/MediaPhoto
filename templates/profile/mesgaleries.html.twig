@@ -11,8 +11,20 @@
   <a href="/logout">Déconnexion</a>
 </div>
 
-<div class="container-account">
-
+<div class="container-my-galleries">
+    <h1>Mes Galeries</h1>
+    {% for gallery in galleries %}
+    <a href="/gallery/{{gallery.id}}">
+    <div class="my-gallerie">
+        <img src="/img/meetup.png" alt="">
+        <div class="info-galerie">
+            <h2>{{gallery.titre}}</h2>
+            <p>{{gallery.description}}</p>
+        </div>
+    </div>
+    {% endfor %}
+    
+    </a>
 </div>
 
 

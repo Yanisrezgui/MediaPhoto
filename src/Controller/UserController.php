@@ -164,13 +164,14 @@ class UserController
             ]);
       }
       else  {
+        $password = $this->password = password_hash($args["new-pass"], PASSWORD_DEFAULT);
         $idUser = $_SESSION['id_util'];
         $repository = $this->em->getRepository((User::class));
         $updateUser = $repository->findOneBy([
           'id' => $idUser,
         ]);
 
-        $updateUser->checkPassword($args["new-pass"]);
+        $updateUser->setPassword($password);
 
         $this->em->persist($updateUser);
         $this->em->flush();

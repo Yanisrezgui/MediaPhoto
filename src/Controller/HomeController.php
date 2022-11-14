@@ -1,8 +1,8 @@
 <?php
 namespace App\Controller;
 
+use App\Domain\Image;
 use App\Domain\Galerie;
-use App\Domain\User;
 use App\Service\GalleryService;
 use Doctrine\ORM\EntityManager;
 use Psr\Http\Message\ResponseInterface;
@@ -63,9 +63,16 @@ class HomeController
   public function createGalleryFunction(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {
     $args = $request->getParsedBody();
+    $repository = $this->em->getRepository(\App\Domain\User::class); 
 
-    $currentUser = $this->userService->getCurrentUser();
+    $currentUser = $repository->findOneBy([
+      'id' => $_SESSION["id_util"]
+    ]);
 
+    $user1 = $repository->findOneBy([
+      'id' => 2
+    ]);
+  
       if (isset($args["titre"]) && isset($args["keywords"])) {
         if ($args['radio-accessibility'] == 'public') { 
           $accessibility = true;
@@ -75,10 +82,11 @@ class HomeController
 
         $galerie = new Galerie($accessibility,$args["titre"],$args["description"],$args["keywords"]);
         $galerie->setUser($currentUser);
-        // $galerie->addUserAcces($user1);
+        $galerie->addUserAcces($user1);
         $this->em->persist($galerie);
         $this->em->flush();
       }
+    // }
 
     return $response
       ->withHeader('Location', '/')
@@ -99,23 +107,8 @@ class HomeController
       'motCle' => $args['search-bar'],
     ]);
   }
-  
-  public function editGalleryPage(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
-  {
-    $idGallery = $args['idGallery'];
-    $repository = $this->em->getRepository(Galerie::class); 
-    $gallery = $repository->findOneBy([
-      'id' => $idGallery,
-    ]);
-    return $this->view->render($response, 'gallery/editGallery.html.twig',[
-      'connecter' => isset($_SESSION['connecter']),
-      'email' => $_SESSION["email"] ?? "",
-      'id_util' => $_SESSION["id_util"] ?? "",
-      'pseudo' => $_SESSION["pseudo"] ?? "",
-      "gallery" => $gallery
-  ]);
-  }
 
+<<<<<<< HEAD
   public function editGalleryFunction(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {
     $form = $request->getParsedBody();
@@ -177,3 +170,6 @@ class HomeController
  
 
 }
+=======
+}
+>>>>>>> Créer-Galerie-Amélioration

@@ -60,7 +60,8 @@
     {% for galleryPrivate in galleryPrivates %}
             <div class="img-gallery-grid">
                 <a href="/gallery/{{galleryPrivate.getId()}}">
-                
+                    <img class="img-id" src="/img/image.png">
+                </a>
                 <p class="description-img">{{galleryPrivate.titre}}</p></a>
             </div>
         {% endfor %}

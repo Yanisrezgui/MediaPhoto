@@ -1,8 +1,8 @@
 <?php
 namespace App\Controller;
 
-use App\Domain\Image;
 use App\Domain\Galerie;
+use App\Domain\User;
 use App\Service\GalleryService;
 use Doctrine\ORM\EntityManager;
 use Psr\Http\Message\ResponseInterface;
@@ -25,9 +25,16 @@ class HomeController
 
   public function home(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {
+    $repository = $this->em->getRepository(\App\Domain\Galerie::class); 
+
+    $galleriePublic = $repository->findBy([
+      'acces' => "1"
+    ]);
+ 
     $galleries = $this->galleryService->getAllGalleries();
     return $this->view->render($response, 'gallery/gallery.html.twig', [
       'galleries' => $galleries,
+      'galleriePublic' => $galleriePublic,
       'connecter' => isset($_SESSION['connecter']),
       'email' => $_SESSION["email"] ?? "",
       'id_util' => $_SESSION["id_util"] ?? "",
@@ -84,7 +91,7 @@ class HomeController
       'motCle' => $args['search-bar'],
     ]);
   }
-
+  
   public function editGalleryPage(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {
     $idGallery = $args['idGallery'];
@@ -131,3 +138,36 @@ class HomeController
   }
 
 }
+
+  public function addUserGallery(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
+  {
+    $idGallery=$args['idGallery'];
+    $arg = $request->getParsedBody();
+
+
+    $galleryRepository = $this->em->getRepository(Galerie::class); 
+    $gallery = $galleryRepository->findOneBy([
+      'id' => $idGallery,
+    ]);
+
+    $user=$arg['addUser'];
+    
+    $userRepository = $this->em->getRepository(User::class); 
+    $userAcces = $userRepository->findOneBy([
+      'pseudo' => $user,
+    ]);
+
+  //$idUser=$userAcces->{'id'};
+
+   $gallery->addUserAcces($userAcces);
+
+   $this->em->persist($gallery);
+   $this->em->flush();
+    
+    return $this->view->render($response, 'gallery/gallery.html.twig', [
+      
+    ]);
+  }
+
+}
+

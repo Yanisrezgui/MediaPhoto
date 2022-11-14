@@ -47,11 +47,7 @@ class Galerie
     #[ManyToMany(targetEntity: User::class)]
     private Collection $user_acces;
 
-    #[JoinTable(name: 'PhotoGalerie')]
-    #[JoinColumn(name: 'id_galerie', referencedColumnName: 'id_galerie')]
-    #[InverseJoinColumn(name: 'id_img', referencedColumnName: 'id_img')]
-    #[ManyToMany(targetEntity: Image::class)]
-    private Collection $imageGalery;
+    
 
     public function __construct(bool $acces, string $titre, string $description, string $motcle)
     {
@@ -61,7 +57,6 @@ class Galerie
         $this->date = new DateTime();
         $this->motcle = $motcle;
         $this->user_acces = new ArrayCollection();
-        $this->imageGalery = new ArrayCollection();
     }
     
     public function getId(): int
@@ -158,14 +153,5 @@ class Galerie
         return $this->user_acces;
     }
 
-    public function setImageGalerie(?Image $imageGalery): self
-    {
-        $this->user = $imageGalery;
-        return $this;
-    }
-
-    public function getImageGalerie(): Collection
-    {
-        return $this->imageGalery;
-    }
+    
 }

@@ -36,6 +36,12 @@
             <p class="description-img">{{image.titre}}</p>
         </div>
         {% endfor %}
-
     </div>
+    <form action="/addUserGallery/{{gallery.id}}" method="POST">
+        <input type="text" id="adduser" name="addUser" placeholder="Ajouter un membre" size="40">
+        <br>
+        <span>salut</span>
+        <input type="submit" id="submit-button" value="Ajouter">
+
+    </form>
 {% endblock %}

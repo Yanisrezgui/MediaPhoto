@@ -22,16 +22,34 @@
             </div>
         </form>
     </div>
+    <h1>Public :</h1>
     <div class="gallery-container"> 
+
         {% for gallery in galleries %}
+        {% if gallery.getAcces() %}
+        
             <div class="img-gallery-grid">
                 <a href="/gallery/{{gallery.id}}">
                     <img class="img-id" src="/img/meetup.png">
                 </a>
                 <p class="description-img">{{gallery.titre}}</p>
             </div>
+            {% endif %}
         {% endfor %}
-        {% if connecter == false %}
-            <p>{{pseudo}}</p>
-        {% endif %}
+    </div>
+
+    <h1>Privé :</h1>
+    <div class="gallery-container"> 
+    {% for gallery in galleries %}
+        {% if not gallery.getAcces() %}
+        
+            <div class="img-gallery-grid">
+                <a href="/gallery/{{gallery.id}}">
+                    <img class="img-id" src="/img/meetup.png">
+                </a>
+                <p class="description-img">{{gallery.titre}}</p>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
 {% endblock %}

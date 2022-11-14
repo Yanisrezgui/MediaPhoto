@@ -25,6 +25,7 @@ class HomeController
 
   public function home(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {   
+    $galleries = $this->galleryService->getAllGalleries();
     $query = $this->em->createQueryBuilder();
     $query->select('i')
       ->from('App\Domain\Image', 'i')
@@ -33,6 +34,7 @@ class HomeController
     $images = $query->getQuery()->getResult();
 
     return $this->view->render($response, 'gallery/gallery.html.twig', [
+      'galleries' => $galleries,
       'images' => $images,
       'connecter' => isset($_SESSION['connecter']),
       'email' => $_SESSION["email"] ?? "",

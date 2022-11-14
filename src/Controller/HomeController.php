@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Domain\Image;
+use App\Domain\User;
 use App\Domain\Galerie;
 use App\Service\GalleryService;
 use Doctrine\ORM\EntityManager;

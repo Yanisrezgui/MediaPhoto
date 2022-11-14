@@ -42,6 +42,18 @@ class HomeController
     ]);
   }
 
+  public function propos(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
+  {
+  
+
+    return $this->view->render($response, 'propos.html.twig', [
+      'connecter' => isset($_SESSION['connecter']),
+      'email' => $_SESSION["email"] ?? "",
+      'id_util' => $_SESSION["id_util"] ?? "",
+      'pseudo' => $_SESSION["pseudo"] ?? "",
+    ]);
+  }
+
   public function createGalleryPage(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {
     return $this->view->render($response, 'gallery/createGallery.html.twig',[

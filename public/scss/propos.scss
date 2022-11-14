@@ -1,0 +1,20 @@
+.container-pro {
+    background-color: $item-bg-color;
+    width: 500px;
+    margin: auto;
+    margin-top:80px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    text-align: center;
+
+    .github img{
+        width : 50px;
+    }
+    img {
+        width:500px;
+    }
+
+    .maquette img {
+        width:50px;
+    }
+}

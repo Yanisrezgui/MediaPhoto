@@ -145,6 +145,44 @@ class UserController
     ]);
   }
 
+  public function changePassword(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
+  {
+    $args = $request->getParsedBody();
+    $modif = $request->getParsedBody();
+    $errorChange = "";
+    $errorChangeVerif = "";
+    if (isset($args["last-pass"]) && isset($args["new-pass"]) && isset($args["new-new-pass"])) {
+      if ($args["new-pass"] != $args["new-new-pass"]) {
+        $errorChangeVerif = "Les mots de passe ne correspondent pas";
+        return $this->view->render($response, '/profile/monCompte.html.twig', [
+          'errorChangeVerif' => $errorChangeVerif
+        ]);
+      }
+      else if ($args["last-pass"] == "" || $args["new-pass"] = "" || $args["new-new-pass"] =="") {
+        $errorChange = "Veuillez remplir tous les champs";
+            return $this->view->render($response, 'profile/monCompte.html.twig', [
+              'errorChange' => $errorChange
+            ]);
+      }
+      else  {
+        $password = $this->password = password_hash($modif["new-pass"], PASSWORD_DEFAULT);
+        $idUser = $_SESSION['id_util'];
+        $repository = $this->em->getRepository((User::class));
+        $updateUser = $repository->findOneBy([
+          'id' => $idUser,
+        ]);
+
+        $updateUser->setPassword($password);
+
+        $this->em->persist($updateUser);
+        $this->em->flush();
+      }
+    }
+    return $response
+        ->withHeader('Location', '/')
+        ->withStatus(302);
+  }
+
   public function mesGaleries(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {
 

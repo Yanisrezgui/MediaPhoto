@@ -8,7 +8,7 @@
             {{gallery.titre}}
             ({{gallery.getAccesString(gallery.getAcces)}})
         </h1>
-        <span>par Utilisateur</span>
+        <span>par {{gallery.getUser().getPseudo()}}</span>
         <span>{{gallery.getDateString(gallery.getDate())}}</span>
         <p>{{gallery.description}}</p>
     </div>

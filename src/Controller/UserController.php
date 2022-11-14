@@ -133,4 +133,25 @@ class UserController
   {
       return $this->view->render($response, 'profile/signIn.html.twig');
   }
+
+  public function monCompte(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
+  {
+    return $this->view->render($response, '/profile/moncompte.html.twig', [
+      'connecter' => isset($_SESSION['connecter']),
+      'email' => $_SESSION["email"] ?? "",
+      'id_util' => $_SESSION["id_util"] ?? "",
+      'pseudo' => $_SESSION["pseudo"] ?? "",
+    ]);
+  }
+
+  public function mesGaleries(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
+  {
+    return $this->view->render($response, '/profile/mesgaleries.html.twig', [
+      'connecter' => isset($_SESSION['connecter']),
+      'email' => $_SESSION["email"] ?? "",
+      'id_util' => $_SESSION["id_util"] ?? "",
+      'pseudo' => $_SESSION["pseudo"] ?? "",
+    ]);
+  }
+
 }

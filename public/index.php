@@ -33,6 +33,8 @@ $app->post('/signUp/createUser', \App\Controller\UserController::class . ':signU
 $app->get('/signIn', \App\Controller\UserController::class . ':signInView');
 $app->post('/signIn/signUser', \App\Controller\UserController::class . ':signIn');
 $app->get('/logout', \App\Controller\UserController::class . ':logout');
+$app->get('/mon-compte', \App\Controller\UserController::class . ':monCompte');
+$app->get('/mon-compte/mes-galeries', \App\Controller\UserController::class . ':mesGaleries');
 
 $app->get('/users', \App\UserController::class . ':test');
 

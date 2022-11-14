@@ -10,7 +10,7 @@
                 <img src="/img/add.png" style="width: 25px">
             </a>
         </h1>
-        <span>par Utilisateur</span>
+        <span>par {{gallery.getUser().getPseudo()}}</span>
         <span>{{gallery.getDateString(gallery.getDate())}}</span>
         <span>Galerie: {{gallery.getAccesString(gallery.getAcces)}}</span>
         <p>{{gallery.description}}</p>
@@ -27,6 +27,16 @@
             {% endif %}
         </form>
     </div>
+    {% if gallery.getAcces() == false %}
+    <h2>Ajouter l'accès à un utilisateur :</h2>
+    
+    <form action="/addUserGallery/{{gallery.id}}" method="POST">
+        <input type="text" id="adduser" name="addUser" placeholder="Ajouter un membre" size="40">
+        <br>
+        <input type="submit" id="submit-button" value="Ajouter">
+    </form>
+
+    {% endif %}
     <div class="gallery-container">
         {% for image in images %}
         <div class="img-gallery-grid">
@@ -37,4 +47,5 @@
         </div>
         {% endfor %}
     </div>
+    
 {% endblock %}

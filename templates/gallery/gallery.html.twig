@@ -22,16 +22,52 @@
             </div>
         </form>
     </div>
-    <div class="gallery-container">
-        {% for image in images %}
+    {% if connecter == false %}
+    <h1>Public :</h1>
+    <div class="gallery-container"> 
+
+        {% for gallery in galleries %}
+        {% if gallery.getAcces() %}
+        
             <div class="img-gallery-grid">
                 <a href="/gallery/{{image.galerie.getId()}}">
                     <img class="img-id" src="data:{{image.imgmime}};base64,{{image.getBlobToString()}}">
                 </a>
                 <p class="description-img">{{image.titre}}</p>
             </div>
+            {% endif %}
         {% endfor %}
-        {% if connecter == false %}
-            <p>{{pseudo}}</p>
-        {% endif %}
+    </div>
+{% else %}
+    <h1>Public :</h1>
+    <div class="gallery-container"> 
+
+        {% for gallery in galleries %}
+        {% if gallery.getAcces() %}
+        
+            <div class="img-gallery-grid">
+                <a href="/gallery/{{gallery.id}}">
+                    <img class="img-id" src="/img/meetup.png">
+                </a>
+                <p class="description-img">{{gallery.titre}}</p>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <h1>Privé :</h1>
+    <div class="gallery-container"> 
+    {% for gallery in galleries %}
+        {% if not gallery.getAcces() %}
+        
+            <div class="img-gallery-grid">
+                <a href="/gallery/{{gallery.id}}">
+                    <img class="img-id" src="/img/meetup.png">
+                </a>
+                <p class="description-img">{{gallery.titre}}</p>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}
 {% endblock %}

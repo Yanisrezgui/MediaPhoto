@@ -108,7 +108,6 @@ class HomeController
     ]);
   }
 
-<<<<<<< HEAD
   public function editGalleryFunction(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {
     $form = $request->getParsedBody();
@@ -170,6 +169,3 @@ class HomeController
  
 
 }
-=======
-}
->>>>>>> Créer-Galerie-Amélioration

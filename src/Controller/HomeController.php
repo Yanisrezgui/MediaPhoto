@@ -24,7 +24,12 @@ class HomeController
   }
 
   public function home(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
-  {   
+  {    
+
+    if(isset($_SESSION['connecter'])) {
+      $galleryPrivates = $this->galleryService->getGalleryPrivate();
+    } 
+ 
     $galleries = $this->galleryService->getAllGalleries();
     $query = $this->em->createQueryBuilder();
     $query->select('i')
@@ -36,11 +41,13 @@ class HomeController
     return $this->view->render($response, 'gallery/gallery.html.twig', [
       'galleries' => $galleries,
       'images' => $images,
+      'galleryPrivates'=>$galleryPrivates ?? "",
       'connecter' => isset($_SESSION['connecter']),
       'email' => $_SESSION["email"] ?? "",
       'id_util' => $_SESSION["id_util"] ?? "",
       'pseudo' => $_SESSION["pseudo"] ?? "",
     ]);
+    
   }
 
   public function createGalleryPage(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
@@ -157,10 +164,7 @@ class HomeController
       'pseudo' => $user,
     ]);
 
-  //$idUser=$userAcces->{'id'};
-
    $gallery->addUserAcces($userAcces);
-
    $this->em->persist($gallery);
    $this->em->flush();
     
@@ -168,5 +172,8 @@ class HomeController
    ->withHeader('Location', '/gallery/'.$idGallery)
    ->withStatus(302);
   }
+
+
+ 
 
 }

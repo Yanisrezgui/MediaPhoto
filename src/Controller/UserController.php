@@ -86,7 +86,6 @@ class UserController
         $this->userService->signUp($args["mail"], $args["password"], $args["pseudo"]); 
       }
     }
-
     return $response
       ->withHeader('Location', '/signIn')
       ->withStatus(302);
@@ -122,13 +121,14 @@ class UserController
         ->withStatus(302);
   }
 
-  public function logout(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
-  {
-      session_destroy();
-      return $response
-        ->withHeader('Location', '/')
-        ->withStatus(302);
-  }
+  
+    public function logout(ServerRequestInterface $request, ResponseInterface $response) : ResponseInterface
+    {
+        session_destroy();
+        $response = $response->withStatus(302);
+        return $response->withHeader('Location', '/');
+    }
+  
 
   public function signInView(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {

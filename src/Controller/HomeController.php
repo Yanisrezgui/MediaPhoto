@@ -137,7 +137,6 @@ class HomeController
       ->withStatus(302);
   }
 
-}
 
   public function addUserGallery(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {

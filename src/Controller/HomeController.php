@@ -163,10 +163,9 @@ class HomeController
    $this->em->persist($gallery);
    $this->em->flush();
     
-    return $this->view->render($response, 'gallery/gallery.html.twig', [
-      
-    ]);
+   return $response
+   ->withHeader('Location', '/gallery/'.$idGallery)
+   ->withStatus(302);
   }
 
 }
-

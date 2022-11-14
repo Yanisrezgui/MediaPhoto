@@ -4,6 +4,7 @@
 
 {% block body %}
 
+    <a href="/">Accueil</a> > 
     <div class="galery-info-container">
         <h1>Bienvenue sur MediaPhoto </h1>
         <p>Explorez les photos publiés par des utilisateurs, ou postez-en !</p>
@@ -30,10 +31,10 @@
         {% if gallery.getAcces() %}
         
             <div class="img-gallery-grid">
-                <a href="/gallery/{{image.galerie.getId()}}">
-                    <img class="img-id" src="data:{{image.imgmime}};base64,{{image.getBlobToString()}}">
+                <a href="/gallery/{{gallery.id}}">
+                    <img class="img-id" src="/img/meetup.png">
                 </a>
-                <p class="description-img">{{image.titre}}</p>
+                <p class="description-img">{{gallery.titre}}</p>
             </div>
             {% endif %}
         {% endfor %}
@@ -59,7 +60,7 @@
     <div class="gallery-container"> 
     {% for galleryPrivate in galleryPrivates %}
             <div class="img-gallery-grid">
-                <a href="/gallery/{{galleryPrivate.id}}">
+                <a href="/gallery/{{galleryPrivate.getId()}}">
                 
                 <p class="description-img">{{galleryPrivate.titre}}</p></a>
             </div>

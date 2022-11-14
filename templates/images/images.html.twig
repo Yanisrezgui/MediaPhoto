@@ -3,15 +3,18 @@
 {% block title %}MediaPhoto - Images{% endblock %}
 
 {% block body %}
+    <a href="/">Accueil</a> > <a href="/gallery/{{gallery.id}}">Galerie : {{gallery.titre}}</a>
     <div class="galery-info-container">
         <h1>
             {{gallery.titre}} 
+            {% if connecter %}
             <a href="/uploadImage/{{idGallery}}">
                 <img src="/img/add.png" style="width: 25px">
             </a>
             <a href="/edit-gallery/{{gallery.id}}">
                 <img src="/img/edit.png" alt="">
             </a>
+            {% endif %}
         </h1>
         <span>par {{gallery.getUser().getPseudo()}}</span>
         <span>{{gallery.getDateString(gallery.getDate())}}</span>

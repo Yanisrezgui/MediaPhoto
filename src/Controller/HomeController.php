@@ -27,13 +27,14 @@ class HomeController
   {
 
     
-    $galleryPrivates = $this->galleryService->getGalleryPrivate();
-
- 
+    if(isset($_SESSION['connecter'])) {
+      $galleryPrivates = $this->galleryService->getGalleryPrivate();
+    } 
     $galleries = $this->galleryService->getAllGalleries();
+
     return $this->view->render($response, 'gallery/gallery.html.twig', [
       'galleries' => $galleries,
-      'galleryPrivates'=>$galleryPrivates,
+      'galleryPrivates'=>$galleryPrivates ?? "",
       'connecter' => isset($_SESSION['connecter']),
       'email' => $_SESSION["email"] ?? "",
       'id_util' => $_SESSION["id_util"] ?? "",
@@ -66,7 +67,7 @@ class HomeController
 
         $galerie = new Galerie($accessibility,$args["titre"],$args["description"],$args["keywords"]);
         $galerie->setUser($currentUser);
-        // $galerie->addUserAcces($user1);
+        $galerie->addUserAcces($currentUser);
         $this->em->persist($galerie);
         $this->em->flush();
       }

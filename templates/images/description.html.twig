@@ -3,6 +3,8 @@
 {% block title %}MediaPhoto - Description{% endblock %}
 
 {% block body %}
+    <a href="/">Accueil</a> >> <a href="/gallery/{{image.getGalerie.id}}">Galerie : {{image.getGalerie.titre}}</a> >> <a href="/image/{{image.getId_img}}">Image : {{image.titre}}</a>
+
     <div class="container-page-img">
         <div class="header-img">
             <div class="img-container">

@@ -8,42 +8,20 @@
             <div class="img-container">
                 <img src="data:{{image.getImgMime()}};base64,{{image.getBlobToString()}}"/>
             </div>
-            <div class="description">
-                <h1>{{image.titre}}</h1>
-                <p class="description-img">{{image.getImg_desc}}</p>
-                <div class="keywords">
-                    <p class="text-keyword">Mots clés : </p>
-                    <p class="keyword-1 keyword">{{image.getMotCle}}</p>
-                </div>
-                <div class="info">
-                    <p class="date-img">{{image.getDateString(image.getDate())}}</p>
-                    <p class="user-img">Par: Moi</p>
+            <div class="description-container">
+                <div class="description">
+                    <h1>{{image.titre}}</h1>
+                    <p class="description-img">{{image.getImg_desc}}</p>
+                    <div class="keywords">
+                        <p class="text-keyword">Mots clés : </p>
+                        <p class="keyword-1 keyword">{{image.getMotCle}}</p>
+                    </div>
+                    <div class="info">
+                        <p class="date-img">{{image.getDateString(image.getDate())}}</p>
+                        <p class="user-img">Par: Moi</p>
+                    </div>
                 </div>
             </div>
         </div>
-
-        // Commentaires
-        {# <div class="vertical-line"></div>
-        <div class="comment">
-            <p class="title-comment">Commentaires</p>
-            <div class="post-comment">
-                <h3>Poster un commentaire</h3>
-                <p class="message-img">Votre message ...</p>
-                <div>
-                    <a class="btn-s publish" href="">Publier</a>
-                </div>
-            </div>
-            <div class="vertical-line"></div>
-                <div class="comment-user">
-                    <p class="username">username</p>
-                    <p class="text-user-comment">Magnifique !</p>
-                    <p class="date-user-comment">07/11/2022</p>
-                </div>
-                <div class="comment-user">
-                    <p class="username">username 2</p>
-                    <p class="text-user-comment">Impressionnant</p>
-                    <p class="date-user-comment">07/11/2022</p>
-                </div>
-        </div> #}
     </div>
 {% endblock %}

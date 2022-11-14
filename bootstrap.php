@@ -4,7 +4,6 @@
 
 use App\Controller\HomeController;
 use App\Controller\ImagesController;
-use App\Controller\ProfileController;
 use App\Controller\UserController;
 use App\Service\GalleryService;
 use App\Service\UserService;
@@ -80,12 +79,7 @@ $container->set(HomeController::class, static function (ContainerInterface $cont
 
 $container->set(ImagesController::class, static function (ContainerInterface $container) {
     $view = $container->get('view');
-    return new ImagesController($view,$container->get(EntityManager::class));
-});
-
-$container->set(ProfileController::class, static function (ContainerInterface $container) {
-    $view = $container->get('view');
-    return new ProfileController($view);
+    return new ImagesController($view,$container->get(UserService::class),$container->get(EntityManager::class));
 });
 
 return $container;

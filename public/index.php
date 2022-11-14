@@ -27,8 +27,8 @@ $app->get('/edit-gallery/{idGallery}', \App\Controller\HomeController::class . '
 $app->post('/edit-gallery/edit/{idGallery}', \App\Controller\HomeController::class . ':editGalleryFunction');
 
 $app->get('/image/{idImage}', \App\Controller\ImagesController::class . ':description');
-$app->get('/uploadImage', \App\Controller\ImagesController::class . ':view');
-$app->post('/uploadImage/post', \App\Controller\ImagesController::class . ':uploadImage');
+$app->get('/uploadImage/{idGallery}', \App\Controller\ImagesController::class . ':view');
+$app->post('/uploadImage/post/{idGallery}', \App\Controller\ImagesController::class . ':uploadImage');
 $app->post('/sort-image', \App\Controller\ImagesController::class . ':sortImage');
 
 $app->get('/signUp', \App\Controller\UserController::class . ':promptInscription');

@@ -12,14 +12,14 @@ $comment: 12;
         margin: 5px;
         
         &>img {
-            width: 500px;
+            width: 100%;
             display: block;
             margin-left: auto;
             margin-right: auto;
         }
     }
 
-    &>.description {
+    &>.description-container {
         display: block;
         margin: 5px;
         padding: 5px 10px 5px 10px;
@@ -27,57 +27,59 @@ $comment: 12;
         border-radius: 15px;
         box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.50);
 
-        &>h1 {
-            text-align: left;
-            font-size: larger;
-            font-weight: bolder;
-        }
-
-        &>p {
-            margin: 12px 0 24px 0;
-            text-align: justify;
-        }
-
-        &>.keywords {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            flex-basis: 25px;
-
-            &>.text-keyword {
-                color: darken($item-bg-color, $amount: 50%);
+        &>.description {
+            &>h1 {
+                text-align: left;
+                font-size: larger;
+                font-weight: bolder;
             }
-
-            &>.keyword {
-                text-align: center;
-                padding: 2px;
-                margin-left: 5px;
-                font-size: 12px;
+    
+            &>p {
+                margin: 12px 0 24px 0;
+                text-align: justify;
             }
-
-            @for $i from 1 to $comment {
-                &>.keyword-#{$i} {
-                    $bg-color-keyword: #746b6b;
-                    background-color: $bg-color-keyword;
-                    border: darken($color: $bg-color-keyword, $amount: 15%) 1px solid;
-                    border-radius: 25px;
-                    @if (lightness($bg-color-keyword) > 50%) {
-                        color: #000;
-                        text-shadow: #fff .1px .1px;
-                    }
-                    @else {
-                        color: #fff; 
-                        text-shadow: #000 .1px .1px;
+    
+            &>.keywords {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                flex-basis: 25px;
+    
+                &>.text-keyword {
+                    color: darken($item-bg-color, $amount: 50%);
+                }
+    
+                &>.keyword {
+                    text-align: center;
+                    padding: 2px;
+                    margin-left: 5px;
+                    font-size: 12px;
+                }
+    
+                @for $i from 1 to $comment {
+                    &>.keyword-#{$i} {
+                        $bg-color-keyword: #746b6b;
+                        background-color: $bg-color-keyword;
+                        border: darken($color: $bg-color-keyword, $amount: 15%) 1px solid;
+                        border-radius: 25px;
+                        @if (lightness($bg-color-keyword) > 50%) {
+                            color: #000;
+                            text-shadow: #fff .1px .1px;
+                        }
+                        @else {
+                            color: #fff; 
+                            text-shadow: #000 .1px .1px;
+                        }
                     }
                 }
             }
-        }
-
-        &>.info {
-            margin: 24px 0 6px auto;
-            width: 200px;
-            text-align: right;
-            color: darken($item-bg-color, $amount: 50%);
+    
+            &>.info {
+                margin: 24px 0 6px auto;
+                width: 200px;
+                text-align: right;
+                color: darken($item-bg-color, $amount: 50%);
+            }
         }
     }
 }
@@ -126,26 +128,7 @@ $comment: 12;
     }
 }
 
-.comment-user {
-    display: block;
-    margin: 5px;
-    margin-bottom: 16px;
-    padding: 10px;
-    border-radius: 15px;
-    background-color: $item-bg-color;
-
-    &>.username {
-        font-size: 16px;
-        font-weight: 600;
-    }
-
-    &>.date-user-comment {
-        text-align: right;
-        color: darken($item-bg-color, $amount: 50%);
-    }
-}
-
-@media screen and (min-width: 481px) {
+@media screen and (min-width: 781px) {
     .header-img {
         &>.img-container>img {
             width: 50%;
@@ -154,33 +137,55 @@ $comment: 12;
 }
 
 @media screen and (min-width: 1025px) {
+    .container-page-img{
+        margin: 0 200px;
+    }
+
     .header-img {
         display: flex;
         justify-content: center;
         align-items: stretch;
-
+        
         &>.img-container {
-            flex-basis: calc(100vw - 50%);
+            margin: 0;
 
             &>img {
-                width: 80%;
+                margin-right: 0;
+                border-radius: 0;
+                border-top-left-radius: 25px;
+                border-bottom-left-radius: 25px;
+                width: 100%;
             }
         }
 
-        &>.description {
+        &>.description-container {
             position: relative;
-            margin-right: 24px;
+            margin: 0;
+            border-radius: 0;
+            border-top-right-radius: 25px;
+            border-bottom-right-radius: 25px;
+            width: 60%;
 
-            &>.info {
-                position: absolute;
-                bottom: 0;
-                right: 0;
-                margin: 12px;
+            &>.description {
+                padding: 16px 32px;
+
+                &>h1 {
+                    font-size: 34px;
+                    font-weight: bolder;
+                    padding-bottom: 5px;
+                }
+
+                &>.info {
+                    position: absolute;
+                    bottom: 16px;
+                    right: 16px;
+                    margin: 12px;
+                }
             }
         }
     }
 
-    .comment-user {
-        max-width: 60%;
+    .header-img > * {
+        flex: auto 1;
     }
 }

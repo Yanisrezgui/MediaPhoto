@@ -22,14 +22,20 @@
             </div>
         </form>
     </div>
-    <div class="gallery-container">
-        {% for image in images %}
+    {% if connecter == false %}
+    <h1>Public :</h1>
+    <div class="gallery-container"> 
+
+        {% for gallery in galleries %}
+        {% if gallery.getAcces() %}
+        
             <div class="img-gallery-grid">
-                <a href="/gallery/{{image.galerie.getId()}}">
-                    <img class="img-id" src="data:{{image.imgmime}};base64,{{image.getBlobToString()}}">
+                <a href="/gallery/{{gallery.id}}">
+                    <img class="img-id" src="/img/image.png">
                 </a>
-                <p class="description-img">{{image.titre}}</p>
+                <p class="description-img">{{gallery.titre}}</p>
             </div>
+            {% endif %}
         {% endfor %}
     </div>
 {% else %}
@@ -41,7 +47,7 @@
         
             <div class="img-gallery-grid">
                 <a href="/gallery/{{gallery.id}}">
-                    <img class="img-id" src="/img/meetup.png">
+                    <img class="img-id" src="/img/image.png">
                 </a>
                 <p class="description-img">{{gallery.titre}}</p>
             </div>
@@ -53,7 +59,7 @@
     <div class="gallery-container"> 
     {% for galleryPrivate in galleryPrivates %}
             <div class="img-gallery-grid">
-                <a href="/gallery/{{galleryPrivate.id}}">
+                <a href="/gallery/{{galleryPrivate.getId()}}">
                 
                 <p class="description-img">{{galleryPrivate.titre}}</p></a>
             </div>

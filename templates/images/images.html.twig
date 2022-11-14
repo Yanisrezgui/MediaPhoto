@@ -5,8 +5,11 @@
 {% block body %}
     <div class="galery-info-container">
         <h1>
-            {{gallery.titre}}
-            ({{gallery.getAccesString(gallery.getAcces)}})
+            {{gallery.titre}} 
+            ({{gallery.getAccesString(gallery.getAcces)}}) 
+            <a href="/edit-gallery/{{gallery.id}}">
+                <img src="/img/edit.png" alt="">
+            </a>
         </h1>
         <span>par {{gallery.getUser().getPseudo()}}</span>
         <span>{{gallery.getDateString(gallery.getDate())}}</span>

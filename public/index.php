@@ -22,6 +22,9 @@ $app->post('/new-gallery/create', \App\Controller\HomeController::class . ':crea
 $app->get('/gallery/{idGallery}', \App\Controller\ImagesController::class . ':images');
 $app->post('/sort-gallery', \App\Controller\HomeController::class . ':sortGallery');
 
+$app->get('/edit-gallery/{idGallery}', \App\Controller\HomeController::class . ':editGalleryPage');
+$app->post('/edit-gallery/edit/{idGallery}', \App\Controller\HomeController::class . ':editGalleryFunction');
+
 
 $app->get('/image/{idImage}', \App\Controller\ImagesController::class . ':description');
 $app->get('/uploadImage', \App\Controller\ImagesController::class . ':view');

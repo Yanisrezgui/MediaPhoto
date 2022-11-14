@@ -74,6 +74,12 @@ class Galerie
         return $this->acces;
     }
 
+    public function setAcces(bool $acces): bool
+    {
+        $this->acces = $acces;
+        return $acces;
+    }
+
     public function getAccesString(bool $acces): string
     {
         if($acces) {
@@ -88,9 +94,21 @@ class Galerie
         return $this->titre;
     }
 
+    public function setTitre(string $titre): string
+    {
+        $this->titre = $titre;
+        return $titre;
+    }
+
     public function getDescription(): string
     {
         return $this->description;
+    }
+
+    public function setDescription(string $description): string
+    {
+        $this->description = $description;
+        return $description;
     }
 
     public function getDate(): DateTime
@@ -108,6 +126,12 @@ class Galerie
     public function getMotCle(): string
     {
         return $this->motcle;
+    }
+
+    public function setMotCle(string $motcle): string
+    {
+        $this->motcle = $motcle;
+        return $motcle;
     }
 
     public function getUser(): ?User

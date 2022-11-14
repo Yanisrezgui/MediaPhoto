@@ -24,8 +24,8 @@ $app->post('/sort-gallery', \App\Controller\HomeController::class . ':sortGaller
 
 
 $app->get('/image/{idImage}', \App\Controller\ImagesController::class . ':description');
-$app->get('/uploadImage', \App\Controller\ImagesController::class . ':view');
-$app->post('/uploadImage/post', \App\Controller\ImagesController::class . ':uploadImage');
+$app->get('/uploadImage/{idGallery}', \App\Controller\ImagesController::class . ':view');
+$app->post('/uploadImage/post/{idGallery}', \App\Controller\ImagesController::class . ':uploadImage');
 $app->post('/sort-image', \App\Controller\ImagesController::class . ':sortImage');
 
 $app->get('/signUp', \App\Controller\UserController::class . ':promptInscription');

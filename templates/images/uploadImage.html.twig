@@ -5,17 +5,7 @@
 {% block body %}
     <div class="container-create-image">
         <h1>Ajouter une image</h1>
-        <form action="/uploadImage/post" method="POST" enctype="multipart/form-data">
-            <div class="gallery-create-image">
-                <label for="galerie-select">Choisir une galerie</label>
-                <select name="galerie" id="galerie-select">
-                    <option value="">--Veuillez choisir une galerie--</option>
-                    {% for gallery in galleries %}
-                        <option value="{{gallery.id}}">{{gallery.id}} - {{gallery.titre}}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            
+        <form action="/uploadImage/post/{{idGallery}}" method="POST" enctype="multipart/form-data">
             <div class="titre-create-image">
                 <label for="titre">Titre</label>
                 <input type="text" id="titre" name="titre" placeholder="Saississez un titre" size="25" required>
@@ -27,18 +17,9 @@
             <div class="keywords-create-image">
                 <label for="keywords">Mot clé</label>
                 <input type="text" id="keywords" name="keywords" placeholder="Saississez un mot clé" size="25" required>
-                {# <div class="keywords-list">
-                    <div class="one-keyword">
-                        animal <a href="#"><img src="./img/croix.png" alt="croix"></a>
-                    </div>
-                    <div class="one-keyword">
-                        chien <a href="#"><img src="./img/croix.png" alt="croix"></a>
-                    </div>
-                </div> #}
             </div>
             <div class="upload-create-image">
                 <label for="upload">Votre image</label>
-                {# <input type="text" id="upload" name="upload" placeholder="" size="25"> #}
                 <input type="file" name="myfile" required/>
             </div>
             <div class="creer-gallery-btn">

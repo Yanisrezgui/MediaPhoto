@@ -32,6 +32,7 @@ class ImagesController
         ]);
 
         return $this->view->render($response, 'images/images.html.twig', [
+            "idGallery" => $idGallery,
             "gallery" => $gallery,
             "images" => $images,
             'connecter' => isset($_SESSION['connecter']),
@@ -50,7 +51,6 @@ class ImagesController
             'id_img' => $idImage
         ]);
 
-
         return $this->view->render($response, 'images/description.html.twig', [
             'image' => $image,
             'connecter' => isset($_SESSION['connecter']),
@@ -62,9 +62,13 @@ class ImagesController
 
     public function view(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
     {
+        $idGallery = $args['idGallery'];
+
         $repository = $this->em->getRepository(Galerie::class); 
         $galleries = $repository->findAll();
+
         return $this->view->render($response, 'images/uploadImage.html.twig', [
+            'idGallery' => $idGallery,
             'galleries' => $galleries,
             'connecter' => isset($_SESSION['connecter']),
             'email' => $_SESSION["email"] ?? "",
@@ -75,17 +79,18 @@ class ImagesController
 
     public function uploadImage(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
     {
-        $args = $request->getParsedBody();
+        $idGallery = $args['idGallery'];
+        $param = $request->getParsedBody();
         $repository = $this->em->getRepository(Galerie::class); 
         $gallerie = $repository->findOneBy([
-            'id' => $args['galerie'],
+            'id' => $idGallery,
         ]);
 
         $name = $_FILES['myfile']['name'];
         $type = $_FILES['myfile']['type'];
         $data = file_get_contents($_FILES['myfile']['tmp_name']);
 
-        $image = new Image($args["keywords"],$args["titre"],$args["desc"],$name, $type, $data);
+        $image = new Image($param["keywords"],$param["titre"],$param["desc"],$name, $type, $data);
         $image->setGalerie($gallerie);
         $this->em->persist($image);
         $this->em->flush();

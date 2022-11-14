@@ -24,10 +24,16 @@ class HomeController
   }
 
   public function home(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
-  {
-    $galleries = $this->galleryService->getAllGalleries();
+  {   
+    $query = $this->em->createQueryBuilder();
+    $query->select('i')
+      ->from('App\Domain\Image', 'i')
+      ->groupBy('i.galerie');
+
+    $images = $query->getQuery()->getResult();
+
     return $this->view->render($response, 'gallery/gallery.html.twig', [
-      'galleries' => $galleries,
+      'images' => $images,
       'connecter' => isset($_SESSION['connecter']),
       'email' => $_SESSION["email"] ?? "",
       'id_util' => $_SESSION["id_util"] ?? "",
@@ -42,7 +48,7 @@ class HomeController
       'email' => $_SESSION["email"] ?? "",
       'id_util' => $_SESSION["id_util"] ?? "",
       'pseudo' => $_SESSION["pseudo"] ?? "",
-  ]);
+    ]);
   }
 
   public function createGalleryFunction(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
@@ -57,13 +63,7 @@ class HomeController
     $user1 = $repository->findOneBy([
       'id' => 2
     ]);
-    
-    // $login = $this->userService->signIn($args["email"], $args["password"]);
-    // if($login) {
-    //   $_SESSION["email"] = $args["email"];
-    //   $user = $repository->findOneBy([
-    //       'email' => $args["email"]
-    //   ]);
+  
       if (isset($args["titre"]) && isset($args["keywords"])) {
         if ($args['radio-accessibility'] == 'public') { 
           $accessibility = true;

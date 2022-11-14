@@ -5,11 +5,14 @@
 {% block body %}
     <div class="galery-info-container">
         <h1>
-            {{gallery.titre}}
-            ({{gallery.getAccesString(gallery.getAcces)}})
+            {{gallery.titre}} 
+            <a href="/uploadImage/{{idGallery}}">
+                <img src="/img/add.png" style="width: 25px">
+            </a>
         </h1>
         <span>par Utilisateur</span>
         <span>{{gallery.getDateString(gallery.getDate())}}</span>
+        <span>Galerie: {{gallery.getAccesString(gallery.getAcces)}}</span>
         <p>{{gallery.description}}</p>
     </div>
     <div class="search-bar-container">
@@ -33,6 +36,5 @@
             <p class="description-img">{{image.titre}}</p>
         </div>
         {% endfor %}
-
     </div>
 {% endblock %}

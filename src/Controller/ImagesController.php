@@ -28,6 +28,8 @@ class ImagesController
             'id' => $idGallery
         ]);
 
+        $creatorUser=$gallery->{'user'}->{'id'};
+
         $repositoryImage = $this->em->getRepository(Image::class);
         $images = $repositoryImage->findBy([
             'galerie' => $gallery
@@ -36,6 +38,7 @@ class ImagesController
         return $this->view->render($response, 'images/images.html.twig', [
             "idGallery" => $idGallery,
             "gallery" => $gallery,
+            "creatorUser"=>$creatorUser,
             "images" => $images,
             'connecter' => isset($_SESSION['connecter']),
             'email' => $_SESSION["email"] ?? "",

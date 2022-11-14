@@ -8,9 +8,11 @@
         <h1>
             {{gallery.titre}} 
             {% if connecter %}
+            {% if creatorUser == id_util %}
             <a href="/uploadImage/{{idGallery}}">
                 <img src="/img/add.png" style="width: 25px">
             </a>
+            {% endif %}
             <a href="/edit-gallery/{{gallery.id}}">
                 <img src="/img/edit.png" alt="">
             </a>

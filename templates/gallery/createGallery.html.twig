@@ -8,16 +8,28 @@
         <h1>Créer une galerie</h1>
         <form action="/new-gallery/create" method="POST">
         <div class="titre-create-gallery">
-            <label for="titre">Titre</label>
-            <input type="text" id="titre" name="titre" placeholder="Saississez un titre" size="25" required>
+            <label for="titre">Titre</label><span class="erreurTitreGallery"></span>
+            <input type="text" id="titre" name="titre" placeholder="Saississez un titre" size="25">
+
+            {% if errorGallery != "" %}
+                    <span class="erreurMailConnexion">{{errorGallery}}</span>
+            {% endif %}
         </div>
         <div class="description-create-gallery">
-            <label for="description">Description</label>
-            <textarea id="description" name="description" rows="5" cols="25" required> </textarea>
+            <label for="description">Description</label><span class="erreurDescriptionGallery"></span>
+            <textarea id="description" name="description" rows="5" cols="25"> </textarea>
+
+            {% if errorGallery != "" %}
+                    <span class="erreurMailConnexion">{{errorGallery}}</span>
+            {% endif %}
         </div>
         <div class="keywords-create-gallery">
-            <label for="keywords">Mot clé</label>
-            <input type="text" id="keywords" name="keywords" placeholder="Saississez un mot clé" size="25" required>
+            <label for="keywords">Mot clé</label><span class="erreurMotCleGallery"></span>
+            <input type="text" id="keywords" name="keywords" placeholder="Saississez un mot clé" size="25">
+
+            {% if errorGallery != "" %}
+                    <span class="erreurMailConnexion">{{errorGallery}}</span>
+            {% endif %}
             {# <div class="keywords-list">
                 <div class="one-keyword">
                     animal <a href="#"><img src="./img/croix.png" alt="croix"></a>

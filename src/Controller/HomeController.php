@@ -12,77 +12,85 @@ use App\Service\UserService;
 
 class HomeController
 {
-  private $view;
-  private $em;
+    private $view;
+    private $em;
 
-  public function __construct(Twig $view, UserService $userService, GalleryService $galleryService, EntityManager $em)
-  {
-    $this->view = $view;
-    $this->em = $em;
-    $this->userService = $userService;
-    $this->galleryService = $galleryService;
-  }
+    public function __construct(Twig $view, UserService $userService, GalleryService $galleryService, EntityManager $em)
+    {
+        $this->view = $view;
+        $this->em = $em;
+        $this->userService = $userService;
+        $this->galleryService = $galleryService;
+    }
 
-  public function home(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
-  {
-    $galleries = $this->galleryService->getAllGalleries();
-    return $this->view->render($response, 'gallery/gallery.html.twig', [
-      'galleries' => $galleries,
-      'connecter' => isset($_SESSION['connecter']),
-      'email' => $_SESSION["email"] ?? "",
-      'id_util' => $_SESSION["id_util"] ?? "",
-      'pseudo' => $_SESSION["pseudo"] ?? "",
-    ]);
-  }
+    public function home(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
+    {
+        $galleries = $this->galleryService->getAllGalleries();
+        return $this->view->render($response, 'gallery/gallery.html.twig', [
+          'galleries' => $galleries,
+          'connecter' => isset($_SESSION['connecter']),
+          'email' => $_SESSION["email"] ?? "",
+          'id_util' => $_SESSION["id_util"] ?? "",
+          'pseudo' => $_SESSION["pseudo"] ?? "",
+        ]);
+    }
 
-  public function createGalleryPage(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
-  {
-    return $this->view->render($response, 'gallery/createGallery.html.twig',[
-      'connecter' => isset($_SESSION['connecter']),
-      'email' => $_SESSION["email"] ?? "",
-      'id_util' => $_SESSION["id_util"] ?? "",
-      'pseudo' => $_SESSION["pseudo"] ?? "",
+    public function createGalleryPage(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
+    {
+        return $this->view->render($response, 'gallery/createGallery.html.twig', [
+          'connecter' => isset($_SESSION['connecter']),
+          'email' => $_SESSION["email"] ?? "",
+          'id_util' => $_SESSION["id_util"] ?? "",
+          'pseudo' => $_SESSION["pseudo"] ?? "",
   ]);
-  }
+    }
 
-  public function createGalleryFunction(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
-  {
-    $args = $request->getParsedBody();
-    $repository = $this->em->getRepository(\App\Domain\User::class); 
+    public function createGalleryFunction(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
+    {
+        $args = $request->getParsedBody();
+        $errorGallery = "";
+        $repository = $this->em->getRepository(\App\Domain\User::class);
 
-    $currentUser = $repository->findOneBy([
-      'id' => $_SESSION["id_util"]
-    ]);
+        $currentUser = $repository->findOneBy([
+          'id' => $_SESSION["id_util"]
+        ]);
 
-    $user1 = $repository->findOneBy([
-      'id' => 2
-    ]);
-    
-    // $login = $this->userService->signIn($args["email"], $args["password"]);
-    // if($login) {
-    //   $_SESSION["email"] = $args["email"];
-    //   $user = $repository->findOneBy([
+        $user1 = $repository->findOneBy([
+          'id' => 2
+        ]);
+
+        // $login = $this->userService->signIn($args["email"], $args["password"]);
+        // if($login) {
+        //   $_SESSION["email"] = $args["email"];
+        //   $user = $repository->findOneBy([
     //       'email' => $args["email"]
-    //   ]);
-      if (isset($args["titre"]) && isset($args["keywords"])) {
-        if ($args['radio-accessibility'] == 'public') { 
-          $accessibility = true;
+        //   ]);
+        if (isset($args["titre"]) && isset($args["keywords"]) && isset($args["description"])) {
+          if ($args["titre"] == "" || $args["keywords"] == "" || $args["description"] == "") {
+            $errorGallery = "Veuillez remplir tous les champs";
+            return $this->view->render($response, 'gallery/createGallery.html.twig', [
+              'errorGallery' => $errorGallery
+            ]);
         } else {
-          $accessibility = false;
-        }
+    if ($args['radio-accessibility'] == 'public') {
+        $accessibility = true;
+    } else {
+        $accessibility = false;
+    }
 
-        $galerie = new Galerie($accessibility,$args["titre"],$args["description"],$args["keywords"]);
-        $galerie->setUser($currentUser);
-        $galerie->addUserAcces($user1);
-        $this->em->persist($galerie);
-        $this->em->flush();
-      }
+    $galerie = new Galerie($accessibility, $args["titre"], $args["description"], $args["keywords"]);
+    $galerie->setUser($currentUser);
+    $galerie->addUserAcces($user1);
+    $this->em->persist($galerie);
+    $this->em->flush();
+
     // }
-
-    return $response
-      ->withHeader('Location', '/')
-      ->withStatus(302);
-  }
+}
+        return $response
+          ->withHeader('Location', '/')
+          ->withStatus(302);
+    }
+}
 
   public function sortGallery(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {

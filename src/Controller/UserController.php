@@ -163,6 +163,18 @@ class UserController
               'errorChange' => $errorChange
             ]);
       }
+      else  {
+        $idUser = $_SESSION['id_util'];
+        $repository = $this->em->getRepository((User::class));
+        $updateUser = $repository->findOneBy([
+          'id' => $idUser,
+        ]);
+
+        $updateUser->checkPassword($args["new-pass"]);
+
+        $this->em->persist($updateUser);
+        $this->em->flush();
+      }
     }
     return $response
         ->withHeader('Location', '/')

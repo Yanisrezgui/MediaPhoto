@@ -24,30 +24,21 @@ class HomeController
   }
 
   public function home(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
-  {    
+  {
 
-    if(isset($_SESSION['connecter'])) {
-      $galleryPrivates = $this->galleryService->getGalleryPrivate();
-    } 
+    
+    $galleryPrivates = $this->galleryService->getGalleryPrivate();
+
  
     $galleries = $this->galleryService->getAllGalleries();
-    $query = $this->em->createQueryBuilder();
-    $query->select('i')
-      ->from('App\Domain\Image', 'i')
-      ->groupBy('i.galerie');
-
-    $images = $query->getQuery()->getResult();
-
     return $this->view->render($response, 'gallery/gallery.html.twig', [
       'galleries' => $galleries,
-      'images' => $images,
-      'galleryPrivates'=>$galleryPrivates ?? "",
+      'galleryPrivates'=>$galleryPrivates,
       'connecter' => isset($_SESSION['connecter']),
       'email' => $_SESSION["email"] ?? "",
       'id_util' => $_SESSION["id_util"] ?? "",
       'pseudo' => $_SESSION["pseudo"] ?? "",
     ]);
-    
   }
 
   public function createGalleryPage(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface

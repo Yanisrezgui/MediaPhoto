@@ -17,12 +17,15 @@ $app = AppFactory::create();
 $app->add(TwigMiddleware::createFromContainer($app));
 
 $app->get('/', \App\Controller\HomeController::class . ':home');
+$app->get('/gallery/{idGallery}', \App\Controller\ImagesController::class . ':images');
 $app->get('/new-gallery', \App\Controller\HomeController::class . ':createGalleryPage');
 $app->post('/new-gallery/create', \App\Controller\HomeController::class . ':createGalleryFunction');
 $app->post('/sort-gallery', \App\Controller\HomeController::class . ':sortGallery');
 $app->post('/addUserGallery/{idGallery}', \App\Controller\HomeController::class . ':addUserGallery');
 
-$app->get('/gallery/{idGallery}', \App\Controller\ImagesController::class . ':images');
+$app->get('/edit-gallery/{idGallery}', \App\Controller\HomeController::class . ':editGalleryPage');
+$app->post('/edit-gallery/edit/{idGallery}', \App\Controller\HomeController::class . ':editGalleryFunction');
+
 $app->get('/image/{idImage}', \App\Controller\ImagesController::class . ':description');
 $app->get('/uploadImage', \App\Controller\ImagesController::class . ':view');
 $app->post('/uploadImage/post', \App\Controller\ImagesController::class . ':uploadImage');

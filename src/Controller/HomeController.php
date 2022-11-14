@@ -55,18 +55,9 @@ class HomeController
   public function createGalleryFunction(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {
     $args = $request->getParsedBody();
-    $repository = $this->em->getRepository(\App\Domain\User::class); 
 
-    $currentUser = $repository->findOneBy([
-      'id' => $_SESSION["id_util"]
-    ]);
+    $currentUser = $this->userService->getCurrentUser();
 
-    // $login = $this->userService->signIn($args["email"], $args["password"]);
-    // if($login) {
-    //   $_SESSION["email"] = $args["email"];
-    //   $user = $repository->findOneBy([
-    //       'email' => $args["email"]
-    //   ]);
       if (isset($args["titre"]) && isset($args["keywords"])) {
         if ($args['radio-accessibility'] == 'public') { 
           $accessibility = true;
@@ -80,7 +71,6 @@ class HomeController
         $this->em->persist($galerie);
         $this->em->flush();
       }
-    // }
 
     return $response
       ->withHeader('Location', '/')
@@ -101,6 +91,53 @@ class HomeController
       'motCle' => $args['search-bar'],
     ]);
   }
+  
+  public function editGalleryPage(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
+  {
+    $idGallery = $args['idGallery'];
+    $repository = $this->em->getRepository(Galerie::class); 
+    $gallery = $repository->findOneBy([
+      'id' => $idGallery,
+    ]);
+    return $this->view->render($response, 'gallery/editGallery.html.twig',[
+      'connecter' => isset($_SESSION['connecter']),
+      'email' => $_SESSION["email"] ?? "",
+      'id_util' => $_SESSION["id_util"] ?? "",
+      'pseudo' => $_SESSION["pseudo"] ?? "",
+      "gallery" => $gallery
+  ]);
+  }
+
+  public function editGalleryFunction(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
+  {
+    $form = $request->getParsedBody();
+    $idGallery = $args['idGallery'];
+    
+    $repository = $this->em->getRepository(Galerie::class); 
+    $gallery = $repository->findOneBy([
+      'id' => $idGallery,
+    ]);
+
+    if ($form['radio-accessibility'] == 'public') { 
+      $accessibility = true;
+    } else {
+      $accessibility = false;
+    }
+
+    $gallery->setTitre($form["titre"]);
+    $gallery->setDescription($form["description"]);
+    $gallery->setMotCle($form["keywords"]);
+    $gallery->setAcces($accessibility);
+
+    $this->em->persist($gallery);
+    $this->em->flush();
+
+    return $response
+      ->withHeader('Location', '/gallery/' . $idGallery)
+      ->withStatus(302);
+  }
+
+}
 
   public function addUserGallery(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {
@@ -133,3 +170,4 @@ class HomeController
   }
 
 }
+

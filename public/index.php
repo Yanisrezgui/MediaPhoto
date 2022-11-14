@@ -35,6 +35,7 @@ $app->post('/signIn/signUser', \App\Controller\UserController::class . ':signIn'
 $app->get('/logout', \App\Controller\UserController::class . ':logout');
 $app->get('/mon-compte', \App\Controller\UserController::class . ':monCompte');
 $app->get('/mon-compte/mes-galeries', \App\Controller\UserController::class . ':mesGaleries');
+$app->post('/mon-compte/changePassword', \App\Controller\UserController::class . ':changePassword');
 
 $app->get('/users', \App\UserController::class . ':test');
 

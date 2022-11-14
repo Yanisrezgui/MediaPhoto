@@ -14,21 +14,43 @@
 <div class="container-account">
 
     <h1>Changer de mot de passe</h1>
+    <form action="/mon-compte/changePassword" method="POST">
     <div class="last-pass">
-        <label for="last-pass">Ancien mot de passe</label>
-        <input type="password" id="last-pass" name="last-pass" placeholder="Saississez votre ancien mot de passe" size="35" required>
+        <label for="last-pass">Ancien mot de passe</label> <span class="erreurLastPassword"></span>
+        <input type="password" id="last-pass" name="last-pass" placeholder="Saississez votre ancien mot de passe" size="35">
+
+        {% if errorChange != "" %}
+                    <span class="erreurLastPassword">{{errorChange}}</span>
+        {% endif %}
+
+        {% if errorLastPassword != "" %}
+                    <span class="erreurLastPassword">{{errorLastPassword}}</span>
+        {% endif %}
     </div>
     <div class="new-pass">
-        <label for="new-pass">Nouveau mot de passe</label>
-        <input type="password" id="new-pass" name="new-pass" placeholder="Saississez votre nouveau mot de passe" size="35" required>
+        <label for="new-pass">Nouveau mot de passe</label> <span class="erreurNewPassword"></span>
+        <input type="password" id="new-pass" name="new-pass" placeholder="Saississez votre nouveau mot de passe" size="35">
+
+        {% if errorChange != "" %}
+                    <span class="erreurNewPassword">{{errorChange}}</span>
+        {% endif %}
     </div>
     <div class="new-new-pass">
-        <label for="new-new-pass">Confirmer le nouveau mot de passe</label>
-        <input type="password" id="new-new-pass" name="new-new-pass" placeholder="Confirmer votre nouveau mot de passe" size="35" required>
+        <label for="new-new-pass">Confirmer le nouveau mot de passe</label> <span class="erreurNewNewPassword"></span>
+        <input type="password" id="new-new-pass" name="new-new-pass" placeholder="Confirmer votre nouveau mot de passe" size="35">
+
+        {% if errorChange != "" %}
+                    <span class="erreurNewNewPassword">{{errorChange}}</span>
+        {% endif %}
+
+        {% if errorChangeVerif != "" %}
+                    <span class="erreurNewNewPassword">{{errorChangeVerif}}</span>
+        {% endif %}
     </div>
     <div class="creer-gallery-btn">
         <input type="submit" value="Modifier" class="btn">
     </div>
+</form>
 </div>
 
 

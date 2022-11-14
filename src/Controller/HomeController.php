@@ -25,16 +25,15 @@ class HomeController
 
   public function home(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
   {
-    $repository = $this->em->getRepository(\App\Domain\Galerie::class); 
 
-    $galleriePublic = $repository->findBy([
-      'acces' => "1"
-    ]);
+    
+    $galleryPrivates = $this->galleryService->getGalleryPrivate();
+
  
     $galleries = $this->galleryService->getAllGalleries();
     return $this->view->render($response, 'gallery/gallery.html.twig', [
       'galleries' => $galleries,
-      'galleriePublic' => $galleriePublic,
+      'galleryPrivates'=>$galleryPrivates,
       'connecter' => isset($_SESSION['connecter']),
       'email' => $_SESSION["email"] ?? "",
       'id_util' => $_SESSION["id_util"] ?? "",
@@ -156,10 +155,7 @@ class HomeController
       'pseudo' => $user,
     ]);
 
-  //$idUser=$userAcces->{'id'};
-
    $gallery->addUserAcces($userAcces);
-
    $this->em->persist($gallery);
    $this->em->flush();
     
@@ -167,5 +163,8 @@ class HomeController
    ->withHeader('Location', '/gallery/'.$idGallery)
    ->withStatus(302);
   }
+
+
+ 
 
 }

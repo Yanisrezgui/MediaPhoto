@@ -86,7 +86,6 @@ class UserController
         $this->userService->signUp($args["mail"], $args["password"], $args["pseudo"]); 
       }
     }
-
     return $response
       ->withHeader('Location', '/signIn')
       ->withStatus(302);

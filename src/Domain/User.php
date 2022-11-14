@@ -10,6 +10,10 @@ use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping\InverseJoinColumn;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\JoinTable;
+use Doctrine\ORM\Mapping\ManyToMany;
 
 #[Entity, Table(name: 'Utilisateur')]
 class User
@@ -29,13 +33,14 @@ class User
     #[OneToMany(targetEntity: Galerie::class, mappedBy:'user')]
     private $galeries;
 
+    
+
     public function __construct(string $email,string $password, string $pseudo)
     {
         $this->email = $email;
         $this->password = password_hash($password, PASSWORD_DEFAULT);
         $this->pseudo= $pseudo;
         $this->galeries= new ArrayCollection();
-        $this->galerie_acces= new ArrayCollection();
     }
 
     public function getId(): int
@@ -77,6 +82,8 @@ class User
     {
         return $this->galeries;
     }
+
+    
 
     public function checkPassword($pass) : bool {
         return password_verify($pass, $this->password);

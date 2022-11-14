@@ -354,6 +354,10 @@ nav a {
     flex: auto 1;
   }
 }
+a {
+  text-decoration: none;
+}
+
 .search-bar {
   text-align: center;
   margin-top: 38px;

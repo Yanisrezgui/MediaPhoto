@@ -9,6 +9,9 @@
             <a href="/uploadImage/{{idGallery}}">
                 <img src="/img/add.png" style="width: 25px">
             </a>
+            <a href="/edit-gallery/{{gallery.id}}">
+                <img src="/img/edit.png" alt="">
+            </a>
         </h1>
         <span>par {{gallery.getUser().getPseudo()}}</span>
         <span>{{gallery.getDateString(gallery.getDate())}}</span>

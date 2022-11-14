@@ -75,33 +75,51 @@ class ImagesController
 
     public function uploadImage(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
     {
-        $args = $request->getParsedBody();
-        $repository = $this->em->getRepository(Galerie::class); 
-        $gallerie = $repository->findOneBy([
-            'id' => $args['galerie'],
-        ]);
+    $args = $request->getParsedBody();
+    $errorImage = "";
+    $errorChoix = "";
+    $errorFile = "";
+    $repository = $this->em->getRepository(Galerie::class);
+    $gallerie = $repository->findOneBy([
+        'id' => $args['galerie'],
+    ]);
 
-        $name = $_FILES['myfile']['name'];
-        $type = $_FILES['myfile']['type'];
-        $data = file_get_contents($_FILES['myfile']['tmp_name']);
+    
 
-        $image = new Image($args["keywords"],$args["titre"],$args["desc"],$name, $type, $data);
-        $image->setGalerie($gallerie);
-        $this->em->persist($image);
-        $this->em->flush();
+    if (isset($args["titre"]) && isset($args["keywords"]) && isset($args["desc"])) {
+        if ($args["titre"] == "" || $args["keywords"] == "" || $args["desc"] == "") {
+    $errorImage = "Veuillez remplir tous les champs";
+    $errorChoix = "Veuillez choisir une galerie";
+    $errorFile = "Veuillez choisir un fichier";
+    return $this->view->render($response, 'images/uploadImage.html.twig', [
+      'errorImage' => $errorImage,
+      'errorChoix' => $errorChoix,
+      'errorFile' => $errorFile
+    ]);
+}
+else {
+    $name = $_FILES['myfile']['name'];
+    $type = $_FILES['myfile']['type'];
+    $data = file_get_contents($_FILES['myfile']['tmp_name']);
 
-        $imgRepository = $this->em->getRepository(Image::class); 
-        $imageReq = $imgRepository->findOneBy(
-            array(),
-            array('id_img' => 'DESC')
-        );
+    $image = new Image($args["keywords"], $args["titre"], $args["desc"], $name, $type, $data);
+    $image->setGalerie($gallerie);
+    $this->em->persist($image);
+    $this->em->flush();
 
-        $idImg = $imageReq->getId_img();
-        
+    $imgRepository = $this->em->getRepository(Image::class);
+    $imageReq = $imgRepository->findOneBy(
+        array(),
+        array('id_img' => 'DESC')
+    );
+
+    $idImg = $imageReq->getId_img();
+}
         return $response
             ->withHeader('Location', '/image/' . $idImg)
             ->withStatus(302);
     }
+}
 
     public function sortImage(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
     {

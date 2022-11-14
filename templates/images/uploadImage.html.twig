@@ -7,26 +7,42 @@
         <h1>Ajouter une image</h1>
         <form action="/uploadImage/post" method="POST" enctype="multipart/form-data">
             <div class="gallery-create-image">
-                <label for="galerie-select">Choisir une galerie</label>
+                <label for="galerie-select">Choisir une galerie</label> <span class="erreurChoixGalerieImage"></span>
                 <select name="galerie" id="galerie-select">
                     <option value="">--Veuillez choisir une galerie--</option>
                     {% for gallery in galleries %}
                         <option value="{{gallery.id}}">{{gallery.id}} - {{gallery.titre}}</option>
                     {% endfor %}
                 </select>
+
+            {% if errorChoix != "" %}
+                <span class="erreurChoixGalerieImage">{{errorChoix}}</span>
+            {% endif %}
             </div>
             
             <div class="titre-create-image">
-                <label for="titre">Titre</label>
-                <input type="text" id="titre" name="titre" placeholder="Saississez un titre" size="25" required>
+                <label for="titre">Titre</label> <span class="erreurTitreImage"></span>
+                <input type="text" id="titre" name="titre" placeholder="Saississez un titre" size="25">
+
+            {% if errorImage != "" %}
+                <span class="erreurTitreImage">{{errorImage}}</span>
+            {% endif %}
             </div>
             <div class="desc-create-image">
-                <label for="desc">Description</label>
-                <textarea id="desc" name="desc" placeholder="Saississez une description" rows="5" cols="33" required> </textarea>
+                <label for="desc">Description</label> <span class="erreurDescriptionImage"></span>
+                <textarea id="desc" name="desc" placeholder="Saississez une description" rows="5" cols="33"> </textarea>
+
+            {% if errorImage != "" %}
+                <span class="erreurDescriptionImage">{{errorImage}}</span>
+            {% endif %}
             </div>
             <div class="keywords-create-image">
-                <label for="keywords">Mot clé</label>
-                <input type="text" id="keywords" name="keywords" placeholder="Saississez un mot clé" size="25" required>
+                <label for="keywords">Mot clé</label> <span class="erreurMotCleImage"></span>
+                <input type="text" id="keywords" name="keywords" placeholder="Saississez un mot clé" size="25">
+
+            {% if errorImage != "" %}
+                <span class="erreurMotCleImage">{{errorImage}}</span>
+            {% endif %}
                 {# <div class="keywords-list">
                     <div class="one-keyword">
                         animal <a href="#"><img src="./img/croix.png" alt="croix"></a>
@@ -37,9 +53,13 @@
                 </div> #}
             </div>
             <div class="upload-create-image">
-                <label for="upload">Votre image</label>
+                <label for="upload">Votre image</label> <span class="erreurUploadImage"></span>
                 {# <input type="text" id="upload" name="upload" placeholder="" size="25"> #}
-                <input type="file" name="myfile" required/>
+                <input type="file" name="myfile"/>
+
+            {% if errorFile != "" %}
+                <span class="erreurUploadImage">{{errorFile}}</span>
+            {% endif %}
             </div>
             <div class="creer-gallery-btn">
                 <input type="submit" value="Publier" class="btn">

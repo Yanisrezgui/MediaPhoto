@@ -698,4 +698,23 @@ body {
   border-right: 1px solid black;
 }
 
+.container-pro {
+  background-color: #FFFFFF;
+  width: 500px;
+  margin: auto;
+  margin-top: 80px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  text-align: center;
+}
+.container-pro .github img {
+  width: 50px;
+}
+.container-pro img {
+  width: 500px;
+}
+.container-pro .maquette img {
+  width: 50px;
+}
+
 /*# sourceMappingURL=index.css.map */

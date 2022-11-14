@@ -27,6 +27,16 @@
             {% endif %}
         </form>
     </div>
+    {% if gallery.getAcces() == false %}
+    <h2>Ajouter l'accès à un utilisateur :</h2>
+    
+    <form action="/addUserGallery/{{gallery.id}}" method="POST">
+        <input type="text" id="adduser" name="addUser" placeholder="Ajouter un membre" size="40">
+        <br>
+        <input type="submit" id="submit-button" value="Ajouter">
+    </form>
+
+    {% endif %}
     <div class="gallery-container">
         {% for image in images %}
         <div class="img-gallery-grid">
@@ -37,11 +47,5 @@
         </div>
         {% endfor %}
     </div>
-    <form action="/addUserGallery/{{gallery.id}}" method="POST">
-        <input type="text" id="adduser" name="addUser" placeholder="Ajouter un membre" size="40">
-        <br>
-        <span>salut</span>
-        <input type="submit" id="submit-button" value="Ajouter">
-
-    </form>
+    
 {% endblock %}

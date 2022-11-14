@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Domain\Image;
 use App\Domain\Galerie;
+use App\Service\UserService;
 use Doctrine\ORM\EntityManager;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -12,10 +13,11 @@ class ImagesController
 {
     private $view;
 
-    public function __construct(Twig $view, EntityManager $em)
+    public function __construct(Twig $view,UserService $userService, EntityManager $em)
     {
         $this->view = $view;
         $this->em = $em;
+        $this->userService = $userService;
     }
 
     public function images(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
@@ -62,8 +64,12 @@ class ImagesController
 
     public function view(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
     {
+        $currentUser = $this->userService->getCurrentUser();
+
         $repository = $this->em->getRepository(Galerie::class); 
-        $galleries = $repository->findAll();
+        $galleries = $repository->findBy([
+            'user' => $currentUser,
+        ]);
         return $this->view->render($response, 'images/uploadImage.html.twig', [
             'galleries' => $galleries,
             'connecter' => isset($_SESSION['connecter']),

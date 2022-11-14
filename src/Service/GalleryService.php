@@ -38,4 +38,4 @@ final class GalleryService
         }
         return $galleryPrivate;
     }
-}   
+}

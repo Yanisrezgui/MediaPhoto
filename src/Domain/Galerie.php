@@ -20,7 +20,7 @@ use Doctrine\ORM\Mapping\InverseJoinColumn;
 class Galerie
 {
     #[Id, Column(name: 'id_galerie', type: 'integer'), GeneratedValue(strategy: 'AUTO')]
-    private int $id;
+    public int $id;
 
     #[Column(name: 'access', type: 'boolean', nullable: false)]
     private bool $acces;
@@ -39,7 +39,7 @@ class Galerie
 
     #[ManyToOne(targetEntity: User::class, inversedBy: 'galeries')]
     #[JoinColumn(name: 'id_util', referencedColumnName: 'id_util')]
-    private $user;
+    public $user;
 
     #[JoinTable(name: 'Acces_Galerie')]
     #[JoinColumn(name: 'id_galerie', referencedColumnName: 'id_galerie')]
